@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="RealityWall">
+
+<head ng-controller="SeoController as sc">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+
+    <!-- Seo Part -->
+    <title>{{ sc.title }}</title>
+    <meta name="description" content="{{ sc.description }}" />
+
+    <!-- CSS Include -->
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css"/>
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css"/>
+    <link rel="stylesheet" href="bower_components/roboto-fontface/css/roboto-fontface.css"/>
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/general.css"/>
+
+</head>
+
+<body class="ng-cloak">
+
+<div ui-view></div>
+
+<!-- Dependencies -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<!-- App Scripts -->
+<script src="js/components/app.js"></script>
+<script src="js/services/SeoFactory.js"></script>
+<script src="js/global/SeoController.js"></script>
+<script src="js/services/Dispatcher.js"></script>
+<script src="js/services/UserFactory.js"></script>
+
+<script src="js/components/home/home.route.js"></script>
+<script src="js/components/home/home.controller.js"></script>
+<script src="js/components/product/product.route.js"></script>
+
+<script src="js/components/home/rwSeachSection/rwSearchSection.directive.js"></script>
+<script src="js/components/home/rwUserModal/rwUserModal.directive.js"></script>
+<script src="js/components/home/rwDropDown/rwDropDown.directive.js"></script>
+<script src="js/components/dialog/dialog.directive.js"></script>
+
+</body>
+</html>

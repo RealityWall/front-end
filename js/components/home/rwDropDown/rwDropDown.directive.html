@@ -1,0 +1,9 @@
+<div class="selected" ng-click="toggleHidden()" ng-class="!hidden ? 'toggled' : ''">
+    <i class="fa" ng-class="selected.faClass"></i> {{ selected.displayName }}
+    <span><i class="fa" ng-class="hidden ? 'fa-caret-down' : 'fa-caret-up'"></i></span>
+</div>
+<div class="hidden" ng-hide="hidden">
+    <div ng-repeat="option in options" ng-click="selectValue(option)" ng-class="!hidden ? 'toggled' : ''">
+        <i class="fa" ng-class="option.faClass"></i> {{ option.displayName }}
+    </div>
+</div>

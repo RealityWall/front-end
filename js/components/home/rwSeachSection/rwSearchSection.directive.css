@@ -1,0 +1,196 @@
+div[rw-search-section] {
+    background: url(../../../../img/keyboard.jpg) no-repeat center fixed;
+    background-size: cover;
+    padding: 20px 40px;
+}
+
+div[rw-search-section] .top-bar {
+    z-index:2;
+    position:absolute;
+    width:100%;
+    padding-left:40px;
+    padding-right:40px;
+    left:0px;
+}
+
+div[rw-search-section] .top-bar > a.btn {
+    float:right;
+    margin-left:10px;
+}
+
+div[rw-search-section] > .container {
+    z-index:2;
+    position:relative;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+}
+div[rw-search-section] > .container > h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align:center;
+}
+
+
+div[rw-search-section] > .container > h1 > span {
+    display: block;
+    width: 150px;
+    height: 1px;
+    background: #E73931;
+    margin: 40px auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 100;
+    color: #ffffff;
+    line-height: 36px;
+}
+div[rw-search-section] > .container > span {
+    font-size: 22px;
+    font-weight: 100;
+    color: #ffffff;
+    line-height: 36px;
+}
+div[rw-search-section] > .container > div.search {
+    margin: 40px auto;
+}
+
+div[rw-search-section] > .container > div.search > div {
+    display:inline-block;
+}
+
+div[rw-search-section] > .container > div.search > div > input {
+    height: 55px;
+    border: 0px;
+    border-radius: 3px;
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 0px 20px;
+}
+
+div[rw-search-section] > .container > div.search > a.btn {
+    padding-right:40px;
+    padding-left:40px;
+    padding-top:19px;
+    padding-bottom:18px;
+    transform: translate(0, -1px);
+    margin-left:20px;
+}
+
+div[rw-search-section] .add-opacity {
+    position: absolute;
+    z-index:1;
+    width:100%;
+    height:100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(50,50,50,0.8);
+}
+
+@media (min-width: 874px) {
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] {
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+        margin-left: -2.5px;
+        transform: translate(0, -1px);
+    }
+
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] .selected {
+        border-top-left-radius: 0px;
+    }
+
+    div[rw-search-section] > .container > div.search > div > input {
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+        width:450px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 874px) {
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] {
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+        margin-left: -2.5px;
+        transform: translate(0, -1px);
+    }
+
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] .selected {
+        border-top-left-radius: 0px;
+    }
+
+    div[rw-search-section] > .container > div.search > div > input {
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+        width:277px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+    div[rw-search-section] > .container > div.search > div:first-child {
+        display:block;
+    }
+    div[rw-search-section] > .container > div.search > div:first-child > input {
+        width:100%;
+        margin-bottom:20px;
+    }
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] {
+        width:calc(100% - 192px);
+    }
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] > div {
+        width:100%;
+    }
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] > div.hidden {
+        width:calc(100% - 192px);
+    }
+}
+
+@media (max-width: 500px) {
+    div[rw-search-section] > .container > div.search > div {
+        display:block;
+    }
+    div[rw-search-section] > .container > div.search > div:first-child > input {
+        width:100%;
+        margin-bottom:20px;
+    }
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] {
+        width:100%;
+        margin-bottom:20px;
+    }
+    div[rw-search-section] > .container > div.search > div[rw-drop-down] > div.hidden {
+        width:100%;
+        z-index:2;
+    }
+    div[rw-search-section] > .container > div.search > a.btn {
+        width:100%;
+        margin-left:0px;
+    }
+    div[rw-search-section] > .container > h1 {
+        font-size: 45px;
+    }
+
+}
+
+@media (max-width: 450px) {
+    div[rw-search-section] > .container > h1 {
+        font-size: 27px;
+    }
+
+    div[rw-search-section] > .container > span {
+        font-size:18px;
+    }
+
+    div[rw-search-section] > .container > h1 > span {
+        margin: 20px auto;
+        line-height: 36px;
+    }
+
+    div[rw-search-section] > .container > div.search {
+        margin: 18px auto;
+    }
+}
