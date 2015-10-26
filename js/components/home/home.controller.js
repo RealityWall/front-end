@@ -12,7 +12,7 @@
         SeoFactory.setTitle('RealityWall');
         SeoFactory.setDescription('Accueil');
 
-        vm.showUserModal = true;
+        vm.showUserModal = false;
         vm.modalSelectedIndex = 0;
         vm.previousSelectedIndex = 0;
         vm.user = {};
