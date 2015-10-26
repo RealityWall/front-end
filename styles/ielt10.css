@@ -1,0 +1,3 @@
+div[rw-search-section] > .container > div.search > *:nth-child(n+2) {
+    transform: translate(0, -21px);
+}

@@ -79,7 +79,6 @@ div[rw-search-section] > .container > div.search > a.btn {
     padding-left:40px;
     padding-top:19px;
     padding-bottom:18px;
-    transform: translate(0, -1px);
     margin-left:20px;
 }
 
@@ -98,7 +97,6 @@ div[rw-search-section] .add-opacity {
         border-bottom-left-radius: 0px;
         border-top-left-radius: 0px;
         margin-left: -2.5px;
-        transform: translate(0, -1px);
     }
 
     div[rw-search-section] > .container > div.search > div[rw-drop-down] .selected {

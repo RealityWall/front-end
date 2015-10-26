@@ -1,6 +1,6 @@
 .user-modal {
     width:300px;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 .user-modal > div {
     background-color:white;
@@ -133,6 +133,6 @@
 }
 
 .user-modal > .footer {
-    height:30px;
+    height:32px;
     background: transparent;
 }

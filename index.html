@@ -19,10 +19,18 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/general.css"/>
+    <!--[if IE]>
+    <link rel="stylesheet" href="styles/ielt10.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="styles/ie.css"/>
 
 </head>
 
 <body class="ng-cloak">
+
+<!--[if LT 9]>
+<div>ERROR</div>
+<![endif]-->
 
 <div ui-view></div>
 
@@ -32,18 +40,25 @@
 
 <!-- App Scripts -->
 <script src="js/components/app.js"></script>
-<script src="js/services/SeoFactory.js"></script>
 <script src="js/global/SeoController.js"></script>
+
+<!-- Services -->
+<script src="js/services/SeoFactory.js"></script>
 <script src="js/services/Dispatcher.js"></script>
 <script src="js/services/UserFactory.js"></script>
 
+<!-- Home Component -->
 <script src="js/components/home/home.route.js"></script>
 <script src="js/components/home/home.controller.js"></script>
-<script src="js/components/product/product.route.js"></script>
-
 <script src="js/components/home/rwSeachSection/rwSearchSection.directive.js"></script>
 <script src="js/components/home/rwUserModal/rwUserModal.directive.js"></script>
 <script src="js/components/home/rwDropDown/rwDropDown.directive.js"></script>
+
+<!-- Wall Component -->
+<script src="js/components/wall/wall.route.js"></script>
+<script src="js/components/wall/wall.controller.js"></script>
+
+<!-- Dialog Component -->
 <script src="js/components/dialog/dialog.directive.js"></script>
 
 </body>

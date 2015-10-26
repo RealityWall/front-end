@@ -10,6 +10,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html {
+    width:100%;
+    overflow-x: hidden;
+}
+
 input[type="text"], input[type="password"], input[type="email"] {
     display: block;
     margin: 0;

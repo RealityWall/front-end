@@ -20,7 +20,7 @@
 
             scope.hidden = true;
             scope.options = [{ faClass: 'fa-file-text-o', value: 'post', displayName: 'Post' }];
-            scope.selected = { faClass: 'fa-globe', value: 'wall', displayName: 'Mur' };
+            scope.selected = { faClass: 'fa-map-marker', value: 'wall', displayName: 'Mur' };
             scope.toggleHidden = toggleHidden;
             scope.selectValue = selectValue;
             $document.on('click', clickHandler);
