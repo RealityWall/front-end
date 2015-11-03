@@ -4,9 +4,17 @@
 
     angular.module('RealityWall').controller('WallController', WallController);
 
-    WallController.$inject = [];
+    WallController.$inject = ['$interval'];
 
-    function WallController() {
+    function WallController($interval) {
+
+        var vm = this;
+
+        vm.seconds = 7;
+
+        $interval(function () {
+            vm.seconds = (vm.seconds == 0 ) ? 59 : vm.seconds -1;
+        }, 1000);
     }
 
 })();

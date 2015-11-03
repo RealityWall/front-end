@@ -1,0 +1,35 @@
+@import './buttons';
+@import '../js/components/home/rwSeachSection/rwSearchSection.directive';
+@import '../js/components/home/rwDropDown/rwDropDown.directive';
+@import '../js/components/dialog/dialog.directive';
+@import '../js/components/home/rwUserModal/rwUserModal.directive';
+
+* {
+  box-sizing: border-box;
+  outline: 0px!important;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  width:100%;
+  overflow-x: hidden;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0px;
+
+  padding: 10px;
+  border: solid 5px #c9c9c9;
+  transition: border 0.3s;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+  outline: none;
+  border: solid 5px #969696;
+}

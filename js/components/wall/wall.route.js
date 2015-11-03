@@ -9,7 +9,7 @@
     function WallRouteConfig($stateProvider) {
         $stateProvider
             .state('wall', {
-                url: '/wall',
+                url: '/wall/:wallId',
                 templateUrl: 'js/components/wall/wall.html',
                 controller: 'WallController',
                 controllerAs: 'wc'
