@@ -1,11 +1,10 @@
 div[rw-search-section] {
-  background: url(../img/keyboard.jpg) no-repeat center fixed;
-  background-size: cover;
+
   padding: 20px 40px;
 }
 
 div[rw-search-section] .top-bar {
-  z-index:2;
+  z-index:3;
   position:absolute;
   width:100%;
   padding-left:40px;
@@ -19,7 +18,7 @@ div[rw-search-section] .top-bar > a.btn {
 }
 
 div[rw-search-section] > .container {
-  z-index:2;
+  z-index:3;
   position:relative;
   left:50%;
   top:50%;
@@ -42,7 +41,7 @@ div[rw-search-section] > .container > h1 > span {
   display: block;
   width: 150px;
   height: 1px;
-  background: #E73931;
+  background: $primaryAccent;
   margin: 40px auto;
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
@@ -52,7 +51,7 @@ div[rw-search-section] > .container > h1 > span {
 }
 div[rw-search-section] > .container > span {
   font-size: 22px;
-  font-weight: 100;
+  font-weight: 300;
   color: #ffffff;
   line-height: 36px;
 }
@@ -89,7 +88,22 @@ div[rw-search-section] .add-opacity {
   height:100%;
   top: 0px;
   left: 0px;
-  background-color: rgba(50,50,50,0.8);
+  background: url(../img/keyboard.jpg) no-repeat center fixed;
+  background-size: cover;
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px);
+}
+div[rw-search-section] .add-opacity-overlay {
+  position: absolute;
+  z-index:2;
+  width:100%;
+  height:100%;
+  top: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.7);
 }
 
 @media (min-width: 874px) {
@@ -162,7 +176,7 @@ div[rw-search-section] .add-opacity {
   }
   div[rw-search-section] > .container > div.search > div[rw-drop-down] > div.hidden {
     width:100%;
-    z-index:2;
+    z-index:3;
   }
   div[rw-search-section] > .container > div.search > a.btn {
     width:100%;

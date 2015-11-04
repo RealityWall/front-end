@@ -3,7 +3,7 @@
   height:30px;
   text-align:center;
   color:rgb(50, 50, 50);
-  background-color:white;
+  background-color:$accent;
   border:rgb(50, 50, 50) solid 2px;
   border-radius:100000px;
   right:0px;
@@ -19,12 +19,12 @@
   overflow:hidden;
 }
 .user-modal > div {
-  background-color:white;
+  background-color: $accent;
 }
 .user-modal > div > .header {
   width:100%;
   display:table;
-  border-bottom: 2px solid #e73931;
+  border-bottom: 2px solid $primary;
 }
 
 /* Tab container */
@@ -34,14 +34,14 @@
   display:table-cell;
   cursor:pointer;
   transition: 0.3s;
-  background-color:white;
+  background-color:$accent;
   color: rgb(50,50,50);
 }
 .user-modal > div > .header > div:hover {
   background-color:lightgrey;
 }
 .user-modal > div > .header > div.selected {
-  background-color:#e73931;
+  background-color:$primary;
   color:white;
 }
 
@@ -129,7 +129,7 @@
 
 .user-modal > div > .content > div > form > .login-arrow > div {
   cursor:pointer;
-  border:2px #e73931 solid;
+  border:2px $primary solid;
   border-radius:10000000px;
   width:50px;
   height:50px;
@@ -138,14 +138,18 @@
   transition:0.3s;
 }
 .user-modal > div > .content > div > form > .login-arrow > div:hover {
-  border-color:black;
+  border-color:$primaryAccent;
+}
+.user-modal > div > .content > div > form > .login-arrow > div:hover > i {
+  color:$primaryAccent;
+  transition:0.3s;
 }
 
 .user-modal > div > .content > div > form > .login-arrow > div > i {
   margin-top: 11px;
   margin-left:4px;
   font-size:23px;
-  color: #e73931;
+  color: $primary;
 }
 
 .user-modal > .footer {

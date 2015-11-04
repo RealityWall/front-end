@@ -10,7 +10,7 @@
 
         var vm = this;
 
-        vm.seconds = 7;
+        vm.seconds = 9;
 
         $interval(function () {
             vm.seconds = (vm.seconds == 0 ) ? 59 : vm.seconds -1;

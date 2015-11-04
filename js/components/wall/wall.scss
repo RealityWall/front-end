@@ -1,0 +1,48 @@
+#wall {
+  .header {}
+
+  .content {
+    display:table;
+    width:100%;
+    > .left-col {
+      display:table-cell;
+      width:235px;
+      background:red;
+    }
+
+    > .middle-col {
+      background:blue;
+      display:table-cell;
+
+      .wall-picture {}
+
+      .ranking {
+        > div {
+          display:table;
+          width:100%;
+          border-bottom:2px black solid;
+          .rank {
+            display:table-cell;
+            width:70px;
+            height:70px;
+            background:white;
+            font-size:34px;
+            text-align:center;
+            line-height:70px;
+            font-weight:bold;
+          }
+
+          .post-title {
+            display:table-cell;
+            padding-left:30px;
+            background:green;
+            font-size:24px;
+            line-height:70px;
+          }
+        }
+
+      }
+
+    }
+  }
+}

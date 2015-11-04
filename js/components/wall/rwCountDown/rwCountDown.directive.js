@@ -26,15 +26,16 @@
             if (!scope.borderColor) scope.borderColor = 'black';
 
             var _drawArc = function (ctx, from, to, begin, max) {
-                ctx.clearRect(0, 0, 105, 105);
+                ctx.clearRect(0, 0, 100, 100);
                 ctx.beginPath();
                 ctx.strokeStyle = scope.borderColor;
-                ctx.arc(45,50,50,from - Math.PI/2, (3 * Math.PI / 2) - to);
-                ctx.lineWidth = 3;
+                ctx.arc(50,50,45,from - Math.PI/2, (3 * Math.PI / 2) - to);
+                ctx.lineWidth = 5;
                 ctx.stroke();
                 ctx.fillStyle= scope.textColor;
                 ctx.font="30px Roboto";
-                ctx.fillText('' + (max - begin) ,32,60);
+                var offset = (max - begin > 9) ? 31.5:38.5;
+                ctx.fillText('' + (max - begin) ,offset,60);
             };
 
             var ctx = element[0].querySelector('#canvas').getContext('2d');

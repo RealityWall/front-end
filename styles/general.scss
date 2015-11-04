@@ -1,8 +1,17 @@
+$primary: #e73931;
+$primaryHover: rgb(204, 19, 10);
+$primaryAccent: #b71710;
+$secondary: #e73931;
+$tertiary: #e73931;
+$accent: white;
+
 @import './buttons';
 @import '../js/components/home/rwSeachSection/rwSearchSection.directive';
 @import '../js/components/home/rwDropDown/rwDropDown.directive';
 @import '../js/components/dialog/dialog.directive';
 @import '../js/components/home/rwUserModal/rwUserModal.directive';
+@import '../js/components/app/app';
+@import '../js/components/wall/wall';
 
 * {
   box-sizing: border-box;
@@ -15,7 +24,7 @@ html {
   overflow-x: hidden;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"].input, input[type="password"].input, input[type="email"].input {
   display: block;
   margin: 0;
   width: 100%;
@@ -29,7 +38,7 @@ input[type="text"], input[type="password"], input[type="email"] {
   border: solid 5px #c9c9c9;
   transition: border 0.3s;
 }
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+input[type="text"]:focus.input, input[type="password"]:focus.input, input[type="email"].input:focus {
   outline: none;
   border: solid 5px #969696;
 }

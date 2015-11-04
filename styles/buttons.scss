@@ -21,24 +21,24 @@
 }
 
 .btn.transparent {
-  color: white;
+  color: $accent;
   border: 2px solid;
 }
 
 .btn.transparent:hover {
-  color: darkred;
+  color: $primary;
 }
 
 .btn.plain {
-  color: #fff;
-  background-color: #e73931;
+  color: $accent;
+  background-color: $primary;
   padding: 12px 40px;
 }
 
 .btn.plain:hover {
-  background-color: #D1342C;
+  background-color: $primaryHover;
 }
 
 .btn.plain:active {
-  box-shadow: inset 0px -4px 0px #b71710;
+  box-shadow: inset 0px -4px 0px $primaryAccent;
 }

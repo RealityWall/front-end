@@ -13,26 +13,24 @@
   border: 2px solid; }
 
 .btn.transparent:hover {
-  color: darkred; }
+  color: #e73931; }
 
 .btn.plain {
-  color: #fff;
+  color: white;
   background-color: #e73931;
   padding: 12px 40px; }
 
 .btn.plain:hover {
-  background-color: #D1342C; }
+  background-color: #cc130a; }
 
 .btn.plain:active {
   box-shadow: inset 0px -4px 0px #b71710; }
 
 div[rw-search-section] {
-  background: url(../img/keyboard.jpg) no-repeat center fixed;
-  background-size: cover;
   padding: 20px 40px; }
 
 div[rw-search-section] .top-bar {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   width: 100%;
   padding-left: 40px;
@@ -44,7 +42,7 @@ div[rw-search-section] .top-bar > a.btn {
   margin-left: 10px; }
 
 div[rw-search-section] > .container {
-  z-index: 2;
+  z-index: 3;
   position: relative;
   left: 50%;
   top: 50%;
@@ -65,7 +63,7 @@ div[rw-search-section] > .container > h1 > span {
   display: block;
   width: 150px;
   height: 1px;
-  background: #E73931;
+  background: #b71710;
   margin: 40px auto;
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
@@ -75,7 +73,7 @@ div[rw-search-section] > .container > h1 > span {
 
 div[rw-search-section] > .container > span {
   font-size: 22px;
-  font-weight: 100;
+  font-weight: 300;
   color: #ffffff;
   line-height: 36px; }
 
@@ -108,7 +106,22 @@ div[rw-search-section] .add-opacity {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-color: rgba(50, 50, 50, 0.8); }
+  background: url(../img/keyboard.jpg) no-repeat center fixed;
+  background-size: cover;
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px); }
+
+div[rw-search-section] .add-opacity-overlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7); }
 
 @media (min-width: 874px) {
   div[rw-search-section] > .container > div.search > div[rw-drop-down] {
@@ -159,7 +172,7 @@ div[rw-search-section] .add-opacity {
     margin-bottom: 20px; }
   div[rw-search-section] > .container > div.search > div[rw-drop-down] > div.hidden {
     width: 100%;
-    z-index: 2; }
+    z-index: 3; }
   div[rw-search-section] > .container > div.search > a.btn {
     width: 100%;
     margin-left: 0px; }
@@ -428,7 +441,11 @@ div[rw-drop-down] .selected > span {
   transition: 0.3s; }
 
 .user-modal > div > .content > div > form > .login-arrow > div:hover {
-  border-color: black; }
+  border-color: #b71710; }
+
+.user-modal > div > .content > div > form > .login-arrow > div:hover > i {
+  color: #b71710;
+  transition: 0.3s; }
 
 .user-modal > div > .content > div > form > .login-arrow > div > i {
   margin-top: 11px;
@@ -440,6 +457,81 @@ div[rw-drop-down] .selected > span {
   height: 32px;
   background: transparent; }
 
+#main .navbar {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  height: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+  background: #e73931; }
+  #main .navbar .logo {
+    width: 100px;
+    float: left;
+    height: 100%;
+    color: white;
+    line-height: 50px; }
+  #main .navbar .search {
+    width: 284px;
+    float: right; }
+    #main .navbar .search input {
+      width: 250px;
+      float: right;
+      height: 35px;
+      border: 0px;
+      border-radius: 2px;
+      margin-top: 7.5px;
+      color: #8c8c8c;
+      font-size: 18px;
+      font-weight: 300;
+      padding: 0px 20px;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px; }
+    #main .navbar .search a.btn {
+      float: right;
+      padding: 6.5px 9px;
+      margin-top: 8px;
+      border-left: none;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px; }
+    #main .navbar .search a.btn:hover {
+      color: white; }
+
+#main div[ui-view] {
+  padding-top: 50px;
+  padding-left: 80px;
+  padding-right: 80px; }
+
+#wall .content {
+  display: table;
+  width: 100%; }
+  #wall .content > .left-col {
+    display: table-cell;
+    width: 235px;
+    background: red; }
+  #wall .content > .middle-col {
+    background: blue;
+    display: table-cell; }
+    #wall .content > .middle-col .ranking > div {
+      display: table;
+      width: 100%;
+      border-bottom: 2px black solid; }
+      #wall .content > .middle-col .ranking > div .rank {
+        display: table-cell;
+        width: 70px;
+        height: 70px;
+        background: white;
+        font-size: 34px;
+        text-align: center;
+        line-height: 70px;
+        font-weight: bold; }
+      #wall .content > .middle-col .ranking > div .post-title {
+        display: table-cell;
+        padding-left: 30px;
+        background: green;
+        font-size: 24px;
+        line-height: 70px; }
+
 * {
   box-sizing: border-box;
   outline: 0px !important;
@@ -449,7 +541,7 @@ html {
   width: 100%;
   overflow-x: hidden; }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"].input, input[type="password"].input, input[type="email"].input {
   display: block;
   margin: 0;
   width: 100%;
@@ -462,6 +554,6 @@ input[type="text"], input[type="password"], input[type="email"] {
   border: solid 5px #c9c9c9;
   transition: border 0.3s; }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+input[type="text"]:focus.input, input[type="password"]:focus.input, input[type="email"].input:focus {
   outline: none;
   border: solid 5px #969696; }

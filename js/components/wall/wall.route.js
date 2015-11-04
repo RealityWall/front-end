@@ -12,7 +12,8 @@
                 url: '/wall/:wallId',
                 templateUrl: 'js/components/wall/wall.html',
                 controller: 'WallController',
-                controllerAs: 'wc'
+                controllerAs: 'wc',
+                parent: 'app'
             });
     }
 
