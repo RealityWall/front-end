@@ -17,15 +17,32 @@
       .wall-picture {}
 
       .ranking {
+        > div:nth-child(1) .rank {
+          background-position-y: 20px;
+          background:url(../img/rw-crown-gold.png);
+          background-repeat: no-repeat;
+          background-size: 70px 70px;
+        }
+        > div:nth-child(2) .rank {
+          background:url(../img/rw-crown-silver.png);
+          background-repeat: no-repeat;
+          background-size: 70px 70px;
+        }
+        > div:nth-child(3) .rank {
+          background:url(../img/rw-crown-bronze.png);
+          background-repeat: no-repeat;
+          background-size: 70px 70px;
+        }
         > div {
           display:table;
           width:100%;
           border-bottom:2px black solid;
+
           .rank {
+            background-color:$accent!important;
             display:table-cell;
             width:70px;
             height:70px;
-            background:white;
             font-size:34px;
             text-align:center;
             line-height:70px;

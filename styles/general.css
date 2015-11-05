@@ -108,11 +108,11 @@ div[rw-search-section] .add-opacity {
   left: 0px;
   background: url(../img/keyboard.jpg) no-repeat center fixed;
   background-size: cover;
-  -webkit-filter: blur(6px);
-  -moz-filter: blur(6px);
-  -o-filter: blur(6px);
-  -ms-filter: blur(6px);
-  filter: blur(6px); }
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); }
 
 div[rw-search-section] .add-opacity-overlay {
   position: absolute;
@@ -457,50 +457,52 @@ div[rw-drop-down] .selected > span {
   height: 32px;
   background: transparent; }
 
-#main .navbar {
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  height: 50px;
-  padding-left: 80px;
-  padding-right: 80px;
-  background: #e73931; }
-  #main .navbar .logo {
-    width: 100px;
-    float: left;
-    height: 100%;
-    color: white;
-    line-height: 50px; }
-  #main .navbar .search {
-    width: 284px;
-    float: right; }
-    #main .navbar .search input {
-      width: 250px;
-      float: right;
-      height: 35px;
-      border: 0px;
-      border-radius: 2px;
-      margin-top: 7.5px;
-      color: #8c8c8c;
-      font-size: 18px;
-      font-weight: 300;
-      padding: 0px 20px;
-      border-bottom-right-radius: 0px;
-      border-top-right-radius: 0px; }
-    #main .navbar .search a.btn {
-      float: right;
-      padding: 6.5px 9px;
-      margin-top: 8px;
-      border-left: none;
-      border-bottom-left-radius: 0px;
-      border-top-left-radius: 0px; }
-    #main .navbar .search a.btn:hover {
-      color: white; }
-
-#main div[ui-view] {
-  padding-top: 50px;
-  padding-left: 80px;
-  padding-right: 80px; }
+#main {
+  background: url(../img/6_150.jpg);
+  background-size: 200px 200px; }
+  #main .navbar {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    height: 50px;
+    padding-left: 80px;
+    padding-right: 80px;
+    background: #e73931; }
+    #main .navbar .logo {
+      width: 100px;
+      float: left;
+      height: 100%;
+      color: white;
+      line-height: 50px; }
+    #main .navbar .search {
+      width: 284px;
+      float: right; }
+      #main .navbar .search input {
+        width: 250px;
+        float: right;
+        height: 35px;
+        border: 0px;
+        border-radius: 2px;
+        margin-top: 7.5px;
+        color: #8c8c8c;
+        font-size: 18px;
+        font-weight: 300;
+        padding: 0px 20px;
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px; }
+      #main .navbar .search a.btn {
+        float: right;
+        padding: 6.5px 9px;
+        margin-top: 8px;
+        border-left: none;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px; }
+      #main .navbar .search a.btn:hover {
+        color: white; }
+  #main div[ui-view] {
+    padding-top: 50px;
+    padding-left: 80px;
+    padding-right: 80px; }
 
 #wall .content {
   display: table;
@@ -512,15 +514,28 @@ div[rw-drop-down] .selected > span {
   #wall .content > .middle-col {
     background: blue;
     display: table-cell; }
+    #wall .content > .middle-col .ranking > div:nth-child(1) .rank {
+      background-position-y: 20px;
+      background: url(../img/rw-crown-gold.png);
+      background-repeat: no-repeat;
+      background-size: 70px 70px; }
+    #wall .content > .middle-col .ranking > div:nth-child(2) .rank {
+      background: url(../img/rw-crown-silver.png);
+      background-repeat: no-repeat;
+      background-size: 70px 70px; }
+    #wall .content > .middle-col .ranking > div:nth-child(3) .rank {
+      background: url(../img/rw-crown-bronze.png);
+      background-repeat: no-repeat;
+      background-size: 70px 70px; }
     #wall .content > .middle-col .ranking > div {
       display: table;
       width: 100%;
       border-bottom: 2px black solid; }
       #wall .content > .middle-col .ranking > div .rank {
+        background-color: white !important;
         display: table-cell;
         width: 70px;
         height: 70px;
-        background: white;
         font-size: 34px;
         text-align: center;
         line-height: 70px;
