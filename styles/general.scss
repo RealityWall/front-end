@@ -12,6 +12,7 @@ $accent: white;
 @import '../js/components/home/rwUserModal/rwUserModal.directive';
 @import '../js/components/app/app';
 @import '../js/components/wall/wall';
+@import './pace_theme';
 
 * {
   box-sizing: border-box;
@@ -21,7 +22,15 @@ $accent: white;
 
 html {
   width:100%;
+  height:100%;
   overflow-x: hidden;
+}
+
+body {
+  height:100%;
+  > div[ui-view] {
+    height:100%;
+  }
 }
 
 input[type="text"].input, input[type="password"].input, input[type="email"].input {

@@ -2,64 +2,120 @@
   .header {}
 
   .content {
-    display:table;
-    width:100%;
+
+    background:red;
+
     > .left-col {
-      display:table-cell;
-      width:235px;
-      background:red;
+      float:left;
+      width:25%;
     }
 
     > .middle-col {
+      width:75%;
+      float:left;
       background:blue;
-      display:table-cell;
 
+      > div {
+        display:block;
+        width:100%;
+      }
       .wall-picture {}
 
+      $post-height: 100px;
+
       .ranking {
-        > div:nth-child(1) .rank {
-          background-position-y: 20px;
-          background:url(../img/rw-crown-gold.png);
-          background-repeat: no-repeat;
-          background-size: 70px 70px;
+
+        background:green;
+        overflow:hidden;
+        position:relative;
+        > div:nth-child(2n + 1) {
+          -webkit-box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.67);
+          -moz-box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.67);
+          box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.67);
+          .post-title:before {
+            left:$post-height + 10px;
+          }
         }
-        > div:nth-child(2) .rank {
-          background:url(../img/rw-crown-silver.png);
-          background-repeat: no-repeat;
-          background-size: 70px 70px;
+
+        > div:nth-child(2n) {
+          .rank {
+            right:0px;
+          }
+
+          .post-title {
+            padding-left:0px;
+            padding-right:$post-height;
+          }
+
+          .post-title:after {
+            right:$post-height + 10px;
+          }
         }
-        > div:nth-child(3) .rank {
-          background:url(../img/rw-crown-bronze.png);
-          background-repeat: no-repeat;
-          background-size: 70px 70px;
-        }
+
+
+
         > div {
-          display:table;
           width:100%;
-          border-bottom:2px black solid;
+          height:$post-height + 1px;
+          display:block;
+          border-bottom:1px black solid;
+          position:relative;
 
           .rank {
             background-color:$accent!important;
-            display:table-cell;
-            width:70px;
-            height:70px;
-            font-size:34px;
+            position:absolute;
+            width:$post-height;
+            min-width:$post-height;
+            height:$post-height;
+            font-size:$post-height/2;
             text-align:center;
-            line-height:70px;
+            line-height:$post-height;
             font-weight:bold;
           }
 
           .post-title {
-            display:table-cell;
-            padding-left:30px;
-            background:green;
+            width:100%;
+            position:relative;
+            text-align:center;
+
+            padding-left:$post-height;
             font-size:24px;
-            line-height:70px;
+            line-height:$post-height;
+
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            quotes: "\201C""\201D""\2018""\2019";
+          }
+
+          .post-title:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            position: absolute;
+            left: 10px;
+          }
+
+          .post-title:after {
+            color: #ccc;
+            content: close-quote;
+            font-size: 4em;
+            position: absolute;
+            right: 10px;
+            margin-top: $post-height - 42px;
           }
         }
 
       }
-
     }
+
+  }
+
+  .content:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
   }
 }

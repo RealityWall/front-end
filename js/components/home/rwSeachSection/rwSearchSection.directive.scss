@@ -88,13 +88,8 @@ div[rw-search-section] .add-opacity {
   height:100%;
   top: 0px;
   left: 0px;
-  background: url(../img/keyboard.jpg) no-repeat center fixed;
+  background: url(../img/keyboard_blur.jpeg) no-repeat center fixed;
   background-size: cover;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
 }
 div[rw-search-section] .add-opacity-overlay {
   position: absolute;

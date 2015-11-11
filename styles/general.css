@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .btn {
   display: inline-block;
   border-radius: 3px;
@@ -106,13 +107,8 @@ div[rw-search-section] .add-opacity {
   height: 100%;
   top: 0px;
   left: 0px;
-  background: url(../img/keyboard.jpg) no-repeat center fixed;
-  background-size: cover;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px); }
+  background: url(../img/keyboard_blur.jpeg) no-repeat center fixed;
+  background-size: cover; }
 
 div[rw-search-section] .add-opacity-overlay {
   position: absolute;
@@ -458,8 +454,9 @@ div[rw-drop-down] .selected > span {
   background: transparent; }
 
 #main {
-  background: url(../img/mosaique.png);
-  background-size: 200px 200px; }
+  height: 100%;
+  background: url(../img/keyboard_blur.jpeg);
+  background-size: cover; }
   #main .navbar {
     width: 100%;
     position: fixed;
@@ -505,47 +502,99 @@ div[rw-drop-down] .selected > span {
     padding-right: 80px; }
 
 #wall .content {
-  display: table;
-  width: 100%; }
+  background: red; }
   #wall .content > .left-col {
-    display: table-cell;
-    width: 235px;
-    background: red; }
+    float: left;
+    width: 25%; }
   #wall .content > .middle-col {
-    background: blue;
-    display: table-cell; }
-    #wall .content > .middle-col .ranking > div:nth-child(1) .rank {
-      background-position-y: 20px;
-      background: url(../img/rw-crown-gold.png);
-      background-repeat: no-repeat;
-      background-size: 70px 70px; }
-    #wall .content > .middle-col .ranking > div:nth-child(2) .rank {
-      background: url(../img/rw-crown-silver.png);
-      background-repeat: no-repeat;
-      background-size: 70px 70px; }
-    #wall .content > .middle-col .ranking > div:nth-child(3) .rank {
-      background: url(../img/rw-crown-bronze.png);
-      background-repeat: no-repeat;
-      background-size: 70px 70px; }
-    #wall .content > .middle-col .ranking > div {
-      display: table;
-      width: 100%;
-      border-bottom: 2px black solid; }
-      #wall .content > .middle-col .ranking > div .rank {
-        background-color: white !important;
-        display: table-cell;
-        width: 70px;
-        height: 70px;
-        font-size: 34px;
-        text-align: center;
-        line-height: 70px;
-        font-weight: bold; }
-      #wall .content > .middle-col .ranking > div .post-title {
-        display: table-cell;
-        padding-left: 30px;
-        background: green;
-        font-size: 24px;
-        line-height: 70px; }
+    width: 75%;
+    float: left;
+    background: blue; }
+    #wall .content > .middle-col > div {
+      display: block;
+      width: 100%; }
+    #wall .content > .middle-col .ranking {
+      background: green;
+      overflow: hidden;
+      position: relative; }
+      #wall .content > .middle-col .ranking > div:nth-child(2n + 1) {
+        -webkit-box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.67);
+        -moz-box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.67);
+        box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.67); }
+        #wall .content > .middle-col .ranking > div:nth-child(2n + 1) .post-title:before {
+          left: 110px; }
+      #wall .content > .middle-col .ranking > div:nth-child(2n) .rank {
+        right: 0px; }
+      #wall .content > .middle-col .ranking > div:nth-child(2n) .post-title {
+        padding-left: 0px;
+        padding-right: 100px; }
+      #wall .content > .middle-col .ranking > div:nth-child(2n) .post-title:after {
+        right: 110px; }
+      #wall .content > .middle-col .ranking > div {
+        width: 100%;
+        height: 101px;
+        display: block;
+        border-bottom: 1px black solid;
+        position: relative; }
+        #wall .content > .middle-col .ranking > div .rank {
+          background-color: white !important;
+          position: absolute;
+          width: 100px;
+          min-width: 100px;
+          height: 100px;
+          font-size: 50px;
+          text-align: center;
+          line-height: 100px;
+          font-weight: bold; }
+        #wall .content > .middle-col .ranking > div .post-title {
+          width: 100%;
+          position: relative;
+          text-align: center;
+          padding-left: 100px;
+          font-size: 24px;
+          line-height: 100px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          quotes: "“" "”" "‘" "’"; }
+        #wall .content > .middle-col .ranking > div .post-title:before {
+          color: #ccc;
+          content: open-quote;
+          font-size: 4em;
+          position: absolute;
+          left: 10px; }
+        #wall .content > .middle-col .ranking > div .post-title:after {
+          color: #ccc;
+          content: close-quote;
+          font-size: 4em;
+          position: absolute;
+          right: 10px;
+          margin-top: 58px; }
+
+#wall .content:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both; }
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+
+.pace-inactive {
+  display: none; }
+
+.pace .pace-progress {
+  background: #FFF;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 3px; }
 
 * {
   box-sizing: border-box;
@@ -554,7 +603,13 @@ div[rw-drop-down] .selected > span {
 
 html {
   width: 100%;
+  height: 100%;
   overflow-x: hidden; }
+
+body {
+  height: 100%; }
+  body > div[ui-view] {
+    height: 100%; }
 
 input[type="text"].input, input[type="password"].input, input[type="email"].input {
   display: block;

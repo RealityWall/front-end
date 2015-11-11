@@ -25,20 +25,14 @@
         </div>
         <div class="middle-col">
             <div class="wall-picture">PHOTO</div>
+
             <div class="ranking">
-                <div>
-                    <div class="rank">1</div>
-                    <div class="post-title">Vive la liberté !</div>
-                </div>
-                <div>
-                    <div class="rank">2</div>
-                    <div class="post-title">Vive la liberté !</div>
-                </div>
-                <div>
-                    <div class="rank">3</div>
-                    <div class="post-title">Vive la liberté !</div>
+                <div ng-repeat="post in wc.posts | orderBy: '+rank' | unique: 'rank'">
+                    <div class="rank">{{ post.rank }}</div>
+                    <div class="post-title">{{ post.title }}</div>
                 </div>
             </div>
+
             <div>LOAD MORE</div>
         </div>
     </div>
