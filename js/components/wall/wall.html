@@ -30,10 +30,19 @@
                 <div ng-repeat="post in wc.posts | orderBy: '+rank' | unique: 'rank'">
                     <div class="rank">
                         <i class="fa fa-chevron-up"></i>
-                        <span>{{ post.rank }}</span>
                         <i class="fa fa-chevron-down"></i>
+                        <div class="number">{{ post.rank }}</div>
+                        <br/>
+                        <div class="actions">
+                            <a class="btn plain"> <i class="fa fa-comment"></i></a>
+                            <a class="btn plain"> <i class="fa fa-eye"></i></a>
+                        </div>
                     </div>
                     <div class="post-title">{{ post.title }}</div>
+                    <div class="post-info">
+                        posté par {{ post.author }} à LAULE
+                    </div>
+
                 </div>
             </div>
 
