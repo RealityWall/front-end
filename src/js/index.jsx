@@ -2,49 +2,60 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { RouterMixin } from 'react-mini-router';
 
+// Actions
+import UserActionCreator from './actions/UserActionCreator';
+
+// Stores
+import UserStore from './stores/UserStore';
+
 // Components
-import Home from './components/App/App.jsx';
-import About from './components/About/About.jsx';
-import Todo from './components/Todo/Todo.jsx';
+import AppContainer from './components/App/App.jsx';
+import Home from './pages/Home.jsx';
+import Walls from './pages/WallsMap.jsx';
+import WallById from './pages/WallGallery.jsx';
+import PostOnWall from './pages/AddPost.jsx';
 
 var MainApp = React.createClass({
 
+    mixins: [RouterMixin, UserStore.mixin],
+
+    storeDidChange() {
+        this.setState({user: UserStore.getUser(), isLoggingIn: UserStore.isLoggingIn()});
+    },
+
     getInitialState() {
         return {
-            loading: true
+            isLoggingIn: false,
+            user: {}
         };
     },
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({loading: false});
-        }, 1000);
+        // if we have a session, then retrieve user info
+        if (UserStore.setSessionId()) UserActionCreator.getUserData();
     },
-
-    mixins: [RouterMixin],
 
     routes: {
-        '/home/:nested*': 'home',
-        '/todo': 'todo',
-        '/about': 'about'
+        '/': 'home',
+        '/walls': 'walls',
+        '/walls/:wallId': 'wallById',
+        '/walls/:wallId/post': 'postOnWallById'
     },
+
+    home() { return (<Home />); },
+    walls() { return (<Walls />); },
+    wallById(wallId) { return (<WallById wallId={ wallId } />); },
+
+    /* TODO : secure with login */
+    postOnWallById(wallId) { return (<PostOnWall wallId={ wallId } />); },
 
     render() {
-        return this.state.loading ?
-            <div>Loading...</div>
-            : this.renderCurrentRoute();
-    },
-
-    home() {
-        return <Home root={'/home'}/>;
-    },
-
-    todo() {
-        return <Todo/>;
-    },
-
-    about() {
-        return <About/>;
+        let self = this;
+        return (
+            <AppContainer user={ self.state.user } loading={ self.state.isLoggingIn }>
+                { this.renderCurrentRoute() }
+            </AppContainer>
+        );
     },
 
     notFound(path) {

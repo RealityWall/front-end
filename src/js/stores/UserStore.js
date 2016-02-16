@@ -2,6 +2,7 @@ import Constants from '../Constants';
 import Flux from '../Flux';
 import request from 'superagent';
 import ActionCreator from '../actions/UserActionCreator';
+import eventBuilder from './_eventBuilder';
 
 let _user = {};
 let _isLoggingIn = false;
@@ -34,18 +35,38 @@ const UserStore = Flux.createStore({
                 .end( (err, res) => {
                     if (err || !res.ok) {
                         // treat error
+                        document.dispatchEvent(eventBuilder('Login', {err, res, status: 'error'}));
                         return;
                     }
                     _sessionId = res.body;
+                    localStorage.setItem('sessionid', _sessionId);
+                    document.dispatchEvent(eventBuilder('Login', {status: 'success'}));
                     ActionCreator.getUserData();
                 });
             break;
         case Constants.ActionTypes.SIGNIN:
-            UserStore.emitChange();
+            request
+                .post(Constants.SERVER_BASE_URL + '/users')
+                .send({
+                    email: payload.email,
+                    password: payload.password,
+                    firstname: payload.firstname,
+                    lastname: payload.lastname
+                })
+                .set('Accept', 'application/json')
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        document.dispatchEvent(eventBuilder('SignIn', {err, res, status: 'error'}));
+                        // treat error
+                        return;
+                    }
+                    document.dispatchEvent(eventBuilder('SignIn', {status: 'success'}));
+                });
             break;
         case Constants.ActionTypes.GET_USER_DATA:
             if (_sessionId) {
                 _isLoggingIn = true;
+                UserStore.emitChange();
                 request
                     .get(Constants.SERVER_BASE_URL + '/users')
                     .set('sessionid', _sessionId)
@@ -54,6 +75,8 @@ const UserStore = Flux.createStore({
                         _isLoggingIn = false;
                         if (err || !res.ok) {
                             // treat error
+                            localStorage.removeItem('sessionid');
+                            _sessionId = null;
                             return;
                         }
                         _user = res.body;
@@ -62,7 +85,21 @@ const UserStore = Flux.createStore({
             }
             break;
         case Constants.ActionTypes.LOGOUT:
-            UserStore.emitChange();
+            request
+                .del(Constants.SERVER_BASE_URL + '/sessions')
+                .send({email: payload.email, password: payload.password})
+                .set('sessionid', _sessionId)
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        // treat error
+                        return;
+                    }
+                    localStorage.removeItem('sessionid');
+                    _sessionId = null;
+                    _user = {};
+                    _isLoggingIn = false;
+                    UserStore.emitChange();
+                });
             break;
     }
 });
