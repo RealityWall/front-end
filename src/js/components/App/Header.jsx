@@ -1,18 +1,16 @@
 import React from 'react';
 
-// Components
-import LoginForm from './LoginForm.jsx';
-import SignInForm from './SignInForm.jsx';
-
 var Header = React.createClass({
 
     render() {
         return (
-            <div>
-                Header
-                { this.props.user.id ? 'logged' : ''}
-                { !this.props.user.id ? <LoginForm/> : ''}
-                { !this.props.user.id ? <SignInForm/> : ''}
+            <div id="header">
+                <div className="header-content">
+                    <a href="/"><img src="img/full-logo.png" alt="main logo"/></a>
+                    <a href="/"><img src="img/logo.png" alt="main logo"/></a>
+                    <a href="/sign-in" className="btn" id="sign-in">Inscription</a>
+                    <a className="btn transparent" id="login">Connexion</a>
+                </div>
             </div>
         );
     }

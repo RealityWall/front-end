@@ -42,7 +42,7 @@ var Header = React.createClass({
             <form onSubmit={ self._handleSignIn }>
                 <input type="email" placeholder="email" ref="email"/>
                 <input type="password" placeholder="password" ref="password"/>
-                <input type="submit"/>
+                <input type="submit" className="btn"/>
 
                 {self.state.success ? 'SUCCESS':''}
                 {self.state.error ? 'ERROR':''}

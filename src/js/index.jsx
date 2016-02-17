@@ -14,6 +14,7 @@ import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
 import PostOnWall from './pages/AddPost.jsx';
+import SignIn from './pages/SignIn.jsx';
 
 var MainApp = React.createClass({
 
@@ -39,11 +40,13 @@ var MainApp = React.createClass({
         '/': 'home',
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
-        '/walls/:wallId/post': 'postOnWallById'
+        '/walls/:wallId/post': 'postOnWallById',
+        '/sign-in': 'signIn'
     },
 
     home() { return (<Home />); },
     walls() { return (<Walls />); },
+    signIn() { return (<SignIn />); },
     wallById(wallId) { return (<WallById wallId={ wallId } />); },
 
     /* TODO : secure with login */

@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      "roboto-fontface",
+      "/Users/delmotte/Project/RealityWall/front-end"
+    ]
+  ],
+  "_from": "roboto-fontface@*",
+  "_id": "roboto-fontface@0.4.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/roboto-fontface",
+  "_nodeVersion": "5.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-6-west.internal.npmjs.com",
+    "tmp": "tmp/roboto-fontface-0.4.3.tgz_1455093949093_0.6038648532703519"
+  },
+  "_npmUser": {
+    "email": "mail@choffmeister.de",
+    "name": "choffmeister"
+  },
+  "_npmVersion": "3.7.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "roboto-fontface",
+    "raw": "roboto-fontface",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/roboto-fontface/-/roboto-fontface-0.4.3.tgz",
+  "_shasum": "0173fdb39225a15c6a13030089126753ca3f4d20",
+  "_shrinkwrap": null,
+  "_spec": "roboto-fontface",
+  "_where": "/Users/delmotte/Project/RealityWall/front-end",
+  "author": {
+    "email": "mail@choffmeister.de",
+    "name": "Christian Hoffmeister",
+    "url": "http://choffmeister.de/"
+  },
+  "bugs": {
+    "url": "https://github.com/choffmeister/roboto-fontface-bower/issues"
+  },
+  "dependencies": {},
+  "description": "A simple package providing the Roboto fontface.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "0173fdb39225a15c6a13030089126753ca3f4d20",
+    "tarball": "http://registry.npmjs.org/roboto-fontface/-/roboto-fontface-0.4.3.tgz"
+  },
+  "gitHead": "ce0f1329efbd36060d3108a966d000252ea29535",
+  "homepage": "https://github.com/choffmeister/roboto-fontface-bower",
+  "keywords": [
+    "font",
+    "fontface",
+    "roboto"
+  ],
+  "license": "Apache 2.0",
+  "main": "css/roboto-fontface.css",
+  "maintainers": [
+    {
+      "name": "choffmeister",
+      "email": "mail@choffmeister.de"
+    }
+  ],
+  "name": "roboto-fontface",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choffmeister/roboto-fontface-bower.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.4.3"
+}
