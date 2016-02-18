@@ -27,12 +27,12 @@
             height: 34px;
         }
         @media (max-width: 500px) {
-            a:first-child {
+            > a:first-child {
                 display:none;
             }
         }
         @media (min-width: 500px) {
-            a:nth-child(2) {
+            > a:nth-child(2) {
                 display:none;
             }
         }
@@ -45,10 +45,12 @@
         }
 
         #user-menu {
+
             float:right;
             position:relative;
 
             > img {
+                float:left;
                 height: 40px;
                 margin-top: 5px;
                 cursor:pointer;
@@ -103,6 +105,14 @@
                 top: -5px;
                 left: 113px;
             }
+        }
+    }
+    .header-content.logged {
+        > a:first-child {
+            display:block;
+        }
+        > a:nth-child(2) {
+            display:none;
         }
     }
 }
