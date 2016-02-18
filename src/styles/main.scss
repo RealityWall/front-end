@@ -1,11 +1,14 @@
-@import "constants";
+@import "./constants";
 @import "./header";
 
-html, body {
+html, body, #app-container, #react-root {
     margin: 0;
+    height:100%;
+    position:relative;
     background: $light-grey;
     font-family: Roboto, sans-serif;
     font-size: 14px;
+    color: $font-color;
 }
 
 a, input, textarea, button, select, table, td, tr, th, tbody, thead {
@@ -54,7 +57,8 @@ a, input, textarea, button, select, table, td, tr, th, tbody, thead {
 #app-body {
     max-width: $max-width;
     margin:auto;
-    top:50px;
+    height: calc(100% - 50px);
+    overflow:auto;
     position:relative;
 }
 
