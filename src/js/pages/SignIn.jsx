@@ -1,10 +1,13 @@
 import React from 'react';
 
+// Components
+import SignInComponent from '../components/SignIn/SignInForm.jsx';
+
 module.exports = React.createClass({
 
     render() {
         return (
-            <div> THIS IS SIGN_IN </div>
+            <SignInComponent />
         );
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RouterMixin } from 'react-mini-router';
+import { RouterMixin, navigate } from 'react-mini-router';
 
 // Actions
 import UserActionCreator from './actions/UserActionCreator';
@@ -15,6 +15,8 @@ import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
 import PostOnWall from './pages/AddPost.jsx';
 import SignIn from './pages/SignIn.jsx';
+import VerifyUser from './pages/VerifyUser.jsx';
+import Settings from './pages/Settings.jsx';
 
 var MainApp = React.createClass({
 
@@ -26,7 +28,7 @@ var MainApp = React.createClass({
 
     getInitialState() {
         return {
-            isLoggingIn: false,
+            isLoggingIn: true,
             user: {}
         };
     },
@@ -34,6 +36,7 @@ var MainApp = React.createClass({
     componentDidMount() {
         // if we have a session, then retrieve user info
         if (UserStore.setSessionId()) UserActionCreator.getUserData();
+        else this.setState({isLoggingIn: false});
     },
 
     routes: {
@@ -41,16 +44,35 @@ var MainApp = React.createClass({
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
         '/walls/:wallId/post': 'postOnWallById',
-        '/sign-in': 'signIn'
+        '/sign-in': 'signIn',
+        '/verify/:token': 'verifyUser',
+        '/settings': 'settings'
     },
 
     home() { return (<Home />); },
     walls() { return (<Walls />); },
-    signIn() { return (<SignIn />); },
-    wallById(wallId) { return (<WallById wallId={ wallId } />); },
 
-    /* TODO : secure with login */
-    postOnWallById(wallId) { return (<PostOnWall wallId={ wallId } />); },
+    /* secure with non login */
+    signIn() {
+        if (this.state.user.id) navigate('/');
+        else {
+            if (!this.state.isLoggingIn) {
+                return (<SignIn />);
+            }
+        }
+    },
+    wallById(wallId) { return (<WallById wallId={ wallId } />); },
+    verifyUser(token) {return <VerifyUser token={token}/>},
+
+    /* secure with login */
+    postOnWallById(wallId) {
+        if (this.state.user.id) return (<PostOnWall wallId={ wallId } />);
+        else if (!this.state.isLoggingIn) navigate('/');
+    },
+    settings() {
+        if (this.state.user.id) return (<Settings />);
+        else if (!this.state.isLoggingIn) navigate('/');
+    },
 
     render() {
         let self = this;

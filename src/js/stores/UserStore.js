@@ -18,6 +18,10 @@ const UserStore = Flux.createStore({
         return _isLoggingIn;
     },
 
+    getSessionId() {
+        return _sessionId;
+    },
+
     setSessionId() {
         _sessionId = localStorage.getItem('sessionid');
         if (!_sessionId) return false;
@@ -87,12 +91,10 @@ const UserStore = Flux.createStore({
         case Constants.ActionTypes.LOGOUT:
             request
                 .del(Constants.SERVER_BASE_URL + '/sessions')
-                .send({email: payload.email, password: payload.password})
                 .set('sessionid', _sessionId)
                 .end( (err, res) => {
                     if (err || !res.ok) {
                         // treat error
-                        return;
                     }
                     localStorage.removeItem('sessionid');
                     _sessionId = null;

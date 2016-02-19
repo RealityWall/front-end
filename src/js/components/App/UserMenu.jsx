@@ -1,5 +1,6 @@
 import React from 'react';
 import Constants from '../../Constants';
+import ActionCreator from '../../actions/UserActionCreator';
 
 var UserMenu = React.createClass({
 
@@ -14,7 +15,7 @@ var UserMenu = React.createClass({
     },
 
     _disconnect() {
-        // TODO : send logout
+        ActionCreator.logout();
         this._toggleMenu();
     },
 
@@ -41,7 +42,7 @@ var UserMenu = React.createClass({
                     self.state.isMenuOpened ?
                         <div className="floating-menu">
                             <div className="menu-item">
-                                <a href="/sign-in" onClick={self._toggleMenu}><i className="fa fa-gear"/> Paramètres</a>
+                                <a href="/settings" onClick={self._toggleMenu}><i className="fa fa-gear"/> Paramètres</a>
                             </div>
                             <div className="menu-item">
                                 <a onClick={self._disconnect}><i className="fa fa-sign-out" /> Déconnexion</a>

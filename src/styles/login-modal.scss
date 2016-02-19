@@ -1,0 +1,43 @@
+@import "./constants";
+
+.modal-content {
+
+    width: 300px;
+    text-align: center;
+
+    a.facebook-btn {
+        position:relative;
+        width:205px;
+        display:block;
+        margin:auto;
+        background: #4365ac;
+        border-bottom: 2px solid #1C459C;
+        border-radius: 3px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 14px;
+        cursor:pointer;
+    }
+
+    input {
+        width:100%!important;
+        margin-top:10px;
+    }
+
+    input[type="submit"] {
+        width: 125px!important;
+    }
+
+    a.forgotten-password {
+        color: $light-blue;
+        cursor: pointer;
+    }
+
+}
+
+@media (max-width: 340px) {
+    .login-modal-wrapper {
+        width: calc(100vw - 50px);
+    }
+}

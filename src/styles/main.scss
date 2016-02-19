@@ -1,5 +1,6 @@
 @import "./constants";
 @import "./header";
+@import "./login-modal";
 
 html, body, #app-container, #react-root {
     margin: 0;
@@ -57,6 +58,8 @@ a, input, textarea, button, select, table, td, tr, th, tbody, thead {
 #app-body {
     max-width: $max-width;
     margin:auto;
+    padding-right: 15px;
+    padding-left: 15px;
     height: calc(100% - 50px);
     overflow:auto;
     position:relative;
