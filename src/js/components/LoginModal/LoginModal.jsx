@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Modal from 'react-modal';
-import LoginForm from './LoginForm.jsx';
+import LoginForm from './LoginForm/LoginForm.jsx';
 import ForgotPasswordForm from './ForgotPasswordForm.jsx';
 
 const customStyles = {

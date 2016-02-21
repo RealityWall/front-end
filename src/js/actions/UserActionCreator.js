@@ -11,6 +11,14 @@ export default Flux.createActions({
         };
     },
 
+    loginWithFacebook(accessToken, facebookId) {
+        return {
+            actionType: Constants.ActionTypes.LOGIN_WITH_FACEBOOK,
+            accessToken,
+            facebookId
+        };
+    },
+
     signin(firstname, lastname, email, password) {
         return {
             actionType: Constants.ActionTypes.SIGNIN,

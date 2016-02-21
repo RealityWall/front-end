@@ -1,7 +1,7 @@
 import React from 'react';
-import UserActionCreator from '../../actions/UserActionCreator';
+import UserActionCreator from '../../../actions/UserActionCreator';
 
-var LoginForm = React.createClass({
+var EmailPasswordForm = React.createClass({
 
     getInitialState() {
         return {
@@ -46,28 +46,21 @@ var LoginForm = React.createClass({
     render () {
         let self = this;
         return (
-            <div className="login-modal-wrapper modal-content">
-                <div className="header">Connexion à votre compte</div>
-                <form onSubmit={ self._handleLogin }>
-                    <div><input type="email" placeholder="Votre adresse mail" ref="email" required/></div>
-                    <div><input type="password" placeholder="Mot de passe" ref="password" required/></div>
+            <form onSubmit={ self._handleLogin }>
+                <div><input type="email" placeholder="Votre adresse mail" ref="email" required/></div>
+                <div><input type="password" placeholder="Mot de passe" ref="password" required/></div>
 
-                    <a className="forgotten-password" onClick={ self.props.onPasswordForgottenClick }>Mot de passe oublié ?</a>
-                    <div>
-                        <input type="submit" className="btn" value="Connexion" />
-                    </div>
+                <a className="forgotten-password" onClick={ self.props.onPasswordForgottenClick }>Mot de passe oublié ?</a>
+                <div>
+                    <input type="submit" className="btn" value="Connexion" />
+                </div>
 
-                    {self.state.success ? 'SUCCESS':''}
-                    {self.state.error}
-                </form>
-                <hr/>
-                <a className="facebook-btn">
-                    <i className="fa fa-facebook-f"></i> Connexion avec Facebook
-                </a>
-            </div>
+                {self.state.success ? 'SUCCESS':''}
+                {self.state.error}
+            </form>
         );
     }
 
 });
 
-export default LoginForm;
+export default EmailPasswordForm;

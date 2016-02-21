@@ -8,6 +8,7 @@ export default {
     // Each time you add an action, add it here... They should be past-tense
     ActionTypes: keyMirror({
         LOGIN: null,
+        LOGIN_WITH_FACEBOOK: null,
         SIGNIN: null,
         GET_USER_DATA: null,
         LOGOUT: null

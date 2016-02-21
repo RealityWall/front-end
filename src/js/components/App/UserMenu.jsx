@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Constants from '../../Constants';
 import ActionCreator from '../../actions/UserActionCreator';
 
@@ -8,6 +9,16 @@ var UserMenu = React.createClass({
         return {
               isMenuOpened: false
         };
+    },
+
+    componentDidMount() { document.addEventListener('click', this._onClick, true); },
+    componentWillUnmount() { document.removeEventListener('click', this._onClick, true); },
+
+    _onClick(e) {
+        var domNode = ReactDOM.findDOMNode(this);
+        if ((!domNode || !domNode.contains(e.target))) {
+            this.setState({isMenuOpened: false});
+        }
     },
 
     _toggleMenu() {

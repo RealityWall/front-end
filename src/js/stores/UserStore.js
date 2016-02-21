@@ -48,6 +48,23 @@ const UserStore = Flux.createStore({
                     ActionCreator.getUserData();
                 });
             break;
+        case Constants.ActionTypes.LOGIN_WITH_FACEBOOK:
+            request
+                .post(Constants.SERVER_BASE_URL + '/users/facebook')
+                .send({accessToken: payload.accessToken, facebookId: payload.facebookId})
+                .set('Accept', 'application/json')
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        // treat error
+                        document.dispatchEvent(eventBuilder('LoginWithFacebook', {err, res, status: 'error'}));
+                        return;
+                    }
+                    _sessionId = res.body;
+                    localStorage.setItem('sessionid', _sessionId);
+                    document.dispatchEvent(eventBuilder('LoginWithFacebook', {status: 'success'}));
+                    ActionCreator.getUserData();
+                });
+            break;
         case Constants.ActionTypes.SIGNIN:
             request
                 .post(Constants.SERVER_BASE_URL + '/users')
