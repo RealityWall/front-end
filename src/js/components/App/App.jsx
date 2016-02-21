@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Header from './Header.jsx';
+import Loading from '../Loading/Loading.jsx';
 
 var App = React.createClass({
 
@@ -33,13 +34,24 @@ var App = React.createClass({
     },
 
     render() {
-        // TODO : loading this.props.loading
         return (
             <div id="app-container">
                 <Header user={ this.props.user } ref="header"/>
                 <div id="app-body">
                     { this.props.children }
                 </div>
+                {
+                    this.props.loading ?
+                        <div id="general-loading">
+                            <div className="loading-container">
+                                <Loading width="200"/>
+                                <img src="img/logo.png" alt="logo" height="120" className="logo"/>
+                                <div className="text">Chargement</div>
+                            </div>
+                        </div>
+                        : null
+                }
+
             </div>
         );
     }
