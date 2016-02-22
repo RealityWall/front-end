@@ -45,5 +45,9 @@ module.exports = {
     watch: {
         src: 'src/**/*.*',
         tasks: ['build']
+    },
+    libs: {
+        src: 'src/libs/**',
+        dest: dest + '/libs'
     }
 };

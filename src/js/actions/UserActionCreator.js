@@ -39,6 +39,35 @@ export default Flux.createActions({
         return {
             actionType: Constants.ActionTypes.LOGOUT
         };
+    },
+
+    updateName(firstname, lastname) {
+        return {
+            actionType: Constants.ActionTypes.UPDATE_NAME,
+            firstname,
+            lastname
+        };
+    },
+
+    updatePassword(oldPassword, newPassword) {
+        return {
+            actionType: Constants.ActionTypes.UPDATE_PASSWORD,
+            oldPassword,
+            newPassword
+        };
+    },
+
+    updatePicture(fileUrl) {
+        return {
+            actionType: Constants.ActionTypes.UPDATE_PICTURE,
+            fileUrl
+        };
+    },
+
+    deletePicture() {
+        return {
+            actionType: Constants.ActionTypes.DELETE_PICTURE
+        };
     }
 
 });

@@ -50,7 +50,7 @@ var MainApp = React.createClass({
     },
 
     home() { return (<Home />); },
-    walls() { return (<Walls />); },
+    walls() { return (<Walls user={this.state.user}/>); },
 
     /* secure with non login */
     signIn() {
@@ -70,7 +70,7 @@ var MainApp = React.createClass({
         else if (!this.state.isLoggingIn) navigate('/');
     },
     settings() {
-        if (this.state.user.id) return (<Settings />);
+        if (this.state.user.id) return (<Settings user={this.state.user} />);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 

@@ -1,6 +1,7 @@
 @import "./constants";
 @import "./header";
 @import "./login-modal";
+@import "./walls-map";
 
 html, body, #app-container, #react-root {
     margin: 0;
@@ -142,4 +143,8 @@ input[type="email"], input[type="text"], input[type="password"], textarea {
         }
     }
 
+}
+
+.ReactModal__Overlay {
+    z-index:3;
 }

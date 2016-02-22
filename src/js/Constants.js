@@ -11,7 +11,12 @@ export default {
         LOGIN_WITH_FACEBOOK: null,
         SIGNIN: null,
         GET_USER_DATA: null,
-        LOGOUT: null
+        LOGOUT: null,
+        GET_WALLS: null,
+        UPDATE_NAME: null,
+        UPDATE_PASSWORD: null,
+        UPDATE_PICTURE: null,
+        DELETE_PICTURE: null
     })
 
 };
