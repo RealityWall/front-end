@@ -8,7 +8,10 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
+            <div id="settings">
+                <div className="beautiful-image">
+
+                </div>
                 <NameSettings user={this.props.user}/>
                 { this.props.user.facebookId ? null : <PasswordSettings /> }
                 <PictureSettings />

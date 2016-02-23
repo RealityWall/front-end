@@ -73,7 +73,10 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
+            <div className="settings-tile">
+                <div className="title">
+                    <i className="fa fa-camera"/> <span className="text">Votre Avatar</span>
+                </div>
                 <form onSubmit={this._handleSubmit} encType="multipart/form-data">
                     <input type="file" ref="picture" placeholder="Votre photo de profil" required onChange={this._handleFile}/>
                     <input type="submit" className="btn" value="Mettre à jour"/>

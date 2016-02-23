@@ -38,14 +38,19 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <form onSubmit={this._handleSubmit}>
-                <input type="text" ref="oldPassword" placeholder="Mot de passe actuel" required/>
-                <input type="text" ref="newPassword" placeholder="Nouveau mot de passe" required/>
-                <input type="text" ref="newPasswordConfirm" placeholder="Nouveau mot de passe (confirmation)" required/>
-                <input type="submit" className="btn" value="Mettre à jour"/>
-                {this.state.success ? 'SUCESS' : null}
-                {this.state.error}
-            </form>
+            <div className="settings-tile">
+                <div className="title">
+                    <i className="fa fa-lock"/> <span className="text">Votre Mot de Passe</span>
+                </div>
+                <form onSubmit={this._handleSubmit}>
+                    <input type="text" ref="oldPassword" placeholder="Mot de passe actuel" required/>
+                    <input type="text" ref="newPassword" placeholder="Nouveau mot de passe" required/>
+                    <input type="text" ref="newPasswordConfirm" placeholder="Nouveau mot de passe (confirmation)" required/>
+                    <input type="submit" className="btn" value="Mettre à jour"/>
+                    {this.state.success ? 'SUCESS' : null}
+                    {this.state.error}
+                </form>
+            </div>
         );
     }
 
