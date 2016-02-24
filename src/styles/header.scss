@@ -7,9 +7,9 @@
     background: $white;
     line-height:50px;
     position: relative;
+    z-index:1;
 
     .header-content {
-        max-width: $max-width;
         margin:auto;
         padding-right: $header-padding;
         padding-left: $header-padding;

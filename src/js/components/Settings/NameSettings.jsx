@@ -42,12 +42,10 @@ module.exports = React.createClass({
         return (
             <div className="settings-tile">
                 <div className="title">
-                    <i className="fa fa-user"/> <span className="text">Votre Nom d'Utilisateur</span>
+                    <i className="fa fa-user"/> <span className="text">Votre Prénom et Nom</span>
                 </div>
                 <form onSubmit={this._handleSubmit}>
-                    <div className="placeholder">Votre prénom</div>
                     <input type="text" ref="firstname" placeholder="Votre prénom" defaultValue={this.props.user.firstname} required/>
-                    <div className="placeholder">Votre nom</div>
                     <input type="text" ref="lastname" placeholder="Votre nom" defaultValue={this.props.user.lastname} required/>
                     <input type="submit" className="btn" value="Mettre à jour"/>
                     {this.state.success ? 'SUCESS' : null}

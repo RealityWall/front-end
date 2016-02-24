@@ -6,29 +6,61 @@
 
     .beautiful-image {
         height:250px;
-        background: url(http://static1.squarespace.com/static/52f0e42ae4b02fdbc094d5b6/t/534bcde9e4b0bf294b4ede03/1397476842828/photodune-1950305-gear-background-l+Low-Res.jpg);
+        width: 100%;
+        left: 0px;
+        top: 50px;
+        position: fixed;
+        background: url(../img/engrenage.jpg);
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+        color:$white;
+        text-align:center;
+        padding-top:20px;
+        font-size: 24px;
     }
 
-
-
-    > div:nth-child(2) {
-        margin-top: -100px;
+    .page-title {
+        position:relative;
+        text-align:center;
+        color: $white;
+        font-size: 24px;
+        z-index:1;
+        margin-top:15px;
+        text-transform: uppercase;
     }
-    @media (max-width: 900px) {
+
+    @media (max-width: 600px) {
         .beautiful-image {
             display:none;
         }
         > div:nth-child(2) {
             margin-top: 15px;
         }
+        .page-title {
+            display:none;
+        }
     }
 
+    @media (min-width: 600px) {
+        .settings-tile {
+            min-height:291px;
+            width:calc(50% - 30px);
+            margin-right:15px!important;
+            margin-left:15px!important;
+            float:left;
+
+            form {
+                transform: translate(-50%,-50%);
+                top: 50%;
+                left: 50%;
+                position: absolute!important;
+                width: calc(100% - 30px)!important;
+            }
+        }
+    }
     .settings-tile {
         position:relative;
-        max-width:700px;
         margin:auto;
         padding: 15px;
         background: $white;
@@ -36,7 +68,7 @@
         box-shadow: 0px 0px 5px rgb(60,60,60);
 
         .title {
-
+            margin-bottom: 15px;
             font-size: 18px;
             text-align:center;
 
@@ -49,7 +81,7 @@
             }
         }
 
-        form {
+        .picture-form, form {
             display:block;
             position:relative;
             width:100%;
@@ -68,6 +100,56 @@
                 display:block;
             }
         }
+
+
+        .profile-picture {
+            margin-top:-140px;
+            text-align:center;
+            > img {
+                border-radius:10000px;
+            }
+
+            .overlay {
+                opacity:0;
+                height: 130px;
+                width: 130px;
+                margin: auto;
+                margin-top: -134px;
+                border-radius:10000px;
+                background: rgba(0,0,0,0.4);
+                z-index:1;
+                position:relative;
+                line-height:130px;
+                color: $white;
+                font-size: 70px;
+            }
+        }
+        input[type="file"]:hover + .profile-picture {
+            .overlay {
+                opacity:1;
+            }
+        }
+        input[type="file"] {
+            height:130px;
+            width:130px;
+            border-radius:10000px;
+            opacity:0;
+            z-index:2;
+            position:relative;
+            cursor:pointer;
+        }
+
+        .picture-form {
+            input[type="submit"] { margin-top: 10px;}
+        }
+    }
+
+    .delete-avatar {
+        background: $action-color;
+    }
+
+    .delete-avatar:hover {
+        background: red;
     }
 
 }
