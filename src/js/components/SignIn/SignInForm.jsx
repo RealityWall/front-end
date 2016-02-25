@@ -52,16 +52,22 @@ var Header = React.createClass({
     render() {
         let self = this;
         return (
-            <form onSubmit={ self._handleSignIn }>
-                <input type="text" placeholder="firstname" ref="firstname" required/>
-                <input type="text" placeholder="lastname" ref="lastname" required/>
-                <input type="email" placeholder="email" ref="email" required/>
-                <input type="password" placeholder="password" ref="password" required/>
-                <input type="submit" className="btn"/>
 
-                {self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}
-                {self.state.error}
-            </form>
+            <div className="signin-tile">
+                <div className="title">
+                    <span className="text">Inscrivez vous</span>
+                </div>
+                <form onSubmit={ self._handleSignIn }>
+                    <input type="text" placeholder="firstname" ref="firstname" required/>
+                    <input type="text" placeholder="lastname" ref="lastname" required/>
+                    <input type="email" placeholder="email" ref="email" required/>
+                    <input type="password" placeholder="password" ref="password" required/>
+                    <input type="submit" className="btn"/>
+
+                    {self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}
+                    {self.state.error}
+                </form>
+            </div>
         );
     }
 
