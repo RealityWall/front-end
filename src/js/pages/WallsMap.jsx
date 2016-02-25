@@ -37,22 +37,40 @@ module.exports = React.createClass({
 
     render() {
         let self = this;
+        console.log();
         return (
             <div className={"walls" + (this.state.isChoosingAWall ? " pencil-cursor": "")}>
-                <WallsMap walls={this.state.walls} user={this.props.user} ref="wallsMap" onWallClick={self._onWallClick}/>
+                <WallsMap walls={this.state.walls} user={this.props.user} ref="wallsMap"
+                          onWallClick={self._onWallClick}/>
 
+                <div id="message-button"
+                     className={(
+                     this.props.user.id ?
+                     (this.props.user.roles.indexOf('user') >= 0 ?
+                        (this.props.user.lastPost.id ? 'disabled' : 'animated tada')
+                        : 'not-user')
+                     : 'disabled')}
+                     onClick={this.props.user.id && !this.props.user.lastPost.id ? self._toggleChoosing : () =>{}}>
+                    <i className="fa fa-pencil fa-2x"/>
+                </div>
                 {
-                    this.props.user.id ?
-                        <div id="message-button"
-                             onClick={self._toggleChoosing}>
-                            <i className="fa fa-pencil fa-2x"/>
+                    this.props.user.id && this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0 ?
+                        <div id="message-speech-bubble">
+                            Choisissez Votre Mur
                         </div>
                         : null
                 }
                 {
-                    this.props.user.id && this.state.isChoosingAWall ?
-                        <div id="message-speech-bubble">
-                            Choisissez Votre Mur
+                    !this.props.user.id ?
+                        <div id="message-speech-bubble" className="connect">
+                            Connectez vous pour laisser un message !
+                        </div>
+                        : null
+                }
+                {
+                    this.props.user.id && this.props.user.lastPost.id ?
+                        <div id="message-speech-bubble" className="connect">
+                            Vous avez déjà posté aujourd'hui !
                         </div>
                         : null
                 }

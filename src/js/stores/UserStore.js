@@ -101,6 +101,7 @@ const UserStore = Flux.createStore({
                             UserStore.emitChange();
                             return;
                         }
+                        console.log(res.body);
                         _user = res.body;
                         UserStore.emitChange();
                     });

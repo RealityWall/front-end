@@ -66,7 +66,7 @@ var MainApp = React.createClass({
 
     /* secure with login */
     postOnWallById(wallId) {
-        if (this.state.user.id) return (<PostOnWall wallId={ wallId } />);
+        if (this.state.user.id && !this.state.user.lastPost.id) return (<PostOnWall wallId={ wallId } />);
         else if (!this.state.isLoggingIn) navigate('/');
     },
     settings() {

@@ -16,7 +16,8 @@ export default {
         UPDATE_NAME: null,
         UPDATE_PASSWORD: null,
         UPDATE_PICTURE: null,
-        DELETE_PICTURE: null
+        DELETE_PICTURE: null,
+        ADD_POST: null
     })
 
 };
