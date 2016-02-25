@@ -35,7 +35,18 @@
         cursor:pointer;
         box-shadow: 0px 2px 4px grey;
     }
+    #message-button.disabled {
+        cursor: not-allowed;
+        background: grey;
+    }
+    #message-button.not-user {
+        display:none;
+    }
 
+    #message-speech-bubble.connect {
+        line-height:inherit;
+        padding-top:7px;
+    }
     #message-speech-bubble {
         z-index:2;
         position: fixed;
