@@ -1,18 +1,12 @@
 import React from 'react';
 import UserActionCreator from '../../actions/UserActionCreator';
+import EventListenerMixin from '../../mixins/EventListenerMixin';
+import Constants from '../../Constants';
 
 module.exports = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('UpdateName', this._onUpdateName); },
-    componentWillUnmount() { document.removeEventListener('UpdateName', this._onUpdateName); },
-    _onUpdateName(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.UPDATE_NAME)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
         } else {

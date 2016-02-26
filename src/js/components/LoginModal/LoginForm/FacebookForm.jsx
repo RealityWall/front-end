@@ -1,18 +1,12 @@
 import React from 'react';
 import UserActionCreator from '../../../actions/UserActionCreator';
+import EventListenerMixin from '../../../mixins/EventListenerMixin';
+import Constants from '../../../Constants';
 
 var FacebookForm = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('LoginWithFacebook', this._onLogin); },
-    componentWillUnmount() { document.removeEventListener('LoginWithFacebook', this._onLogin); },
-    _onLogin(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.LOGIN_WITH_FACEBOOK)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
             this.props.onLogin();

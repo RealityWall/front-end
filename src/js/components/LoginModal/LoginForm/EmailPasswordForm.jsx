@@ -1,18 +1,12 @@
 import React from 'react';
 import UserActionCreator from '../../../actions/UserActionCreator';
+import EventListenerMixin from '../../../mixins/EventListenerMixin';
+import Constants from '../../../Constants';
 
 var EmailPasswordForm = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('Login', this._onLogin); },
-    componentWillUnmount() { document.removeEventListener('Login', this._onLogin); },
-    _onLogin(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.LOGIN)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
             this.props.onLogin();

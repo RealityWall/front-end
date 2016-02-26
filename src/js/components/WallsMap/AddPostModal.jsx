@@ -6,28 +6,7 @@ import ActionCreator from '../../actions/PostActionCreator';
 // Components
 import Modal from 'react-modal';
 
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    },
-    overlay: {
-        backgroundColor   : 'rgba(0, 0, 0, 0.45)'
-    }
-};
-
 var AddPostModal = React.createClass({
-
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
 
     mixins: [EventListenerMixin(Constants.ActionTypes.ADD_POST)],
     onEvent(e) {
@@ -65,7 +44,7 @@ var AddPostModal = React.createClass({
             <Modal
                 isOpen={self.props.isOpen}
                 onRequestClose={() => self.props.onRequestClose(true)}
-                style={customStyles}
+                style={Constants.MODAL_STYLE}
             >
                 <form onSubmit={ self._addPost }>
                     <input type="text" placeholder="Ton message" required ref="content"/>

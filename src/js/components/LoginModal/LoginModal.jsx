@@ -1,23 +1,10 @@
 import React from 'react';
+import Constants from '../../Constants';
 
 // Components
 import Modal from 'react-modal';
 import LoginForm from './LoginForm/LoginForm.jsx';
 import ForgotPasswordForm from './ForgotPasswordForm.jsx';
-
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    },
-    overlay: {
-        backgroundColor   : 'rgba(0, 0, 0, 0.45)'
-    }
-};
 
 var LoginModal = React.createClass({
 
@@ -49,7 +36,7 @@ var LoginModal = React.createClass({
             <Modal
                 isOpen={self.props.isOpen}
                 onRequestClose={self._onRequestClose}
-                style={customStyles}
+                style={Constants.MODAL_STYLE}
             >
                 {self.state.index === 0 ? <LoginForm onPasswordForgottenClick={ self._showForgotPasswordForm } onLogin={self._onLogin}/> : null}
                 {self.state.index === 1 ? <ForgotPasswordForm /> : null}

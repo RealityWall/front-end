@@ -44,12 +44,12 @@ const UserStore = Flux.createStore({
                 .end( (err, res) => {
                     if (err || !res.ok) {
                         // treat error
-                        document.dispatchEvent(eventBuilder('Login', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.LOGIN, {err, res, status: 'error'}));
                         return;
                     }
                     _sessionId = res.body;
                     localStorage.setItem('sessionid', _sessionId);
-                    document.dispatchEvent(eventBuilder('Login', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.LOGIN, {status: 'success'}));
                     ActionCreator.getUserData();
                 });
             break;
@@ -61,12 +61,12 @@ const UserStore = Flux.createStore({
                 .end( (err, res) => {
                     if (err || !res.ok) {
                         // treat error
-                        document.dispatchEvent(eventBuilder('LoginWithFacebook', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.LOGIN_WITH_FACEBOOK, {err, res, status: 'error'}));
                         return;
                     }
                     _sessionId = res.body;
                     localStorage.setItem('sessionid', _sessionId);
-                    document.dispatchEvent(eventBuilder('LoginWithFacebook', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.LOGIN_WITH_FACEBOOK, {status: 'success'}));
                     ActionCreator.getUserData();
                 });
             break;
@@ -82,11 +82,11 @@ const UserStore = Flux.createStore({
                 .set('Accept', 'application/json')
                 .end( (err, res) => {
                     if (err || !res.ok) {
-                        document.dispatchEvent(eventBuilder('SignIn', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.SIGNIN, {err, res, status: 'error'}));
                         // treat error
                         return;
                     }
-                    document.dispatchEvent(eventBuilder('SignIn', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.SIGNIN, {status: 'success'}));
                 });
             break;
         case Constants.ActionTypes.GET_USER_DATA:
@@ -134,27 +134,26 @@ const UserStore = Flux.createStore({
                 .send({firstname: payload.firstname, lastname: payload.lastname})
                 .end( (err, res) => {
                     if (err || !res.ok) {
-                        document.dispatchEvent(eventBuilder('UpdateName', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_NAME, {err, res, status: 'error'}));
                         return;
                     }
-                    document.dispatchEvent(eventBuilder('UpdateName', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_NAME, {status: 'success'}));
                     if (payload.firstname) _user.firstname = payload.firstname;
                     if (_user.lastname) _user.lastname = payload.lastname;
                     UserStore.emitChange();
                 });
             break;
         case Constants.ActionTypes.UPDATE_PASSWORD:
-            console.log(payload);
             request
                 .put(Constants.SERVER_BASE_URL + '/users/password')
                 .set('sessionid', _sessionId)
                 .send({oldPassword: payload.oldPassword, newPassword: payload.newPassword})
                 .end( (err, res) => {
                     if (err || !res.ok) {
-                        document.dispatchEvent(eventBuilder('UpdatePassword', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_PASSWORD, {err, res, status: 'error'}));
                         return;
                     }
-                    document.dispatchEvent(eventBuilder('UpdatePassword', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_PASSWORD, {status: 'success'}));
                 });
             break;
         case Constants.ActionTypes.UPDATE_PICTURE:
@@ -164,10 +163,10 @@ const UserStore = Flux.createStore({
                 .attach('avatar', payload.fileUrl)
                 .end( (err, res) => {
                     if (err || !res.ok) {
-                        document.dispatchEvent(eventBuilder('UpdatePicture', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_PICTURE, {err, res, status: 'error'}));
                         return;
                     }
-                    document.dispatchEvent(eventBuilder('UpdatePicture', {status: 'success'}));
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPDATE_PICTURE, {status: 'success'}));
                     ActionCreator.getUserData();
                 });
             break;
@@ -177,11 +176,12 @@ const UserStore = Flux.createStore({
                 .set('sessionid', _sessionId)
                 .end( (err, res) => {
                     if (err || !res.ok) {
-                        document.dispatchEvent(eventBuilder('DeletePicture', {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.DELETE_PICTURE, {err, res, status: 'error'}));
                         return;
                     }
-                    document.dispatchEvent(eventBuilder('DeletePicture', {status: 'success'}));
-                    ActionCreator.getUserData();
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.DELETE_PICTURE, {status: 'success'}));
+                    _user.imagePath = null;
+                    UserStore.emitChange();
                 });
             break;
     }
