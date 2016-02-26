@@ -9,7 +9,7 @@ var FacebookForm = React.createClass({
     onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
-            this.props.onLogin();
+            //this.props.onLogin();
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {

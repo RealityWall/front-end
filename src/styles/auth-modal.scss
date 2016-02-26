@@ -1,6 +1,45 @@
 @import "./constants";
 
-.modal-content {
+.auth-modal-tabs {
+
+    height:70px;
+    display:table;
+    width: 300px;
+    position:relative;
+    table-layout: fixed;
+
+    > .tab {
+
+        height:100%;
+        display:table-cell;
+        background: $light-blue;
+        transition: background .3s;
+        text-align:center;
+        color:white;
+        cursor:pointer;
+        vertical-align: middle;
+
+        > .tab-icon {
+            font-size:40px;
+        }
+
+        > .tab-name {
+            font-size:10px;
+        }
+
+    }
+
+    > .tab.selected {
+        background: $light-blue-over;
+    }
+
+    > .tab:hover {
+        background: $light-blue-over;
+    }
+
+}
+
+.auth-modal-content {
 
     width: 300px;
     text-align: center;
@@ -34,10 +73,4 @@
         cursor: pointer;
     }
 
-}
-
-@media (max-width: 340px) {
-    .login-modal-wrapper {
-        width: calc(100vw - 50px);
-    }
 }

@@ -9,8 +9,7 @@ var LoginForm = React.createClass({
     render () {
         let self = this;
         return (
-            <div className="login-modal-wrapper modal-content">
-                <div className="header">Connexion à votre compte</div>
+            <div className="login-forms-wrapper">
                 <EmailPasswordForm onPasswordForgottenClick={ self.props.onPasswordForgottenClick } onLogin={ self.props.onLogin }/>
                 <hr/>
                 <FacebookForm onLogin={ self.props.onLogin }/>

@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import UserMenu from './UserMenu.jsx';
-import LoginModal from '../LoginModal/LoginModal.jsx';
+import AuthModal from '../AuthModal/AuthModal.jsx';
 
 var Header = React.createClass({
 
@@ -12,12 +12,12 @@ var Header = React.createClass({
         }
     },
 
-    _openModal: function() {
-        this.setState({modalIsOpen: true});
+    _openModal(index) {
+        this.refs.authModal.openModal(index);
     },
 
-    _closeModal: function() {
-        this.setState({modalIsOpen: false});
+    _closeModal() {
+        this.refs.authModal.openModal(-1);
     },
 
     render() {
@@ -27,14 +27,11 @@ var Header = React.createClass({
                 <div className={"header-content " + (self.props.user.id ? "logged":"")}>
                     <a href="/"><img src="img/full-logo.png" alt="main logo"/></a>
                     <a href="/"><img src="img/logo.png" alt="main logo"/></a>
-                    { self.props.user.id ? null : <a href="/sign-in" className="btn" id="sign-in">Inscription</a> }
-                    { self.props.user.id ? null : <a className="btn transparent" id="login" onClick={ self._openModal }>Connexion</a> }
+                    { self.props.user.id ? null : <a className="btn" id="sign-in" onClick={ () => self._openModal(1) }>Inscription</a> }
+                    { self.props.user.id ? null : <a className="btn transparent" id="login" onClick={ () => self._openModal(0) }>Connexion</a> }
                     { self.props.user.id ? <UserMenu user={ self.props.user }/> : null}
                 </div>
-                <LoginModal
-                    isOpen={self.state.modalIsOpen}
-                    onRequestClose={self._closeModal}
-                    />
+                <AuthModal ref="authModal"/>
             </div>
         );
     }

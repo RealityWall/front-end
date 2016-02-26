@@ -27,7 +27,11 @@ export default {
             right                 : 'auto',
             bottom                : 'auto',
             marginRight           : '-50%',
-            transform             : 'translate(-50%, -50%)'
+            transform             : 'translate(-50%, -50%)',
+            padding               : '0px',
+            borderRadius          : '2px',
+            minWidth              : '300px',
+            border                : 'none'
         },
         overlay: {
             backgroundColor   : 'rgba(0, 0, 0, 0.45)'

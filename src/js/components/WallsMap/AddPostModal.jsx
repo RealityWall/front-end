@@ -2,6 +2,7 @@ import React from 'react';
 import Constants from '../../Constants';
 import EventListenerMixin from '../../mixins/EventListenerMixin';
 import ActionCreator from '../../actions/PostActionCreator';
+import PostStore from '../../stores/PostStore';
 
 // Components
 import Modal from 'react-modal';

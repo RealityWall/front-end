@@ -13,7 +13,6 @@ import AppContainer from './components/App/App.jsx';
 import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
-import SignIn from './pages/SignIn.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
 
@@ -42,23 +41,12 @@ var MainApp = React.createClass({
         '/': 'home',
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
-        '/sign-in': 'signIn',
         '/verify/:token': 'verifyUser',
         '/settings': 'settings'
     },
 
     home() { return (<Home />); },
     walls() { return (<Walls user={this.state.user}/>); },
-
-    /* secure with non login */
-    signIn() {
-        if (this.state.user.id) navigate('/');
-        else {
-            if (!this.state.isLoggingIn) {
-                return (<SignIn />);
-            }
-        }
-    },
     wallById(wallId) { return (<WallById wallId={ wallId } />); },
     verifyUser(token) {return <VerifyUser token={token}/>},
 

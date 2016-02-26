@@ -24,12 +24,12 @@ var App = React.createClass({
     },
 
     componentDidMount() {
-        if (this._doIHaveToOpenModal()) { this.refs.header._openModal(); }
+        if (this._doIHaveToOpenModal()) { this.refs.header._openModal(0); }
         else { this.refs.header._closeModal(); }
     },
 
     componentDidUpdate() {
-        if (this._doIHaveToOpenModal()) { this.refs.header._openModal(); }
+        if (this._doIHaveToOpenModal()) { this.refs.header._openModal(0); }
         else { this.refs.header._closeModal(); }
     },
 
