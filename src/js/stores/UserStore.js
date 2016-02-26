@@ -26,6 +26,11 @@ const UserStore = Flux.createStore({
         _sessionId = localStorage.getItem('sessionid');
         if (!_sessionId) return false;
         return true;
+    },
+
+    addPostToUser(post) {
+        _user.lastPost = post;
+        UserStore.emitChange();
     }
 
 }, function (payload) {

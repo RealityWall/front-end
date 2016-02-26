@@ -51,18 +51,6 @@ module.exports = React.createClass({
         });
     },
 
-    setIcon(type) {
-        if (type == 'selected') {
-            markers.forEach((marker) => {
-                marker.setIcon(wallSelectedIcon);
-            });
-        } else if (type == 'normal') {
-            markers.forEach((marker) => {
-                marker.setIcon(wallIcon);
-            });
-        }
-    },
-
     componentWillReceiveProps (nextProps) {
         let wallsToKeep = [];
         let wallsToAdd = [];
@@ -89,6 +77,16 @@ module.exports = React.createClass({
 
         // draw all the walls
         this._displayWalls(wallsToAdd);
+
+        if (nextProps.isChoosingAWall) {
+            markers.forEach((marker) => {
+                marker.setIcon(wallSelectedIcon);
+            });
+        } else {
+            markers.forEach((marker) => {
+                marker.setIcon(wallIcon);
+            });
+        }
     },
 
     render() {

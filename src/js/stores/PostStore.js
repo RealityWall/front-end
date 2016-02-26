@@ -19,6 +19,8 @@ const WallStore = Flux.createStore({
                         document.dispatchEvent(eventBuilder(Constants.ActionTypes.ADD_POST, {err, res, status: 'error'}));
                         return;
                     }
+                    console.log(res.body);
+                    UserStore.addPostToUser(res.body);
                     document.dispatchEvent(eventBuilder(Constants.ActionTypes.ADD_POST, {status: 'success'}));
 
                 });

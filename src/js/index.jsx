@@ -13,7 +13,6 @@ import AppContainer from './components/App/App.jsx';
 import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
-import PostOnWall from './pages/AddPost.jsx';
 import SignIn from './pages/SignIn.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
@@ -43,7 +42,6 @@ var MainApp = React.createClass({
         '/': 'home',
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
-        '/walls/:wallId/post': 'postOnWallById',
         '/sign-in': 'signIn',
         '/verify/:token': 'verifyUser',
         '/settings': 'settings'
@@ -64,11 +62,6 @@ var MainApp = React.createClass({
     wallById(wallId) { return (<WallById wallId={ wallId } />); },
     verifyUser(token) {return <VerifyUser token={token}/>},
 
-    /* secure with login */
-    postOnWallById(wallId) {
-        if (this.state.user.id && (!this.state.user.lastPost || !this.state.user.lastPost.id)) return (<PostOnWall wallId={ wallId } />);
-        else if (!this.state.isLoggingIn) navigate('/');
-    },
     settings() {
         if (this.state.user.id) return (<Settings user={this.state.user} />);
         else if (!this.state.isLoggingIn) navigate('/');

@@ -1,8 +1,11 @@
 import React from 'react';
 import WallStore from '../stores/WallStore';
-import WallsMap from '../components/WallsMap/WallsMap.jsx';
 import WallActionCreator from '../actions/WallActionCreator';
 import { navigate } from 'react-mini-router';
+
+// Components
+import WallsMap from '../components/WallsMap/WallsMap.jsx';
+import AddPostModal from '../components/WallsMap/AddPostModal.jsx';
 
 module.exports = React.createClass({
 
@@ -11,7 +14,8 @@ module.exports = React.createClass({
     getInitialState() {
         return {
             walls: WallStore.getWalls(),
-            isChoosingAWall: false
+            isChoosingAWall: false,
+            selectedWallId: null
         }
     },
 
@@ -25,42 +29,53 @@ module.exports = React.createClass({
 
     componentWillReceiveProps(nextProps) {
         if (!nextProps.user.id) {
-            this.refs.wallsMap.setIcon('normal');
             this.setState({isChoosingAWall: false});
         }
     },
 
     _toggleChoosing() {
-        if (this.state.isChoosingAWall) this.refs.wallsMap.setIcon('normal');
-        else this.refs.wallsMap.setIcon('selected');
         this.setState({isChoosingAWall: !this.state.isChoosingAWall});
     },
 
     _onWallClick(id) {
-        if (this.state.isChoosingAWall) navigate('/walls/' + id + '/post');
+        if (this.state.isChoosingAWall) this.setState({selectedWallId: id});
         else navigate('/walls/' + id);
+    },
 
+    _onAddPostModalRequestClose(isChoosingAWall) {
+        this.setState({selectedWallId: null, isChoosingAWall});
     },
 
     render() {
         let self = this;
-        console.log();
         return (
-            <div className={"walls" + (this.state.isChoosingAWall ? " pencil-cursor": "")}>
-                <WallsMap walls={this.state.walls} user={this.props.user} ref="wallsMap"
-                          onWallClick={self._onWallClick}/>
+            <div className={"walls" + (self.state.isChoosingAWall ? " pencil-cursor": "")}>
+                <WallsMap
+                    walls={self.state.walls}
+                    user={self.props.user}
+                    isChoosingAWall={self.state.isChoosingAWall}
+                    ref="wallsMap"
+                    onWallClick={self._onWallClick}/>
 
                 <div id="message-button"
                      className={(
-                     this.props.user.id ?
-                     (this.props.user.roles.indexOf('user') >= 0 ?
-                        (this.props.user.lastPost && this.props.user.lastPost.id ? 'disabled' : 'animated tada')
+                     self.props.user.id ?
+                     (self.props.user.roles.indexOf('user') >= 0 ?
+                        (self.props.user.lastPost && self.props.user.lastPost.id ? 'disabled' : 'animated tada')
                         : 'not-user')
                      : 'disabled')}
-                     onClick={this.props.user.id && (!this.props.user.lastPost || !this.props.user.lastPost.id) ? self._toggleChoosing : () =>{}}>
+                     onClick={self.props.user.id && (!self.props.user.lastPost || !self.props.user.lastPost.id) ? self._toggleChoosing : () =>{}}>
                     <i className="fa fa-pencil fa-2x"/>
                 </div>
+
                 { this.renderTooltip() }
+
+                <AddPostModal
+                    isOpen={self.state.selectedWallId !== null}
+                    onRequestClose={self._onAddPostModalRequestClose}
+                    wallId={self.state.selectedWallId}
+                />
+
             </div>
 
         );
@@ -68,7 +83,13 @@ module.exports = React.createClass({
 
     renderTooltip() {
         if (this.props.user.id) {
-            if (this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
+            if (this.props.user.id && this.props.user.lastPost && this.props.user.lastPost.id) {
+                return (
+                    <div id="message-speech-bubble" className="connect">
+                        Vous avez déjà posté aujourd'hui !
+                    </div>
+                );
+            } else if (this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
                 return (
                     <div id="message-speech-bubble">
                         Choisissez Votre Mur
@@ -78,12 +99,6 @@ module.exports = React.createClass({
                 return (
                     <div id="message-speech-bubble" className="connect">
                         Cliquez ici pour poster un message
-                    </div>
-                );
-            } else if (this.props.user.id && this.props.user.lastPost && this.props.user.lastPost.id) {
-                return (
-                    <div id="message-speech-bubble" className="connect">
-                        Vous avez déjà posté aujourd'hui !
                     </div>
                 );
             }

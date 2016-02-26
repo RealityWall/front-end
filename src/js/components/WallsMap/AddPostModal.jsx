@@ -1,9 +1,26 @@
 import React from 'react';
-import Constants from '../Constants';
-import ActionCreator from '../actions/PostActionCreator';
-import PostStore from '../stores/PostStore';
+import Constants from '../../Constants';
+import EventListenerMixin from '../../mixins/EventListenerMixin';
+import ActionCreator from '../../actions/PostActionCreator';
 
-module.exports = React.createClass({
+// Components
+import Modal from 'react-modal';
+
+const customStyles = {
+    content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+    },
+    overlay: {
+        backgroundColor   : 'rgba(0, 0, 0, 0.45)'
+    }
+};
+
+var AddPostModal = React.createClass({
 
     getInitialState() {
         return {
@@ -12,11 +29,13 @@ module.exports = React.createClass({
         };
     },
 
-    componentDidMount() { document.addEventListener(Constants.ActionTypes.ADD_POST, this._onPost); },
-    componentWillUnmount() { document.removeEventListener(Constants.ActionTypes.ADD_POST, this._onPost); },
-    _onPost(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.ADD_POST)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
+            setTimeout(() => {
+                this.props.onRequestClose(false);
+            }, 1000);
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
@@ -35,22 +54,29 @@ module.exports = React.createClass({
         }
     },
 
-    _handleSubmit(e) {
+    _addPost(e) {
         e.preventDefault();
         ActionCreator.addPost(this.props.wallId, this.refs.content.value);
     },
 
-    render() {
+    render () {
+        let self = this;
         return (
-            <div>
-                <form onSubmit={ this._handleSubmit }>
+            <Modal
+                isOpen={self.props.isOpen}
+                onRequestClose={() => self.props.onRequestClose(true)}
+                style={customStyles}
+            >
+                <form onSubmit={ self._addPost }>
                     <input type="text" placeholder="Ton message" required ref="content"/>
                     <input type="submit" className="btn"/>
                 </form>
                 {this.state.success ? 'SUCCESS':''}
                 {this.state.error}
-            </div>
+            </Modal>
         );
     }
 
 });
+
+export default AddPostModal;
