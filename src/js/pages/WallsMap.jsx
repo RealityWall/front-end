@@ -61,6 +61,13 @@ module.exports = React.createClass({
                         : null
                 }
                 {
+                    this.props.user.id && !this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0 ?
+                        <div id="message-speech-bubble" className="connect">
+                            Cliquez ici pour poster un message
+                        </div>
+                        : null
+                }
+                {
                     !this.props.user.id ?
                         <div id="message-speech-bubble" className="connect">
                             Connectez vous pour laisser un message !
