@@ -23,6 +23,13 @@ module.exports = React.createClass({
         WallActionCreator.getWalls();
     },
 
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.user.id) {
+            this.refs.wallsMap.setIcon('normal');
+            this.setState({isChoosingAWall: false});
+        }
+    },
+
     _toggleChoosing() {
         if (this.state.isChoosingAWall) this.refs.wallsMap.setIcon('normal');
         else this.refs.wallsMap.setIcon('selected');
@@ -53,38 +60,41 @@ module.exports = React.createClass({
                      onClick={this.props.user.id && (!this.props.user.lastPost || !this.props.user.lastPost.id) ? self._toggleChoosing : () =>{}}>
                     <i className="fa fa-pencil fa-2x"/>
                 </div>
-                {
-                    this.props.user.id && this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0 ?
-                        <div id="message-speech-bubble">
-                            Choisissez Votre Mur
-                        </div>
-                        : null
-                }
-                {
-                    this.props.user.id && !this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0 ?
-                        <div id="message-speech-bubble" className="connect">
-                            Cliquez ici pour poster un message
-                        </div>
-                        : null
-                }
-                {
-                    !this.props.user.id ?
-                        <div id="message-speech-bubble" className="connect">
-                            Connectez vous pour laisser un message !
-                        </div>
-                        : null
-                }
-                {
-                    this.props.user.id && this.props.user.lastPost && this.props.user.lastPost.id ?
-                        <div id="message-speech-bubble" className="connect">
-                            Vous avez déjà posté aujourd'hui !
-                        </div>
-                        : null
-                }
-
+                { this.renderTooltip() }
             </div>
 
         );
+    },
+
+    renderTooltip() {
+        if (this.props.user.id) {
+            if (this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
+                return (
+                    <div id="message-speech-bubble">
+                        Choisissez Votre Mur
+                    </div>
+                );
+            } else if (!this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
+                return (
+                    <div id="message-speech-bubble" className="connect">
+                        Cliquez ici pour poster un message
+                    </div>
+                );
+            } else if (this.props.user.id && this.props.user.lastPost && this.props.user.lastPost.id) {
+                return (
+                    <div id="message-speech-bubble" className="connect">
+                        Vous avez déjà posté aujourd'hui !
+                    </div>
+                );
+            }
+        } else {
+            return (
+                <div id="message-speech-bubble" className="connect">
+                    Connectez vous pour laisser un message !
+                </div>
+            );
+        }
+        return null;
     }
 
 });
