@@ -15,6 +15,7 @@ import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 var MainApp = React.createClass({
 
@@ -42,7 +43,8 @@ var MainApp = React.createClass({
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
         '/verify/:token': 'verifyUser',
-        '/settings': 'settings'
+        '/settings': 'settings',
+        '/reset-password/:token': 'resetPassword'
     },
 
     home() { return (<Home />); },
@@ -50,6 +52,14 @@ var MainApp = React.createClass({
     wallById(wallId) { return (<WallById wallId={ wallId } />); },
     verifyUser(token) {return <VerifyUser token={token}/>},
 
+    resetPassword(token) {
+        if (this.state.user.id) navigate('/');
+        else {
+            if (!this.state.isLoggingIn) {
+                return (<ResetPassword token={token}/>);
+            }
+        }
+    },
     settings() {
         if (this.state.user.id) return (<Settings user={this.state.user} />);
         else if (!this.state.isLoggingIn) navigate('/');

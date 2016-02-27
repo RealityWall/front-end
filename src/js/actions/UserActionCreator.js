@@ -68,6 +68,21 @@ export default Flux.createActions({
         return {
             actionType: Constants.ActionTypes.DELETE_PICTURE
         };
+    },
+
+    forgetPassword(email) {
+        return {
+            actionType: Constants.ActionTypes.FORGET_PASSWORD,
+            email
+        };
+    },
+
+    resetPassword(token, password) {
+        return {
+            actionType: Constants.ActionTypes.RESET_PASSWORD,
+            token,
+            password
+        };
     }
 
 });

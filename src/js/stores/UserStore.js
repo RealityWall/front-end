@@ -184,6 +184,30 @@ const UserStore = Flux.createStore({
                     UserStore.emitChange();
                 });
             break;
+        case Constants.ActionTypes.FORGET_PASSWORD:
+            request
+                .post(Constants.SERVER_BASE_URL + '/users/forgot-password')
+                .send({email: payload.email})
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.FORGET_PASSWORD, {err, res, status: 'error'}));
+                        return;
+                    }
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.FORGET_PASSWORD, {status: 'success'}));
+                });
+            break;
+        case Constants.ActionTypes.RESET_PASSWORD:
+            request
+                .post(Constants.SERVER_BASE_URL + '/users/reset-password/' + payload.token)
+                .send({password: payload.password})
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.RESET_PASSWORD, {err, res, status: 'error'}));
+                        return;
+                    }
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.RESET_PASSWORD, {status: 'success'}));
+                });
+            break;
     }
 });
 
