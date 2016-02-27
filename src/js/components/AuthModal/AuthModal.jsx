@@ -36,6 +36,7 @@ const AuthModal = React.createClass({
                 onRequestClose={self.closeModal}
                 style={Constants.MODAL_STYLE}
             >
+                <div className="auth-modal-close" onClick={self.closeModal}>&times;</div>
                 <div className="auth-modal-tabs">
                     {
                         tabs.map((tab, index) => {

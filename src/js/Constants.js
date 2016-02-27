@@ -39,7 +39,8 @@ export default {
             padding               : '0px',
             borderRadius          : '2px',
             minWidth              : '300px',
-            border                : 'none'
+            border                : 'none',
+            overflow: 'visible'
         },
         overlay: {
             backgroundColor   : 'rgba(0, 0, 0, 0.45)'
