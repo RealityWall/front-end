@@ -47,12 +47,15 @@ var AddPostModal = React.createClass({
                 onRequestClose={() => self.props.onRequestClose(true)}
                 style={Constants.MODAL_STYLE}
             >
-                <form onSubmit={ self._addPost }>
-                    <textarea required ref="content" placeholder="Ton message"> </textarea><br/>
-                    <input type="submit" value="Envoyer ce message" className="btn"/>
-                </form>
-                {this.state.success ? 'SUCCESS':''}
-                {this.state.error}
+                <div className="postModal">
+                    <div className="title">poster un message</div>
+                    <form onSubmit={ self._addPost }>
+                        <textarea required ref="content" placeholder="Ton message"> </textarea><br/>
+                        <span className="success">{self.state.success ? ('Bravo ! Votre message sera validé dans les plus brefs délais') : null}</span>
+                        <span className="error">{self.state.error}</span>
+                        <input type="submit" value="Envoyer ce message" className="btn"/>
+                    </form>
+                </div>
             </Modal>
         );
     }

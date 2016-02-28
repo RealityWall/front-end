@@ -108,10 +108,13 @@
         margin-bottom: 15px;
     }
 
+    .btn{
+        margin: 0 15px 0 15px;
+    }
+
     .error, .success{
-        display: inline-block;
-        margin-top: 15px;
-        margin-bottom: 10px;
+        display: block;
+        margin: 15px 0;
     }
 
     .error{
@@ -122,9 +125,6 @@
         color: green;
     }
 
-    .btn{
-        margin-top: 15px;
-    }
 
     .loginBtn{
         margin-top: 0 !important;

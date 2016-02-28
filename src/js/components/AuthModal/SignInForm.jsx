@@ -52,7 +52,7 @@ var SignInForm = React.createClass({
                 <input type="password" placeholder="Mot de passe" ref="password" required/>
                 <span className="success">{self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
                 <span className="error">{self.state.error}</span>
-                <br/><input type="submit" className="btn" value="s'inscrire"/>
+                <input type="submit" className="btn" value="s'inscrire"/>
 
 
             </form>
