@@ -19,9 +19,9 @@
 
 .auth-modal-tabs {
 
-    height:70px;
+    height:90px;
     display:table;
-    width: 300px;
+    width: 450px;
     position:relative;
     table-layout: fixed;
 
@@ -41,7 +41,7 @@
         }
 
         > .tab-name {
-            font-size:10px;
+            font-size:14px;
         }
 
     }
@@ -58,7 +58,7 @@
 
 .auth-modal-content {
 
-    width: 300px;
+    width: 450px;
     text-align: center;
 
     a.facebook-btn {
@@ -73,12 +73,17 @@
         text-align: center;
         font-weight: bold;
         padding: 10px 14px;
-        cursor:pointer;
+        cursor: pointer;
     }
 
     input {
-        width:100%!important;
-        margin-top:10px;
+        width: 100% !important;
+        margin-top: 15px;
+    }
+
+    input[type="email"], input[type="text"], input[type="password"], textarea {
+        height: 40px;
+        font-size: 18px;
     }
 
     input[type="submit"] {
@@ -86,8 +91,42 @@
     }
 
     a.forgotten-password {
+        margin-top: 15px;
+        display: block;
         color: $light-blue;
         cursor: pointer;
     }
 
+    form{
+        margin: 0 15px 15px 15px;
+    }
+
+    .divider{
+        width: 100%;
+        height: 1px;
+        background-color: lightgray;
+        margin-bottom: 15px;
+    }
+
+    .error, .success{
+        display: inline-block;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .error{
+        color: red;
+    }
+
+    .success{
+        color: green;
+    }
+
+    .btn{
+        margin-top: 15px;
+    }
+
+    .loginBtn{
+        margin-top: 0 !important;
+    }
 }

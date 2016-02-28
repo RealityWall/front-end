@@ -48,8 +48,8 @@ var AddPostModal = React.createClass({
                 style={Constants.MODAL_STYLE}
             >
                 <form onSubmit={ self._addPost }>
-                    <input type="text" placeholder="Ton message" required ref="content"/>
-                    <input type="submit" className="btn"/>
+                    <textarea required ref="content" placeholder="Ton message"> </textarea><br/>
+                    <input type="submit" value="Envoyer ce message" className="btn"/>
                 </form>
                 {this.state.success ? 'SUCCESS':''}
                 {this.state.error}

@@ -11,7 +11,7 @@ var LoginForm = React.createClass({
         return (
             <div className="login-forms-wrapper">
                 <EmailPasswordForm onPasswordForgottenClick={ self.props.onPasswordForgottenClick } onLogin={ self.props.onLogin }/>
-                <hr/>
+                <div className="divider"></div>
                 <FacebookForm onLogin={ self.props.onLogin }/>
             </div>
         );

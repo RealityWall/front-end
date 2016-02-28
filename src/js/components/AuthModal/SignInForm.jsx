@@ -46,14 +46,15 @@ var SignInForm = React.createClass({
         let self = this;
         return (
             <form onSubmit={ self._handleSignIn }>
-                <input type="text" placeholder="firstname" ref="firstname" required/>
-                <input type="text" placeholder="lastname" ref="lastname" required/>
-                <input type="email" placeholder="email" ref="email" required/>
-                <input type="password" placeholder="password" ref="password" required/>
-                <input type="submit" className="btn"/>
+                <input type="text" placeholder="Nom" ref="lastname" required/>
+                <input type="text" placeholder="Prenom" ref="firstname" required/>
+                <input type="email" placeholder="Adresse mail" ref="email" required/>
+                <input type="password" placeholder="Mot de passe" ref="password" required/>
+                <span className="success">{self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
+                <span className="error">{self.state.error}</span>
+                <br/><input type="submit" className="btn" value="s'inscrire"/>
 
-                {self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}
-                {self.state.error}
+
             </form>
         );
     }

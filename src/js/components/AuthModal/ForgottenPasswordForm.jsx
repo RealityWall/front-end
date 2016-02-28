@@ -42,13 +42,14 @@ const ForgottenPasswordForm = React.createClass({
                 <div><input type="email" placeholder="Votre adresse mail" ref="email" required/></div>
 
                 <div>
+                    <span className="success">{self.state.success ? ('Un email contenant un lien pour mettre à jour votre mot de passe vient de vous etre envoyé.') : null}</span>
+                    <span className="error">{self.state.error}</span>
                     <button className="btn">
-                        <i className="fa fa-envelope-o" /> Envoyez à votre adresse mail
+                        <i className="fa fa-envelope-o" /> Reinitialiser votre mot de passe
                     </button>
                 </div>
 
-                {self.state.success ? ('Un email contenant un lien pour mettre à jour votre mot de passe vient d\'être envoyé.') : null}
-                {self.state.error}
+
             </form>
         );
     }
