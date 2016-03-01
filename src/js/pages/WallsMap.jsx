@@ -47,10 +47,10 @@ module.exports = React.createClass({
                      className={(
                      this.props.user.id ?
                      (this.props.user.roles.indexOf('user') >= 0 ?
-                        (this.props.user.lastPost.id ? 'disabled' : 'animated tada')
+                        (this.props.user.lastPost'animated tada')
                         : 'not-user')
                      : 'disabled')}
-                     onClick={this.props.user.id && !this.props.user.lastPost.id ? self._toggleChoosing : () =>{}}>
+                     onClick={this.props.user.id ? self._toggleChoosing : () =>{}}>
                     <i className="fa fa-pencil fa-2x"/>
                 </div>
                 {
@@ -64,13 +64,6 @@ module.exports = React.createClass({
                     !this.props.user.id ?
                         <div id="message-speech-bubble" className="connect">
                             Connectez vous pour laisser un message !
-                        </div>
-                        : null
-                }
-                {
-                    this.props.user.id && this.props.user.lastPost.id ?
-                        <div id="message-speech-bubble" className="connect">
-                            Vous avez déjà posté aujourd'hui !
                         </div>
                         : null
                 }
