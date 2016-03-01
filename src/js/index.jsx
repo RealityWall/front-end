@@ -13,6 +13,7 @@ import AppContainer from './components/App/App.jsx';
 import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
+import WallPostsById from './pages/WallPosts.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
 import ResetPassword from './pages/ResetPassword.jsx';
@@ -69,7 +70,7 @@ var MainApp = React.createClass({
     },
 
     listPostsByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<div>list posts by wall id {wallId}</div>);
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<WallPostsById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 

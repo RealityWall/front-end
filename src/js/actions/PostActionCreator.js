@@ -9,6 +9,14 @@ export default Flux.createActions({
             content,
             wallId
         };
+    },
+
+    getPostsByWallIdAndDate(wallId, date) {
+        return {
+            actionType: Constants.ActionTypes.GET_POSTS,
+            date,
+            wallId
+        };
     }
 
 });

@@ -4,7 +4,69 @@ import request from 'superagent';
 import eventBuilder from './_eventBuilder';
 import UserStore from './UserStore';
 
-const WallStore = Flux.createStore({
+let walls = [
+    /*
+    {
+        wallId: XXX,
+        days: [
+            {
+                date: XXX,
+                posts: [DATA_FROM SERVER]
+            }
+        ]
+    }
+     */
+];
+
+function addPostsToWall(wallId, date, posts) {
+    let wallFound = false;
+    for (let i = 0; i < walls.length; i++) {
+        if (walls[i].wallId == wallId) {
+            wallFound = true;
+            let dateFound = false;
+            for (let j = 0; j < walls[i].days.length; j++) {
+                if (walls[i].days[j].date == date) {
+                    walls[i].days[j].posts = posts;
+                    dateFound = true;
+                    break;
+                }
+            }
+            if (!dateFound) {
+                walls[i].push({
+                    date,
+                    posts
+                })
+            }
+            break;
+        }
+    }
+    if (!wallFound) {
+        walls.push({
+            wallId,
+            days: [{
+                date,
+                posts
+            }]
+        })
+    }
+}
+
+const PostStore = Flux.createStore({
+
+    getPostsByWallIdAndDate(wallId, date) {
+        for (let i = 0; i < walls.length; i++) {
+            if (walls[i].wallId == wallId) {
+                for (let j = 0; j < walls[i].days.length; j++) {
+                    if (walls[i].days[j].date.isSame(date)) {
+                        return walls[i].days[j].posts;
+                    }
+                }
+                break;
+            }
+        }
+        return [];
+    }
+
 }, function (payload) {
 
     switch (payload.actionType) {
@@ -25,7 +87,25 @@ const WallStore = Flux.createStore({
 
                 });
             break;
+
+        case Constants.ActionTypes.GET_POSTS:
+            // date is already formatted
+            request
+                .get(Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/posts')
+                .query({date: payload.date.toISOString()})
+                .set('Accept', 'application/json')
+                .set('sessionid', UserStore.getSessionId())
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.GET_POSTS, {err, res, status: 'error'}));
+                        return;
+                    }
+                    console.log(res.body);
+                    addPostsToWall(payload.wallId, payload.date, res.body);
+                    PostStore.emitChange();
+                });
+            break;
     }
 });
 
-export default WallStore;
+export default PostStore;
