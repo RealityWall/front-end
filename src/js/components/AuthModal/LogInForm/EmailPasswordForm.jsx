@@ -1,21 +1,15 @@
 import React from 'react';
 import UserActionCreator from '../../../actions/UserActionCreator';
+import EventListenerMixin from '../../../mixins/EventListenerMixin';
+import Constants from '../../../Constants';
 
 var EmailPasswordForm = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('Login', this._onLogin); },
-    componentWillUnmount() { document.removeEventListener('Login', this._onLogin); },
-    _onLogin(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.LOGIN)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
-            this.props.onLogin();
+            //this.props.onLogin();
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
@@ -47,16 +41,16 @@ var EmailPasswordForm = React.createClass({
         let self = this;
         return (
             <form onSubmit={ self._handleLogin }>
-                <div><input type="email" placeholder="Votre adresse mail" ref="email" required/></div>
+                <div><input type="email" placeholder="Adresse mail" ref="email" required/></div>
                 <div><input type="password" placeholder="Mot de passe" ref="password" required/></div>
 
-                <a className="forgotten-password" onClick={ self.props.onPasswordForgottenClick }>Mot de passe oublié ?</a>
-                <div>
-                    <input type="submit" className="btn" value="Connexion" />
-                </div>
+                <span className="success">{self.state.success ? ('SUCCESS') : null}</span>
+                <span className="error">{self.state.error}</span>
 
-                {self.state.success ? 'SUCCESS':''}
-                {self.state.error}
+                <div>
+                    <input type="submit" className="btn loginBtn" value="Connexion" />
+                </div>
+                <a className="forgotten-password" onClick={ self.props.onPasswordForgottenClick }>Mot de passe oublié ?</a>
             </form>
         );
     }

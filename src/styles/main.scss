@@ -1,8 +1,9 @@
 @import "./constants";
 @import "animation";
 @import "./header";
-@import "./login-modal";
+@import "./auth-modal";
 @import "./walls-map";
+@import "./signin";
 @import "settings";
 
 html, body, #app-container, #react-root {
@@ -23,12 +24,12 @@ a, input, textarea, button, select, table, td, tr, th, tbody, thead {
 * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    outline:0px;
+    outline:0;
 }
 
 .btn {
     height: 32px;
-    padding: 0px 20px;
+    padding: 0 20px;
     border-radius: 4px;
     background: $light-blue;
     color: $white;

@@ -13,10 +13,9 @@ import AppContainer from './components/App/App.jsx';
 import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
-import PostOnWall from './pages/AddPost.jsx';
-import SignIn from './pages/SignIn.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 var MainApp = React.createClass({
 
@@ -43,34 +42,39 @@ var MainApp = React.createClass({
         '/': 'home',
         '/walls': 'walls',
         '/walls/:wallId': 'wallById',
-        '/walls/:wallId/post': 'postOnWallById',
-        '/sign-in': 'signIn',
+        '/walls/:wallId/posts': 'listPostsByWallId',
+        '/walls/:wallId/upload': 'uploadImageByWallId',
         '/verify/:token': 'verifyUser',
-        '/settings': 'settings'
+        '/settings': 'settings',
+        '/reset-password/:token': 'resetPassword'
     },
 
     home() { return (<Home />); },
     walls() { return (<Walls user={this.state.user}/>); },
-
-    /* secure with non login */
-    signIn() {
-        if (this.state.user.id) navigate('/');
-        else {
-            if (!this.state.isLoggingIn) {
-                return (<SignIn />);
-            }
-        }
-    },
     wallById(wallId) { return (<WallById wallId={ wallId } />); },
     verifyUser(token) {return <VerifyUser token={token}/>},
 
-    /* secure with login */
-    postOnWallById(wallId) {
-        if (this.state.user.id && !this.state.user.lastPost.id) return (<PostOnWall wallId={ wallId } />);
-        else if (!this.state.isLoggingIn) navigate('/');
+    resetPassword(token) {
+        if (this.state.user.id) navigate('/');
+        else {
+            if (!this.state.isLoggingIn) {
+                return (<ResetPassword token={token}/>);
+            }
+        }
     },
     settings() {
+        // protect with user login
         if (this.state.user.id) return (<Settings user={this.state.user} />);
+        else if (!this.state.isLoggingIn) navigate('/');
+    },
+
+    listPostsByWallId(wallId) {
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<div>list posts by wall id {wallId}</div>);
+        else if (!this.state.isLoggingIn) navigate('/');
+    },
+
+    uploadImageByWallId(wallId) {
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<div>upload image by wall id {wallId}</div>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
@@ -84,7 +88,7 @@ var MainApp = React.createClass({
     },
 
     notFound(path) {
-        return <div class="not-found">Page Not Found: {path}</div>;
+        return <div className="not-found">Page Not Found: {path}</div>;
     }
 
 });

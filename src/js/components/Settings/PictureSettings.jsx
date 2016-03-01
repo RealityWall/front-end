@@ -2,94 +2,22 @@ import React from 'react';
 import UserActionCreator from '../../actions/UserActionCreator';
 import Constants from '../../Constants';
 import Modal from 'react-modal';
+import EventListenerMixin from '../../mixins/EventListenerMixin';
 
 let cropper = null;
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    },
-    overlay: {
-        backgroundColor   : 'rgba(0, 0, 0, 0.45)'
-    }
-};
-function fireEvent(node, eventName) {
-    // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
-    var doc;
-    if (node.ownerDocument) {
-        doc = node.ownerDocument;
-    } else if (node.nodeType == 9){
-        // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
-        doc = node;
-    } else {
-        throw new Error("Invalid node passed to fireEvent: " + node.id);
-    }
-
-    if (node.dispatchEvent) {
-        // Gecko-style approach (now the standard) takes more work
-        var eventClass = "";
-
-        // Different events have different event classes.
-        // If this switch statement can't map an eventName to an eventClass,
-        // the event firing is going to fail.
-        switch (eventName) {
-            case "click": // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
-            case "mousedown":
-            case "mouseup":
-                eventClass = "MouseEvents";
-                break;
-
-            case "focus":
-            case "change":
-            case "blur":
-            case "select":
-                eventClass = "HTMLEvents";
-                break;
-
-            default:
-                throw "fireEvent: Couldn't find an event class for event '" + eventName + "'.";
-                break;
-        }
-        var event = doc.createEvent(eventClass);
-
-        var bubbles = eventName == "change" ? false : true;
-        event.initEvent(eventName, bubbles, true); // All events created as bubbling and cancelable.
-
-        event.synthetic = true; // allow detection of synthetic events
-        // The second parameter says go ahead with the default action
-        node.dispatchEvent(event, true);
-    } else  if (node.fireEvent) {
-        // IE-old school style
-        var event = doc.createEventObject();
-        event.synthetic = true; // allow detection of synthetic events
-        node.fireEvent("on" + eventName, event);
-    }
-};
-
 
 module.exports = React.createClass({
 
     getInitialState() {
         return {
-            error: null,
-            success: false,
             file: null,
             fileUrl: null,
             isCropModalOpened: false
         };
     },
 
-    componentDidMount() {
-        document.addEventListener('UpdatePicture', this._onUpdatePicture);
-    },
-    componentWillUnmount() {
-        document.removeEventListener('UpdatePicture', this._onUpdatePicture);
-    },
-    _onUpdatePicture(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.UPDATE_PICTURE)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
         } else {
@@ -184,7 +112,7 @@ module.exports = React.createClass({
                 <Modal
                     isOpen={this.state.isCropModalOpened}
                     onRequestClose={() => {this.setState({isCropModalOpened: false})}}
-                    style={customStyles}
+                    style={Constants.MODAL_STYLE}
                 >
                     <div style={{height:'300px', width: '300px'}}>
                         <img src={this.state.fileUrl} id="image" alt="profile picture"/>
@@ -198,3 +126,56 @@ module.exports = React.createClass({
     }
 
 });
+
+function fireEvent(node, eventName) {
+    // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
+    var doc;
+    if (node.ownerDocument) {
+        doc = node.ownerDocument;
+    } else if (node.nodeType == 9){
+        // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
+        doc = node;
+    } else {
+        throw new Error("Invalid node passed to fireEvent: " + node.id);
+    }
+
+    if (node.dispatchEvent) {
+        // Gecko-style approach (now the standard) takes more work
+        var eventClass = "";
+
+        // Different events have different event classes.
+        // If this switch statement can't map an eventName to an eventClass,
+        // the event firing is going to fail.
+        switch (eventName) {
+            case "click": // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
+            case "mousedown":
+            case "mouseup":
+                eventClass = "MouseEvents";
+                break;
+
+            case "focus":
+            case "change":
+            case "blur":
+            case "select":
+                eventClass = "HTMLEvents";
+                break;
+
+            default:
+                throw "fireEvent: Couldn't find an event class for event '" + eventName + "'.";
+                break;
+        }
+        var event = doc.createEvent(eventClass);
+
+        var bubbles = eventName == "change" ? false : true;
+        event.initEvent(eventName, bubbles, true); // All events created as bubbling and cancelable.
+
+        event.synthetic = true; // allow detection of synthetic events
+        // The second parameter says go ahead with the default action
+        node.dispatchEvent(event, true);
+    } else  if (node.fireEvent) {
+        // IE-old school style
+        var event = doc.createEventObject();
+        event.synthetic = true; // allow detection of synthetic events
+        node.fireEvent("on" + eventName, event);
+    }
+}

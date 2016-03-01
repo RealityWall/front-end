@@ -1,21 +1,14 @@
 import React from 'react';
 import UserActionCreator from '../../actions/UserActionCreator';
+import Constants from '../../Constants';
+import EventListenerMixin from '../../mixins/EventListenerMixin';
 
 let _emailRegistered = null;
 
-var Header = React.createClass({
+var SignInForm = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('SignIn', this._onSignIn); },
-    componentWillUnmount() { document.removeEventListener('SignIn', this._onSignIn); },
-    _onSignIn(e) {
-        console.log('singin coucou',e);
+    mixins: [EventListenerMixin(Constants.ActionTypes.SIGNIN)],
+    onEvent(e) {
         if (e.status == 'success') {
             _emailRegistered = this.refs.email.value;
             this.setState({success: true, error: null});
@@ -53,18 +46,19 @@ var Header = React.createClass({
         let self = this;
         return (
             <form onSubmit={ self._handleSignIn }>
-                <input type="text" placeholder="firstname" ref="firstname" required/>
-                <input type="text" placeholder="lastname" ref="lastname" required/>
-                <input type="email" placeholder="email" ref="email" required/>
-                <input type="password" placeholder="password" ref="password" required/>
-                <input type="submit" className="btn"/>
+                <input type="text" placeholder="Nom" ref="lastname" required/>
+                <input type="text" placeholder="Prenom" ref="firstname" required/>
+                <input type="email" placeholder="Adresse mail" ref="email" required/>
+                <input type="password" placeholder="Mot de passe" ref="password" required/>
+                <span className="success">{self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
+                <span className="error">{self.state.error}</span>
+                <input type="submit" className="btn" value="s'inscrire"/>
 
-                {self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}
-                {self.state.error}
+
             </form>
         );
     }
 
 });
 
-export default Header;
+export default SignInForm;

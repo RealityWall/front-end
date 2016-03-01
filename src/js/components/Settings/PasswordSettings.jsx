@@ -1,18 +1,12 @@
 import React from 'react';
 import UserActionCreator from '../../actions/UserActionCreator';
+import EventListenerMixin from '../../mixins/EventListenerMixin';
+import Constants from '../../Constants';
 
 module.exports = React.createClass({
 
-    getInitialState() {
-        return {
-            error: null,
-            success: false
-        };
-    },
-
-    componentDidMount() { document.addEventListener('UpdatePassword', this._onUpdatePassword); },
-    componentWillUnmount() { document.removeEventListener('UpdatePassword', this._onUpdatePassword); },
-    _onUpdatePassword(e) {
+    mixins: [EventListenerMixin(Constants.ActionTypes.UPDATE_PASSWORD)],
+    onEvent(e) {
         if (e.status == 'success') {
             this.setState({success: true, error: null});
         } else {
@@ -20,7 +14,10 @@ module.exports = React.createClass({
             switch (e.res.status) {
                 case 400:
                     errorMessage = 'Oops ! Requête male formée';
-                    break; // bad email or bad password
+                    break; // bad password
+                case 403:
+                    errorMessage = 'Oops ! L\'ancien mot de passe que vous avez fourni n\'est pas le bon !';
+                    break;
                 case 500: break; // problem
             }
             this.setState({success: false, error: errorMessage});

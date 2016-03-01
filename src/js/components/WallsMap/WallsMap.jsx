@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 let map = null;
 let markers = [];
@@ -8,7 +9,7 @@ let wallIcon = L.icon({
 
     iconSize:     [41, 54.5], // size of the icon
     iconAnchor:   [20.5, 53], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -54.5] // point from which the popup should open relative to the iconAnchor
 });
 
 let wallSelectedIcon = L.icon({
@@ -51,18 +52,6 @@ module.exports = React.createClass({
         });
     },
 
-    setIcon(type) {
-        if (type == 'selected') {
-            markers.forEach((marker) => {
-                marker.setIcon(wallSelectedIcon);
-            });
-        } else if (type == 'normal') {
-            markers.forEach((marker) => {
-                marker.setIcon(wallIcon);
-            });
-        }
-    },
-
     componentWillReceiveProps (nextProps) {
         let wallsToKeep = [];
         let wallsToAdd = [];
@@ -89,6 +78,16 @@ module.exports = React.createClass({
 
         // draw all the walls
         this._displayWalls(wallsToAdd);
+
+        if (nextProps.isChoosingAWall) {
+            markers.forEach((marker) => {
+                marker.setIcon(wallSelectedIcon);
+            });
+        } else {
+            markers.forEach((marker) => {
+                marker.setIcon(wallIcon);
+            });
+        }
     },
 
     render() {
