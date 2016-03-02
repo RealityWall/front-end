@@ -4,6 +4,9 @@ import ActionCreator from '../actions/PostActionCreator';
 import moment from 'moment';
 import fr from 'moment/locale/fr';
 
+// Components
+import PostItem from '../components/WallsPost/PostItem.jsx';
+
 function _getCurrentDate() {
     let momentDate = moment();
     momentDate.locale('fr');
@@ -18,7 +21,7 @@ module.exports = React.createClass({
 
     mixins: [PostStore.mixin],
     storeDidChange() {
-        this.setState({posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, _getCurrentDate())})
+        this.setState({posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, this.state.currentDate)})
     },
 
     getInitialState() {
@@ -33,26 +36,46 @@ module.exports = React.createClass({
         ActionCreator.getPostsByWallIdAndDate(this.props.wallId, _getCurrentDate());
     },
 
+    changeCurrentDate(isPrev) {
+        if (isPrev) {
+            let nextDate = this.state.currentDate.subtract(1, 'days');
+            this.setState({currentDate: nextDate, posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, nextDate)});
+            ActionCreator.getPostsByWallIdAndDate(this.props.wallId, nextDate);
+        } else {
+            let nextDate = this.state.currentDate.add(1, 'days');
+            this.setState({currentDate: nextDate, posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, nextDate)});
+            ActionCreator.getPostsByWallIdAndDate(this.props.wallId, nextDate);
+        }
+    },
+
+    disableNext() {
+        let currentDate = moment();
+        return this.state.currentDate.year() == currentDate.year()
+            && this.state.currentDate.month() == currentDate.month()
+            && this.state.currentDate.date() == currentDate.date();
+    },
+
     render() {
+        let mustDisableNext = this.disableNext();
         return (
             <div className="wall-posts">
                 <div>
-                    <span><i className="fa fa-chevron-left"/></span>
+                    <span onClick={ () => this.changeCurrentDate(true) }><i className="fa fa-chevron-left"/></span>
                     <span>{this.state.currentDate.format('dddd D MMMM YYYY')}</span>
-                    <span><i className="fa fa-chevron-right"/></span>
+                    <span
+                        className={mustDisableNext ? 'disabled' : ''}
+                        onClick={ () => { if (!mustDisableNext) this.changeCurrentDate(false)} }>
+                        <i className="fa fa-chevron-right"/>
+                    </span>
                 </div>
                 <div className="post-list">
                     {
-                        this.state.posts.map((post, index) => {
-                            console.log(post);
-                            return (
-                                <div className="post-item" key={index}>
-                                    { post.User.firstname }
-                                    { post.User.lastname }
-                                    { post.content }
-                                </div>
-                            );
-                        })
+                        this.state.posts.length == 0 ?
+                            <div className="no-post-item">Désolé, aucun message n'a pu être trouvé sur ce mur à la date indiquée !</div>
+                            :
+                            this.state.posts.map((post, index) => {
+                                return (<PostItem post={post} key={index}/>);
+                            })
                     }
                 </div>
             </div>
