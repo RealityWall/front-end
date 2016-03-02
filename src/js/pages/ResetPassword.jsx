@@ -32,13 +32,15 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
+            <div className="reset-password-tile">
                 <form onSubmit={this._submitResetPassword}>
-                    <input type="password" ref="password" required/>
-                    <input type="submit" className="btn"/>
+                    <h2 className="title">Réinitilisation de votre mot de passe</h2>
+                    <span>nouveau mot de passe : </span><input type="password" ref="password" required/><br/>
+                    <span>confirmer le nouveau mot de passe : </span><input type="password" ref="ICIIIIIIIIIIIIII" required/><br/>
+                    <input type="submit" className="btn" value="Reinitialiser mon mot de passe"/>
+                    <span className="success">{this.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
+                    <span className="error">{this.state.error}</span>
                 </form>
-                {this.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}
-                {this.state.error}
             </div>
         );
     }

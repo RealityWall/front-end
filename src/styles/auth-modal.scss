@@ -130,3 +130,18 @@
         margin-top: 0 !important;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .auth-modal-content{
+        width: 100%;
+    }
+
+    .auth-modal-close {
+        right: -10px;
+        top: -10px;
+    }
+
+    .auth-modal-tabs {
+        width: 100%;
+    }
+}

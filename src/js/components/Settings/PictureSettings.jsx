@@ -114,10 +114,16 @@ module.exports = React.createClass({
                     onRequestClose={() => {this.setState({isCropModalOpened: false})}}
                     style={Constants.MODAL_STYLE}
                 >
-                    <div style={{height:'300px', width: '300px'}}>
-                        <img src={this.state.fileUrl} id="image" alt="profile picture"/>
+                    <div className="crop-picture-box">
+                        <div className="tip">
+                            <div className="icon"><i className="fa fa-lightbulb-o fa-2x"></i></div>
+                            <div className="text">Faites glisser et redimensionnez le carré central afin de définir votre photo de profil</div>
+                        </div>
+                        <div style={{height:'300px', width: '300px'}}>
+                            <img src={this.state.fileUrl} id="image" alt="profile picture"/>
+                        </div>
+                        <button className="btn" onClick={this._handleSubmit}>Valider ma photo</button>
                     </div>
-                    <button className="btn" onClick={this._handleSubmit}>Valider</button>
                 </Modal>
 
             </div>

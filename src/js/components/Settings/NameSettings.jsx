@@ -41,9 +41,9 @@ module.exports = React.createClass({
                 <form onSubmit={this._handleSubmit}>
                     <input type="text" ref="firstname" placeholder="Votre prénom" defaultValue={this.props.user.firstname} required/>
                     <input type="text" ref="lastname" placeholder="Votre nom" defaultValue={this.props.user.lastname} required/>
+                    <span className="success">{this.state.success ? ('Vos informations ont bien été modifiées') : null}</span>
+                    <span className="error">{this.state.error}</span>
                     <input type="submit" className="btn" value="Mettre à jour"/>
-                    {this.state.success ? 'SUCESS' : null}
-                    {this.state.error}
                 </form>
             </div>
         );
