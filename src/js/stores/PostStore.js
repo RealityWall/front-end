@@ -32,7 +32,7 @@ function addPostsToWall(wallId, date, posts) {
                 }
             }
             if (!dateFound) {
-                walls[i].push({
+                walls[i].days.push({
                     date,
                     posts
                 })
@@ -49,6 +49,7 @@ function addPostsToWall(wallId, date, posts) {
             }]
         })
     }
+    console.log(walls);
 }
 
 const PostStore = Flux.createStore({
