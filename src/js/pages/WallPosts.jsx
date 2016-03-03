@@ -60,14 +60,14 @@ module.exports = React.createClass({
         let mustDisableNext = this.disableNext();
         return (
             <div className="wall-posts">
-                <div>
-                    <span onClick={ () => this.changeCurrentDate(true) }><i className="fa fa-chevron-left"/></span>
-                    <span>{this.state.currentDate.format('dddd D MMMM YYYY')}</span>
-                    <span
-                        className={mustDisableNext ? 'disabled' : ''}
+                <div className="date-picker">
+                    <div className="left-arrow fa-2x" onClick={ () => this.changeCurrentDate(true) }><i className="fa fa-chevron-left"/></div>
+                    <div className="date">{this.state.currentDate.format('dddd D MMMM YYYY')}</div>
+                    <div
+                        className={mustDisableNext ? 'disabled right-arrow' : 'right-arrow'}
                         onClick={ () => { if (!mustDisableNext) this.changeCurrentDate(false)} }>
-                        <i className="fa fa-chevron-right"/>
-                    </span>
+                        <i className="fa fa-chevron-right fa-2x"/>
+                    </div>
                 </div>
                 <div className="post-list">
                     {

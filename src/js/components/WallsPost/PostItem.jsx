@@ -11,7 +11,6 @@ export default React.createClass({
     render() {
         return (
             <div className="post-item">
-                <button onClick={this._hidePost}>&times;</button>
                 <img src={
                 this.props.post.User.imagePath
                     ? Constants.SERVER_IMAGES_URL + '/users/' + this.props.post.User.imagePath
@@ -28,6 +27,7 @@ export default React.createClass({
                     </div>
                     <div className="content">{ this.props.post.content }</div>
                 </div>
+                <div className="close"><i className="fa fa-times" onClick={this._hidePost}></i></div>
             </div>
         );
     }
