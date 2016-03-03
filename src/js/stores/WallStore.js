@@ -1,6 +1,8 @@
 import Constants from '../Constants';
 import Flux from '../Flux';
 import request from 'superagent';
+import UserStore from './UserStore';
+import eventBuilder from './_eventBuilder';
 
 let _walls = [];
 
@@ -21,6 +23,23 @@ const WallStore = Flux.createStore({
                     if (err || !res.ok) _walls = [];
                     else _walls = res.body;
                     WallStore.emitChange();
+                });
+            break;
+
+        case Constants.ActionTypes.UPLOAD_WALL_PICTURE:
+            request
+                .post(Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/pictures')
+                .set('sessionid', UserStore.getSessionId())
+                .field('date', payload.date.toISOString())
+                .attach('picture', payload.file)
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        console.log('error');
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPLOAD_WALL_PICTURE, {err, res, status: 'error'}));
+                        return;
+                    }
+                    console.log('success');
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.UPLOAD_WALL_PICTURE, {status: 'success'}));
                 });
             break;
     }
