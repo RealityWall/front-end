@@ -56,6 +56,7 @@ module.exports = React.createClass({
     },
 
     render() {
+        console.log(this.state.posts);
         let mustDisableNext = this.disableNext();
         return (
             <div className="wall-posts">

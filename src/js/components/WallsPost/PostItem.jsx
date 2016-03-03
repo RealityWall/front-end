@@ -15,10 +15,13 @@ export default React.createClass({
                         : 'img/no_image_path.png'
                 )
             } alt={ this.props.post.User.firstname + " " + this.props.post.User.lastname } height="50"/>
-                { this.props.post.User.firstname }
-                { this.props.post.User.lastname }
-                { this.props.post.content }
-                <TimeAgo time={this.props.post.createdAt}/>
+                <div className="content">
+                    <div>
+                        <div className="name">{ this.props.post.User.lastname } { this.props.post.User.firstname }</div>
+                        <div className="time"><TimeAgo time={this.props.post.createdAt}/></div>
+                    </div>
+                    <div className="content">{ this.props.post.content }</div>
+                </div>
             </div>
         );
     }

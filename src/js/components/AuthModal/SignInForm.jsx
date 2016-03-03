@@ -20,10 +20,10 @@ var SignInForm = React.createClass({
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
                 case 400:
-                    errorMessage = 'Oops ! Requête male formée';
+                    errorMessage = 'Oops ! Requête mal formée';
                     break; // bad email or bad password
                 case 409:
-                    errorMessage = 'Oops ! Cette addresse mail est déjà utilisé.';
+                    errorMessage = 'Oops ! Cette addresse mail est déjà utilisée.';
                     break; // bad email or bad password
                 case 500: break; // problem
             }
