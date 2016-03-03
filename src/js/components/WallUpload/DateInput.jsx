@@ -18,14 +18,18 @@ module.exports = React.createClass({
                 let realDate = moment(dateInput, 'DD-MM-YYYY');
                 if (!realDate.isValid()) {
                     this.setState({error: 'Veuillez entrer une date valide'});
+                    return false;
                 } else {
                     this.setState({error: null});
+                    return true;
                 }
             } else {
                 this.setState({error: 'Veuillez entrer une date au format jj-mm-aaaa'});
+                return false;
             }
         } else {
             this.setState({error: null});
+            return false;
         }
     },
 
@@ -34,10 +38,15 @@ module.exports = React.createClass({
         return null;
     },
 
+    _setTodayValue() {
+        this.refs.dateInput.value = moment().format('DD-MM-YYYY');
+    },
+
     render() {
         return (
             <div>
-                <input type="text" onChange={this._validateInput} placeholder="jj-mm-aaaa" ref="dateInput" maxLength="10" required/>
+                <i className="fa fa-calendar"/><input type="text" onChange={this._validateInput} placeholder="jj-mm-aaaa" ref="dateInput" maxLength="10" required/>
+                <a className="btn transparent" onClick={this._setTodayValue}>today</a>
                 { this.state.error ? <div>{this.state.error}</div> : null }
             </div>
         );
