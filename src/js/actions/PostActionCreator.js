@@ -17,6 +17,14 @@ export default Flux.createActions({
             date,
             wallId
         };
+    },
+
+    hidePost(wallId, postId) {
+        return {
+            actionType: Constants.ActionTypes.HIDE_POST,
+            postId,
+            wallId
+        };
     }
 
 });

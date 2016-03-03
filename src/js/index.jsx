@@ -13,6 +13,7 @@ import AppContainer from './components/App/App.jsx';
 import Home from './pages/Home.jsx';
 import Walls from './pages/WallsMap.jsx';
 import WallById from './pages/WallGallery.jsx';
+import WallUploadById from './pages/WallUpload.jsx';
 import WallPostsById from './pages/WallPosts.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
@@ -75,7 +76,7 @@ var MainApp = React.createClass({
     },
 
     uploadImageByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<div>upload image by wall id {wallId}</div>);
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<WallUploadById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 

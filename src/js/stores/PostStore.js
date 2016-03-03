@@ -52,6 +52,22 @@ function addPostsToWall(wallId, date, posts) {
     console.log(walls);
 }
 
+function removePostFromWall(wallId, postId) {
+    for (let i = 0; i < walls.length; i++) {
+        if (walls[i].wallId == wallId) {
+            for (let j = 0; j < walls[i].days.length; j++) {
+                for (let k = 0; k < walls[i].days[j].posts.length; k++) {
+                    if (walls[i].days[j].posts[k].id == postId) {
+                        walls[i].days[j].posts.splice(k, 1);
+                        return;
+                    }
+                }
+            }
+            break;
+        }
+    }
+}
+
 const PostStore = Flux.createStore({
 
     getPostsByWallIdAndDate(wallId, date) {
@@ -103,6 +119,21 @@ const PostStore = Flux.createStore({
                     }
                     console.log(res.body);
                     addPostsToWall(payload.wallId, payload.date, res.body);
+                    PostStore.emitChange();
+                });
+            break;
+
+        case Constants.ActionTypes.HIDE_POST:
+            request
+                .put(Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/posts/' + payload.postId)
+                .set('Accept', 'application/json')
+                .set('sessionid', UserStore.getSessionId())
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.HIDE_POST, {err, res, status: 'error'}));
+                        return;
+                    }
+                    removePostFromWall(payload.wallId, payload.postId);
                     PostStore.emitChange();
                 });
             break;
