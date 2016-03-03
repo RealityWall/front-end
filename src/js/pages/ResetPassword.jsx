@@ -27,7 +27,13 @@ module.exports = React.createClass({
 
     _submitResetPassword(e) {
         e.preventDefault();
-        ActionCreator.resetPassword(this.props.token, this.refs.password.value);
+        if (this.refs.password.value != this.refs.passwordConfirmation.value) {
+            this.setState({error: 'Oops ! Les deux mots de passe ne sont pas identiques !'});
+        } else {
+            this.setState({error: null});
+            ActionCreator.resetPassword(this.props.token, this.refs.password.value);
+        }
+
     },
 
     render() {
@@ -36,9 +42,9 @@ module.exports = React.createClass({
                 <form onSubmit={this._submitResetPassword}>
                     <h2 className="title">Réinitilisation de votre mot de passe</h2>
                     <span>nouveau mot de passe : </span><input type="password" ref="password" required/><br/>
-                    <span>confirmer le nouveau mot de passe : </span><input type="password" ref="ICIIIIIIIIIIIIII" required/><br/>
+                    <span>confirmer le nouveau mot de passe : </span><input type="password" ref="passwordConfirmation" required/><br/>
                     <input type="submit" className="btn" value="Reinitialiser mon mot de passe"/>
-                    <span className="success">{this.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
+                    <span className="success">{this.state.success ? ('Mot de passe modifié avec succès') : null}</span>
                     <span className="error">{this.state.error}</span>
                 </form>
             </div>

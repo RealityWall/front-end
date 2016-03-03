@@ -26,7 +26,8 @@ export default {
         // App
         GET_WALLS: null,
         ADD_POST: null,
-        GET_POSTS: null
+        GET_POSTS: null,
+        HIDE_POST: null
     }),
 
     MODAL_STYLE: {
