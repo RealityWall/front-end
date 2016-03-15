@@ -24,10 +24,10 @@ export default React.createClass({
                     <div>
                         <div className="name">{ this.props.post.User.lastname } { this.props.post.User.firstname }</div>
                         <div className="time"><TimeAgo time={this.props.post.createdAt}/></div>
+                        <div className="close"><i className="fa fa-times" onClick={this._hidePost}></i></div>
                     </div>
-                    <div className="content">{ this.props.post.content }</div>
+                    <div className="text">{ this.props.post.content }</div>
                 </div>
-                <div className="close"><i className="fa fa-times" onClick={this._hidePost}></i></div>
             </div>
         );
     }

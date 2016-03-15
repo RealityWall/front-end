@@ -61,7 +61,7 @@ module.exports = React.createClass({
         return (
             <div className="wall-posts">
                 <div className="date-picker">
-                    <div className="left-arrow fa-2x" onClick={ () => this.changeCurrentDate(true) }><i className="fa fa-chevron-left"/></div>
+                    <div className="left-arrow" onClick={ () => this.changeCurrentDate(true) }><i className="fa fa-chevron-left fa-2x"/></div>
                     <div className="date">{this.state.currentDate.format('dddd D MMMM YYYY')}</div>
                     <div
                         className={mustDisableNext ? 'disabled right-arrow' : 'right-arrow'}
