@@ -20,8 +20,13 @@ module.exports = React.createClass({
                     this.setState({error: 'Veuillez entrer une date valide'});
                     return false;
                 } else {
-                    this.setState({error: null});
-                    return true;
+                    if (realDate.isAfter(moment())) {
+                        this.setState({error: 'Veuillez ne pas entrer une date du futur'});
+                        return false;
+                    } else {
+                        this.setState({error: null});
+                        return true;
+                    }
                 }
             } else {
                 this.setState({error: 'Veuillez entrer une date au format jj-mm-aaaa'});

@@ -50,7 +50,6 @@ var EmailPasswordForm = React.createClass({
                 <div>
                     <input type="submit" className="btn loginBtn" value="Connexion" />
                 </div>
-                <a className="forgotten-password" onClick={ self.props.onPasswordForgottenClick }>Mot de passe oublié ?</a>
             </form>
         );
     }
