@@ -21,7 +21,8 @@
 
     height:90px;
     display:table;
-    width: 450px;
+    width:100%;
+    max-width: 350px;
     position:relative;
     table-layout: fixed;
 
@@ -40,9 +41,17 @@
             font-size:40px;
         }
 
-        > .tab-name {
-            font-size:14px;
+        @media (min-width: 370px) {
+            > .tab-name {
+                font-size:12px;
+            }
         }
+        @media (max-width: 370px) {
+            > .tab-name {
+                font-size:11px;
+            }
+        }
+
 
     }
 
@@ -58,7 +67,8 @@
 
 .auth-modal-content {
 
-    width: 450px;
+    width:100%;
+    max-width: 350px;
     text-align: center;
 
     a.facebook-btn {
