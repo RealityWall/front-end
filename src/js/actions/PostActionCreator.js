@@ -25,6 +25,13 @@ export default Flux.createActions({
             postId,
             wallId
         };
+    },
+
+    downloadPosts(wallId) {
+        return {
+            actionType: Constants.ActionTypes.DOWNLOAD_POSTS,
+            wallId
+        };
     }
 
 });

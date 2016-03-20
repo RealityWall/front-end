@@ -3,6 +3,7 @@ import PostStore from '../stores/PostStore';
 import ActionCreator from '../actions/PostActionCreator';
 import moment from 'moment';
 import fr from 'moment/locale/fr';
+import Constants from '../Constants';
 
 // Components
 import PostItem from '../components/WallsPost/PostItem.jsx';
@@ -56,7 +57,6 @@ module.exports = React.createClass({
     },
 
     render() {
-        console.log(this.state.posts);
         let mustDisableNext = this.disableNext();
         return (
             <div className="wall-posts">
@@ -69,6 +69,11 @@ module.exports = React.createClass({
                         <i className="fa fa-chevron-right fa-2x"/>
                     </div>
                 </div>
+                <br/>
+                <div>
+                    <a className="btn transparent" onClick={() => ActionCreator.downloadPosts(this.props.wallId)}><i className="fa fa-upload"/>download</a>
+                </div>
+                <br/>
                 <div className="post-list">
                     {
                         this.state.posts.length == 0 ?

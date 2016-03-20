@@ -27,7 +27,7 @@ export default React.createClass({
                     </div>
                     <div className="content">{ this.props.post.content }</div>
                 </div>
-                <div className="close"><i className="fa fa-times" onClick={this._hidePost}></i></div>
+                <div className="close"><i className="fa fa-times" onClick={this._hidePost}/></div>
             </div>
         );
     }

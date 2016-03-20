@@ -28,7 +28,8 @@ export default {
         UPLOAD_WALL_PICTURE: null,
         ADD_POST: null,
         GET_POSTS: null,
-        HIDE_POST: null
+        HIDE_POST: null,
+        DOWNLOAD_POSTS: null
     }),
 
     MODAL_STYLE: {

@@ -137,6 +137,34 @@ const PostStore = Flux.createStore({
                     PostStore.emitChange();
                 });
             break;
+
+        case Constants.ActionTypes.DOWNLOAD_POSTS:
+            request
+                .post(Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/posts/download')
+                .set('Accept', 'application/json')
+                .set('sessionid', UserStore.getSessionId())
+                .end( (err, res) => {
+                    if (err || !res.ok) {
+                        console.log('error');
+                        //document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_POSTS, {err, res, status: 'error'}));
+                        return;
+                    }
+                    //removePostFromWall(payload.wallId, payload.postId);
+                    //PostStore.emitChange();
+                    let downloadUrl = Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/posts/download/' + res.body;
+                    var a = document.createElement("a");
+                    // safari doesn't support this yet
+                    if (typeof a.download === 'undefined') {
+                        window.location = downloadUrl;
+                    } else {
+                        a.href = downloadUrl;
+                        a.download = downloadUrl;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    }
+                });
+            break;
     }
 });
 
