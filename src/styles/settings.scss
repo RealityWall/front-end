@@ -59,6 +59,7 @@
             }
         }
     }
+
     .settings-tile {
         position: relative;
         margin: auto;
@@ -156,6 +157,10 @@
         .picture-form {
             input[type="submit"] { margin-top: 10px;}
         }
+    }
+
+    .settings-tile:nth-child(3){
+        margin-bottom: 30px !important;
     }
 
     .delete-avatar {

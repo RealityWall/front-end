@@ -157,25 +157,49 @@
         > a:hover {
             background: $light-blue-over;
         }
-        > a:last-child {
-            border: none;
-        }
 
-        >a:first-child{
+        > a:first-child{
             margin-left: 0;
         }
     }
 
     .choosing-modal-cancel {
+        background-color: $white;
         position:absolute;
         width: 100%;
         text-align: center;
+        padding-bottom: 10px;
 
         .btn {
             background: $action-color;
         }
         .btn:hover {
             background: $action-color;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .choosing-modal {
+        width: 100vw;
+        height: initial;
+        text-align: center;
+
+        .choosing-modal-choices {
+            width: 100%;
+            margin: 0;
+            max-height: none;
+
+            a {
+                padding: 4px;
+                margin: 10px auto;
+                width: 95%;
+                height: 60px;
+            }
+
+            a:nth-child(2){
+                margin: 0;
+            }
         }
     }
 }
