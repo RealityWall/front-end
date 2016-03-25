@@ -84,6 +84,7 @@ module.exports = React.createClass({
                 <div className="picture-form">
 
                     <input type="file" ref="picture" placeholder="Votre photo de profil" required
+                           accept="image/*"
                            onChange={this._handleFile}/>
                     <div className="profile-picture">
                         <img src={

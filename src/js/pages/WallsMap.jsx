@@ -27,6 +27,17 @@ module.exports = React.createClass({
 
     componentDidMount() {
         WallActionCreator.getWalls();
+        document.addEventListener('keyup', this._onKeyUp, false);
+    },
+
+    componentWillUnmout() {
+        document.removeEventListener('keyup', this._onKeyUp, false);
+    },
+
+    _onKeyUp(e) {
+        if (e.which === 27 && this.state.isChoosingAWall) {
+            this.setState({isChoosingAWall: false});
+        }
     },
 
     componentWillReceiveProps(nextProps) {

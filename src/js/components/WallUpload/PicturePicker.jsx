@@ -29,7 +29,7 @@ export default React.createClass({
     render() {
         return (
             <div>
-                <input type="file" ref="picture" placeholder="La photo du mur à mettre en ligne" required
+                <input type="file" ref="picture" accept="image/*" placeholder="La photo du mur à mettre en ligne" required
                        onChange={this._handleFile}/>
 
                 {
