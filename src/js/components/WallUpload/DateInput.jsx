@@ -49,10 +49,10 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
-                <i className="fa fa-calendar"/><input type="text" onChange={this._validateInput} placeholder="jj-mm-aaaa" ref="dateInput" maxLength="10" required/>
-                <a className="btn transparent" onClick={this._setTodayValue}>today</a>
-                { this.state.error ? <div>{this.state.error}</div> : null }
+            <div className="date-input">
+                <i className="fa fa-calendar"/> date : <input type="text" onChange={this._validateInput} placeholder="jj-mm-aaaa" ref="dateInput" maxLength="10" required/>
+                <a className="btn transparent" onClick={this._setTodayValue}>aujourd'hui</a>
+                { this.state.error ? <div className="error">{this.state.error}</div> : null }
             </div>
         );
     }

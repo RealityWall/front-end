@@ -1,0 +1,33 @@
+.uploadImagePage {
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    background: #FFF;
+    margin-top: 30px;
+    box-shadow: 0 0 10px #bebebe;
+    width: calc(50%);
+    text-align: center;
+
+    > span {
+        font-size: 18px;
+    }
+
+    div{
+        text-align: left;
+        margin: 15px 0;
+    }
+
+    .date-input{
+
+        a{
+            margin-left: 10px;
+        }
+    }
+
+    .error{
+        color: red;
+    }
+}
+
+
+

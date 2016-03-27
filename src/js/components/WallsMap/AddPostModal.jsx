@@ -9,6 +9,16 @@ import Modal from 'react-modal';
 
 var AddPostModal = React.createClass({
 
+    getInitialState() {
+        return {
+            index: 0
+        }
+    },
+
+    closeModal() {
+        this.setState({index: -1});
+    },
+
     mixins: [EventListenerMixin(Constants.ActionTypes.ADD_POST)],
     onEvent(e) {
         if (e.status == 'success') {
@@ -48,6 +58,7 @@ var AddPostModal = React.createClass({
                 style={Constants.MODAL_STYLE}
             >
                 <div className="postModal">
+                    <div className="auth-modal-close" onClick={() => self.props.onRequestClose(true)}>&times;</div>
                     <div className="title">poster un message</div>
                     <form onSubmit={ self._addPost }>
                         <textarea required ref="content" placeholder="Ton message"/><br/>

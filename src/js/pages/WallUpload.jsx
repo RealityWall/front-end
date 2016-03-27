@@ -13,11 +13,12 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
+            <div className="uploadImagePage">
+                <span><i className="fa fa-picture-o"></i> Choisissez l'image à mettre en ligne</span>
                 <form onSubmit={this._uploadWallPicture}>
                     <DateInput ref="dateInput"/>
                     <PicturePicker ref="picturePicker"/>
-                    <input type="submit" className="btn"/>
+                    <input type="submit" className="btn" value="valider"/>
                 </form>
             </div>
         );
