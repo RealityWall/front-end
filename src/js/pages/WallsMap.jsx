@@ -55,7 +55,7 @@ module.exports = React.createClass({
         else {
             if (this.props.user && this.props.user.roles && this.props.user.roles.indexOf('admin') >= 0) {
                 // show possibilities
-                this.setState({ wallIdToChooseAction: id});
+                this.setState({wallIdToChooseAction: id});
             } else {
                 navigate('/walls/' + id);
             }
@@ -74,6 +74,17 @@ module.exports = React.createClass({
         let self = this;
         return (
             <div className={"walls" + (self.state.isChoosingAWall ? " pencil-cursor": "")}>
+                <div id="tooltip">
+                    <div className="icon">
+                        <i className="fa fa-lightbulb-o fa-3x"> </i>
+                    </div>
+                    <div className="text">
+                        <span className="saviez-vous">Le saviez vous ? </span>Vous pouvez cliquer sur un marqueur pour afficher la gallerie d'un mur
+                    </div>
+                    <div className="valid">
+                        OK
+                    </div>
+                </div>
                 <WallsMap
                     walls={self.state.walls}
                     user={self.props.user}

@@ -64,6 +64,7 @@
         -moz-border-radius: 4px;
         border-radius: 4px;
     }
+
     #message-speech-bubble:after {
         z-index:2;
         content: '';
@@ -73,9 +74,113 @@
         border-color: transparent $dark-blue;
         display: block;
         width: 0;
-        z-index: 1;
         right: -5px;
         top: 20px;
+    }
+
+    #tooltip{
+        z-index: 2;
+        position: relative;
+        width: 420px;
+        color: #FFF;
+        font-size: 14px;
+        height: 60px;
+        text-transform: uppercase;
+        line-height: 25px;
+        text-align: center;
+        background: #2d3e51;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        margin: 15px auto;
+        border-top: 2px solid #4998dc;
+        border-bottom: 2px solid #4998dc;
+
+        .icon, .text, .valid{
+            display: inline-block;
+            padding: 5px;
+            top: -2px;
+        }
+
+        .icon{
+            width: 50px;
+            height: 60px;
+            position: absolute;
+            color: #4998dc;
+            background: #FFF;
+            border: 2px solid #4998dc;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            border-right: none;
+
+            i{
+                font-size: 50px;
+            }
+        }
+
+        .text{
+            width: calc(100% - 30px);
+            margin-left: 30px;
+        }
+
+        .valid{
+            width: 50px;
+            height: 60px;
+            line-height: 47px;
+            position: absolute;
+            right: -30px;
+            color: #4998dc;
+            background: #FFF;
+            font-size: 24px;
+            font-weight: 500;
+            border: 2px solid #4998dc;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+            border-left: none;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 540px){
+        #tooltip{
+            width: 210px;
+            font-size: 12px;
+            height: 60px;
+            line-height: 16px;
+            border: 2px solid #4998dc;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+
+            .text, .valid{
+                padding: 5px;
+                top: -2px;
+            }
+
+            .icon{
+                display: none !important;
+            }
+
+            .text{
+                margin-left: 0 !important;
+                padding: 5px 0 !important;
+
+                .saviez-vous{
+                    display: none !important;
+                }
+            }
+
+            .valid{
+                position: relative;
+                width: 210px;
+                margin-left: -60px;
+                height: 25px;
+                line-height: 14px;
+                font-size: 16px;
+                border: 2px solid #4998dc;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
     }
 }
 
