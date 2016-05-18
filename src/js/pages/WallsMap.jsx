@@ -7,6 +7,7 @@ import { navigate } from 'react-mini-router';
 import WallsMap from '../components/WallsMap/WallsMap.jsx';
 import AddPostModal from '../components/WallsMap/AddPostModal.jsx';
 import ChooseActionModal from '../components/WallsMap/ChooseActionModal.jsx';
+import Tooltip from '../components/WallsMap/Tooltip.jsx';
 
 module.exports = React.createClass({
 
@@ -74,17 +75,9 @@ module.exports = React.createClass({
         let self = this;
         return (
             <div className={"walls" + (self.state.isChoosingAWall ? " pencil-cursor": "")}>
-                <div id="tooltip">
-                    <div className="icon">
-                        <i className="fa fa-lightbulb-o fa-3x"> </i>
-                    </div>
-                    <div className="text">
-                        <span className="saviez-vous">Le saviez vous ? </span>Vous pouvez cliquer sur un marqueur pour afficher la gallerie d'un mur
-                    </div>
-                    <div className="valid">
-                        OK
-                    </div>
-                </div>
+
+                <Tooltip />
+
                 <WallsMap
                     walls={self.state.walls}
                     user={self.props.user}
