@@ -1,0 +1,56 @@
+.wall-gallery {
+
+    .pictures-container {
+
+        .picture-item {
+            position: relative;
+            height: 200px;
+            margin-top: 16px;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            background-position: center center !important;
+            margin-right: 8px;
+            margin-left: 8px;
+            display:inline-block;
+            cursor:pointer;
+            box-shadow: 0px 0px 10px #bebebe;
+
+            .date {
+                position: absolute;
+                bottom: 0px;
+                padding: 16px;
+                width: 100%;
+                text-transform: capitalize;
+                background: rgba(0,0,0,0.7);
+                color: white;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .picture-item {
+                width: calc(100% - 16px);
+            }
+        }
+
+        @media (min-width: 500px) and (max-width: 800px) {
+            .picture-item {
+                width: calc(50% - 16px);
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 1100px){
+            .picture-item {
+                width: calc(33.3333% - 16px);
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .picture-item {
+                width: calc(25% - 16px);
+            }
+        }
+
+    }
+
+}

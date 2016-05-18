@@ -26,6 +26,14 @@ export default React.createClass({
         return this.state.file;
     },
 
+    reset() {
+        this.setState({
+            file: null,
+            fileUrl: null
+        });
+        this.refs.picture.value = null;
+    },
+
     render() {
         return (
             <div>

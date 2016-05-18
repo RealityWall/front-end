@@ -25,6 +25,7 @@ export default {
 
         // App
         GET_WALLS: null,
+        GET_WALL_BY_ID: null,
         UPLOAD_WALL_PICTURE: null,
         ADD_POST: null,
         GET_POSTS: null,

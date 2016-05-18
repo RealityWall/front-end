@@ -38,6 +38,11 @@ module.exports = React.createClass({
         }
     },
 
+    reset() {
+        this.refs.dateInput.value = '';
+        this.setState({error: null});
+    },
+
     getValue() {
         if (this._validateInput()) return moment(this.refs.dateInput.value, 'DD-MM-YYYY');
         return null;

@@ -9,6 +9,13 @@ export default Flux.createActions({
         };
     },
 
+    getWallById(wallId) {
+        return {
+            actionType: Constants.ActionTypes.GET_WALL_BY_ID,
+            wallId
+        };
+    },
+
     uploadWallPicture(wallId, date, file) {
         return {
             actionType: Constants.ActionTypes.UPLOAD_WALL_PICTURE,
