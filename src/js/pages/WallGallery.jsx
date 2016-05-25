@@ -4,6 +4,7 @@ import ActionCreator from '../actions/WallActionCreator';
 import EventListener from '../mixins/EventListenerMixin';
 import Constants from '../Constants';
 import PictureItem from '../components/WallGallery/PictureItem.jsx';
+import PhotoSwipe from '../components/WallGallery/PhotoSwipe.jsx';
 
 let lastWallId = null;
 
@@ -56,6 +57,10 @@ export default React.createClass({
         lastWallId = null;
     },
 
+    _openGallery(index) {
+        this.refs.photoswipe.open(index);  
+    },
+
     render() {
         return (
             <div className="wall-gallery">
@@ -79,12 +84,13 @@ export default React.createClass({
                     {
                         this.state.wall.Pictures.map((picture, index) => {
                             return (
-                                <PictureItem key={index} picture={picture}/>
+                                <PictureItem key={index} picture={picture} onClick={() => this._openGallery(index)}/>
                             )
                         })
                     }
                 </div>
                 {/* TODO : Display message when 0 Picture */}
+                <PhotoSwipe pictures={this.state.wall.Pictures} ref="photoswipe" />
                 {/* TODO : Gallery on Click */}
             </div>
         );

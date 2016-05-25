@@ -53,7 +53,15 @@ var MainApp = React.createClass({
 
     home() { return (<Home />); },
     walls() { return (<Walls user={this.state.user}/>); },
-    wallById(wallId) { return (<WallById wallId={ wallId } />); },
+    wallById(wallId) {
+        let wallIdSplit = wallId.split('&');
+        if (wallIdSplit.length === 1) {
+            return (<WallById wallId={ wallId } />);
+        } else {
+            return (<WallById wallId={ wallIdSplit[0] } />);
+        }
+
+    },
     verifyUser(token) {return <VerifyUser token={token}/>},
 
     resetPassword(token) {
