@@ -8,6 +8,7 @@ import WallsMap from '../components/WallsMap/WallsMap.jsx';
 import AddPostModal from '../components/WallsMap/AddPostModal.jsx';
 import ChooseActionModal from '../components/WallsMap/ChooseActionModal.jsx';
 import Tooltip from '../components/WallsMap/Tooltip.jsx';
+import AnimatedLoading from '../components/Loading/AnimatedLoading.jsx';
 
 module.exports = React.createClass({
 
@@ -23,11 +24,12 @@ module.exports = React.createClass({
     },
 
     storeDidChange() {
-        this.setState({walls: WallStore.getWalls()});
+        this.setState({walls: WallStore.getWalls(), loading: false});
     },
 
     componentDidMount() {
         WallActionCreator.getWalls();
+        if (this.state.walls === 0) this.setState({loading: true});
         document.addEventListener('keyup', this._onKeyUp, false);
     },
 
@@ -110,6 +112,8 @@ module.exports = React.createClass({
                     wallId={self.state.wallIdToChooseAction}
                 />
 
+                { this.renderLoading() }
+
             </div>
 
         );
@@ -144,6 +148,14 @@ module.exports = React.createClass({
             );
         }
         return null;
+    },
+
+    renderLoading() {
+        return this.state.loading ?
+            <div id="general-loading">
+                <AnimatedLoading />
+            </div>
+            : null
     }
 
 });

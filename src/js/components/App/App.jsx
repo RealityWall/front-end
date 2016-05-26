@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Header from './Header.jsx';
-import Loading from '../Loading/Loading.jsx';
+import AnimatedLoading from '../Loading/AnimatedLoading.jsx';
 
 var App = React.createClass({
 
@@ -43,11 +43,7 @@ var App = React.createClass({
                 {
                     this.props.loading ?
                         <div id="general-loading">
-                            <div className="loading-container">
-                                <Loading width="200"/>
-                                <img src="img/logo.png" alt="logo" height="120" className="logo"/>
-                                <div className="text">Chargement</div>
-                            </div>
+                            <AnimatedLoading />
                         </div>
                         : null
                 }

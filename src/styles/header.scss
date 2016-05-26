@@ -5,16 +5,16 @@
     height: 50px;
     box-shadow: 0px 0px 10px #bebebe;
     background: $white;
-    line-height:50px;
+    line-height: 50px;
     position: relative;
-    z-index:1;
+    z-index: 1;
 
     .header-content {
-        margin:auto;
+        margin: auto;
         padding-right: $header-padding;
         padding-left: $header-padding;
         text-align: right;
-        height:100%;
+        height: 100%;
         position: relative;
 
         #login {
@@ -27,13 +27,13 @@
             height: 34px;
         }
         @media (max-width: 500px) {
-            > a:first-child {
-                display:none;
+            > a:nth-child(2) {
+                display: none;
             }
         }
         @media (min-width: 500px) {
-            > a:nth-child(2) {
-                display:none;
+            > a:nth-child(3) {
+                display: none;
             }
         }
 
@@ -46,42 +46,42 @@
 
         #user-menu {
 
-            float:right;
-            position:relative;
+            float: right;
+            position: relative;
 
             > img {
-                float:left;
+                float: left;
                 height: 40px;
                 margin-top: 5px;
-                cursor:pointer;
+                cursor: pointer;
                 border-radius: 1000000px;
             }
 
             .floating-menu {
                 position: absolute;
-                z-index:1000;
-                text-align:left;
+                z-index: 1000;
+                text-align: left;
                 width: 135px;
-                line-height:initial;
+                line-height: initial;
                 padding: 0px;
-                top:50px;
+                top: 50px;
                 right: 2px;
                 background: $light-grey;
                 -webkit-border-radius: 2px;
                 -moz-border-radius: 2px;
                 border-radius: 2px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
                 .menu-item {
                     border-bottom: .5px solid lightgrey;
-                    cursor:pointer;
+                    cursor: pointer;
 
                     a {
-                        padding:10px;
+                        padding: 10px;
                         text-decoration: none;
                         color: $font-color;
-                        display:block;
-                        position:relative;
+                        display: block;
+                        position: relative;
                     }
                     transition: background .3s;
                 }
@@ -106,13 +106,77 @@
                 left: 113px;
             }
         }
+
+        .menu-button {
+            float: left;
+            width: 50px;
+            text-align: center;
+            i.fa {
+                width: 34px;
+                padding: 7px;
+                margin-top: 7px;
+                text-align: center;
+                border-radius: 4px;
+                color: #4998dc;
+                font-size: 18px;
+                cursor: pointer;
+                border: 2px #4998dc solid;
+            }
+        }
+        @media (max-width: 800px) {
+            > .menu-wrapper {
+                display: none;
+                position: fixed;
+                width: 100%;
+                top: 50px;
+                left: 0px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.8);
+                > .menu-item {
+                    display: block;
+                    height: 50px;
+                    color: $light-blue;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    border-bottom: 1px rgba(73, 152, 220, 0.4) solid;
+                }
+                > .menu-item:last-child {
+                    border-bottom: none;
+                }
+            }
+            > .menu-wrapper.opened {
+                display: block;
+            }
+        }
+        @media (min-width: 800px) {
+            .menu-button {
+                display: none;
+            }
+            > .menu-wrapper {
+                display: inline-block;
+                > .menu-item {
+                    height: 50px;
+                    display: inline-block;
+                    padding-right: 16px;
+                    padding-left: 16px;
+                    color: $light-blue;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+                > .menu-item.selected {
+                    font-weight: bold;
+                    border-bottom: 4px $light-blue solid;
+                }
+            }
+        }
+
     }
     .header-content.logged {
         > a:first-child {
-            display:block;
+            display: block;
         }
         > a:nth-child(2) {
-            display:none;
+            display: none;
         }
     }
 }
