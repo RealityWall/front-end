@@ -1,0 +1,60 @@
+@import "./constants";
+
+.post-item{
+    text-align: left;
+    width: 100%;
+    position: relative;
+    margin: 15px auto;
+    background: $white;
+    box-shadow: 0 0 10px #bebebe;
+
+    img{
+        margin: 12px;
+    }
+
+    .content{
+        vertical-align: top;
+        display: inline-block;
+        width: calc(100% - 74px);
+
+        > div{
+            vertical-align: top;
+        }
+
+        .name, .time{
+            display: inline-block;
+        }
+
+        .name{
+            color: $light-blue-over;
+            font-weight: 500;
+            font-size: 16px;
+            margin-top: 12px;
+            vertical-align: top;
+        }
+
+        .time{
+            margin: 14px 0 13px 10px;
+        }
+
+        .separator{
+            width: 1px;
+            height: calc(100% - 6px);
+            margin: 3px 0 3px 12px;
+            background-color: $light-grey;
+        }
+
+        .text{
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    .close{
+        display: inline-block;
+        vertical-align: top;
+        float: right;
+        margin: 13px;
+        cursor: pointer;
+    }
+}

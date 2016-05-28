@@ -1,6 +1,8 @@
 import React from 'react';
 import PostStore from '../stores/PostStore';
 import ActionCreator from '../actions/PostActionCreator';
+import PostItem from '../components/Posts/PostItem.jsx';
+import UserStore from '../stores/UserStore';
 
 export default React.createClass({
 
@@ -11,12 +13,22 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            posts: PostStore.getAllPosts()
+            posts: PostStore.getAllPosts(),
+            currentUser: UserStore.getUser()
         };
     },
 
     componentDidMount() {
         ActionCreator.getAllPosts();
+        UserStore.addChangeListener(this._onUserStoreChange);
+    },
+
+    _onUserStoreChange() {
+        this.setState({currentUser: UserStore.getUser()});
+    },
+
+    componentWillUnmount() {
+        UserStore.removeChangeListener(this._onUserStoreChange);
     },
 
     _loadMore() {
@@ -33,19 +45,17 @@ export default React.createClass({
                 <div className="messages-container">
                     {
                         this.state.posts.map((post) => {
-                            return (
-                                <div className="post-item" key={post.id}>
-                                    {post.content}
-                                </div>
-                            );
+                            return (<PostItem post={post} key={post.id} currentUser={this.state.currentUser}/>);
                         })
                     }
                 </div>
                 {
                     this.isLast() ?
                         null :
-                        <div>
-                            <button className="btn btn-transparent" onClick={this._loadMore}>Load more</button>
+                        <div style={{marginBottom: '16px', textAlign: 'center'}}>
+                            <button className="btn btn-transparent" onClick={this._loadMore}>
+                                Voir plus
+                            </button>
                         </div>
                 }
 

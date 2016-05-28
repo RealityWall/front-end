@@ -18,7 +18,7 @@ import WallPostsById from './pages/WallPosts.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
 import ResetPassword from './pages/ResetPassword.jsx';
-import Messages from './pages/Messages.jsx';
+import Posts from './pages/Posts.jsx';
 
 var MainApp = React.createClass({
 
@@ -50,7 +50,7 @@ var MainApp = React.createClass({
         '/verify/:token': 'verifyUser',
         '/settings': 'settings',
         '/reset-password/:token': 'resetPassword',
-        '/messages': 'messages'
+        '/posts': 'posts'
     },
 
     home() { return (<Home />); },
@@ -90,8 +90,8 @@ var MainApp = React.createClass({
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
-    messages() {
-        return (<Messages />);
+    posts() {
+        return (<Posts />);
     },
 
     render() {

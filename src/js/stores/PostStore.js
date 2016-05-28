@@ -51,7 +51,6 @@ function addPostsToWall(wallId, date, posts) {
             }]
         })
     }
-    console.log(walls);
 }
 
 function removePostFromWall(wallId, postId) {

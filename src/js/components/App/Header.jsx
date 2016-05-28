@@ -24,7 +24,7 @@ var Header = React.createClass({
     isSelected(href) {
         if (href == '/walls' && location.hash == '#!/walls') return true;
         if (href == '/' && location.hash == '#!/') return true;
-        if (href == '/messages' && location.hash == '#!/messages') return true;
+        if (href == '/posts' && location.hash == '#!/posts') return true;
         return false;
     },
 
@@ -48,9 +48,9 @@ var Header = React.createClass({
                         <a href="/walls"
                            onClick={() => this.setState({isMenuOpen: false})}
                            className={"menu-item" + (this.isSelected('/walls') ? " selected" : "")}>Murs</a>
-                        <a href="/messages"
+                        <a href="/posts"
                            onClick={() => this.setState({isMenuOpen: false})}
-                           className={"menu-item" + (this.isSelected('/messages') ? " selected" : "")}>Messages</a>
+                           className={"menu-item" + (this.isSelected('/posts') ? " selected" : "")}>Messages</a>
                     </div>
 
                     { self.props.user.id ? null : <a className="btn" id="sign-in" onClick={ () => self._openModal(1) }>Inscription</a> }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-let timeout = null;
-
 export default React.createClass({
+
+    timeout: null,
 
     _calcTimeoutDuration(diff, number) {
         return number * (1 - ( diff/number - parseInt(diff/number)));
@@ -42,9 +42,9 @@ export default React.createClass({
 
     _recurseCalcTime(duration) {
         let self = this;
-        clearTimeout(timeout);
+        clearTimeout(this.timeout);
 
-        timeout = setTimeout(function () {
+        this.timeout = setTimeout(function () {
             self._recurseCalcTime(self._calcTime(self.props.time));
         }, duration);
     },
@@ -60,7 +60,8 @@ export default React.createClass({
     },
 
     componentWillUnmount() {
-        clearTimeout(timeout);
+        clearTimeout(this.timeout);
+        this.timeout = null;
     },
 
     render() {

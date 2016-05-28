@@ -70,10 +70,9 @@ module.exports = React.createClass({
                     </div>
                 </div>
                 <br/>
-                <div>
+                <div style={{height: '50px', lineHeight: '50px'}}>
                     <a className="btn transparent" onClick={() => ActionCreator.downloadPosts(this.props.wallId)}><i className="fa fa-upload"/>download</a>
                 </div>
-                <br/>
                 <div className="post-list">
                     {
                         this.state.posts.length == 0 ?
