@@ -18,6 +18,7 @@ import WallPostsById from './pages/WallPosts.jsx';
 import VerifyUser from './pages/VerifyUser.jsx';
 import Settings from './pages/Settings.jsx';
 import ResetPassword from './pages/ResetPassword.jsx';
+import Messages from './pages/Messages.jsx';
 
 var MainApp = React.createClass({
 
@@ -48,7 +49,8 @@ var MainApp = React.createClass({
         '/walls/:wallId/upload': 'uploadImageByWallId',
         '/verify/:token': 'verifyUser',
         '/settings': 'settings',
-        '/reset-password/:token': 'resetPassword'
+        '/reset-password/:token': 'resetPassword',
+        '/messages': 'messages'
     },
 
     home() { return (<Home />); },
@@ -86,6 +88,10 @@ var MainApp = React.createClass({
     uploadImageByWallId(wallId) {
         if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<WallUploadById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
+    },
+
+    messages() {
+        return (<Messages />);
     },
 
     render() {

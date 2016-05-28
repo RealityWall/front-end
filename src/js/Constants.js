@@ -28,9 +28,10 @@ export default {
         GET_WALL_BY_ID: null,
         UPLOAD_WALL_PICTURE: null,
         ADD_POST: null,
-        GET_POSTS: null,
+        GET_POSTS_BY_WALL_ID: null,
         HIDE_POST: null,
-        DOWNLOAD_POSTS: null
+        DOWNLOAD_POSTS: null,
+        GET_POSTS: null
     }),
 
     MODAL_STYLE: {

@@ -25,7 +25,8 @@ module.exports = React.createClass({
     componentDidMount() {
         map = L.map('walls-map', {
             minZoom: 10,
-            maxZoom: 16
+            maxZoom: 16,
+            maxBounds: L.latLngBounds([43.4, 1.35], [43.8, 1.55])
         }).setView([43.600000, 1.433333], 14);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);

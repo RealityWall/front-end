@@ -3,6 +3,14 @@ import Flux from '../Flux';
 
 export default Flux.createActions({
 
+    getAllPosts(oldestPostId, mostRecentPostId) {
+        return {
+            actionType: Constants.ActionTypes.GET_POSTS,
+            oldestPostId,
+            mostRecentPostId
+        };
+    },
+
     addPost(wallId, content) {
         return {
             actionType: Constants.ActionTypes.ADD_POST,
@@ -13,7 +21,7 @@ export default Flux.createActions({
 
     getPostsByWallIdAndDate(wallId, date) {
         return {
-            actionType: Constants.ActionTypes.GET_POSTS,
+            actionType: Constants.ActionTypes.GET_POSTS_BY_WALL_ID,
             date,
             wallId
         };
