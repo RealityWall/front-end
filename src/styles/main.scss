@@ -71,6 +71,7 @@ a, input, textarea, button, select, table, td, tr, th, tbody, thead {
     height: calc(100% - 50px);
     overflow:auto;
     position:relative;
+    width: 100%;
 }
 
 input[type="email"], input[type="text"], input[type="password"], textarea {

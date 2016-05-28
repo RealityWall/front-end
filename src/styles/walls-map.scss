@@ -256,7 +256,7 @@
             margin-left: 15px;
             text-decoration: none;
             height:90px;
-            width:100px;
+            width:96px;
             display:inline-block;
             position:relative;
             text-align:center;
@@ -301,9 +301,8 @@
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
     .choosing-modal {
-        width: 100vw;
         height: initial;
         text-align: center;
 

@@ -36,13 +36,23 @@ export default React.createClass({
 
     render() {
         return (
-            <div>
-                <input type="file" ref="picture" accept="image/*" placeholder="La photo du mur à mettre en ligne" required
-                       onChange={this._handleFile}/>
+            <div style={{textAlign: 'center'}}>
+
+                <button className="btn btn-transparent" style={{position: 'relative', marginBottom: '8px'}}>
+                    <i className="fa fa-camera" style={{marginRight: '8px'}}></i>
+                    Choisir une photo
+                    <input type="file"
+                           style={{position: 'absolute', left: '0px', top: '0px', width: '100%', height: '100%', opacity: 0, cursor: 'pointer'}}
+                           ref="picture"
+                           accept="image/*"
+                           placeholder="La photo du mur à mettre en ligne"
+                           required
+                           onChange={this._handleFile}/>
+                </button>
 
                 {
                     this.state.fileUrl ?
-                        <img src={this.state.fileUrl} alt="aperçu du mur" height="300"/>
+                        <img src={this.state.fileUrl} alt="aperçu du mur"/>
                         : null
                 }
             </div>

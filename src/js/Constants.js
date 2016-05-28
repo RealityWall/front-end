@@ -46,7 +46,9 @@ export default {
             borderRadius          : '2px',
             minWidth              : '300px',
             border                : 'none',
-            overflow: 'visible'
+            overflow: 'visible',
+            width: 'calc(100% - 20px)',
+            maxWidth: '350px'
         },
         overlay: {
             backgroundColor   : 'rgba(0, 0, 0, 0.45)'

@@ -5,7 +5,7 @@
     background: #FFF;
     margin-top: 30px;
     box-shadow: 0 0 10px #bebebe;
-    width: calc(50%);
+    max-width: 500px;
     text-align: center;
 
     > span {
@@ -15,11 +15,22 @@
     div{
         text-align: left;
         margin: 15px 0;
+
+        img {
+            max-width: 100%;
+            max-height: 300px;
+            width: 100%;
+            height: inherit;
+        }
     }
 
     .date-input{
-
+        text-align:center;
+        input {
+            margin-bottom: 8px;
+        }
         a{
+            display:inline-block;
             margin-left: 10px;
         }
     }
