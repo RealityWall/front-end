@@ -11,7 +11,8 @@ var AddPostModal = React.createClass({
 
     getInitialState() {
         return {
-            index: 0
+            index: 0,
+            message: ''
         }
     },
 
@@ -25,7 +26,7 @@ var AddPostModal = React.createClass({
             this.setState({success: true, error: null});
             setTimeout(() => {
                 this.props.onRequestClose(false);
-            }, 1000);
+            }, 2000);
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
@@ -38,15 +39,21 @@ var AddPostModal = React.createClass({
                 case 404:
                     errorMessage = 'Oops ! Le mur demandé n\'existe pas.';
                     break; // user not found (email)
-                case 500: break;
+                case 500:
+                    break;
             }
             this.setState({success: false, error: errorMessage});
         }
     },
 
+    _messageChange() {
+        if (this.refs.content.value.length > 280) this.refs.content.value = this.refs.content.value.substr(0, 280);
+        this.setState({message: this.refs.content.value});
+    },
+
     _addPost(e) {
         e.preventDefault();
-        ActionCreator.addPost(this.props.wallId, this.refs.content.value);
+        this.refs.content.value && ActionCreator.addPost(this.props.wallId, this.refs.content.value);
     },
 
     render () {
@@ -61,10 +68,15 @@ var AddPostModal = React.createClass({
                     <div className="auth-modal-close" onClick={() => self.props.onRequestClose(true)}>&times;</div>
                     <div className="title">poster un message</div>
                     <form onSubmit={ self._addPost }>
-                        <textarea required ref="content" placeholder="Ton message"/><br/>
-                        <span className="success">{self.state.success ? ('Bravo ! Votre message sera validé dans les plus brefs délais') : null}</span>
+                        <textarea required ref="content" placeholder="Ton message" onChange={this._messageChange}/><br/>
+                        <span
+                            className="success">{self.state.success ? ('Bravo ! Votre message sera affiché demain !') : null}</span>
                         <span className="error">{self.state.error}</span>
-                        <input type="submit" value="Envoyer ce message" className="btn"/>
+                        <div className="bottom-container">
+                            <span className="info">{this.state.message.length} / 280</span>
+                            <input type="submit" value="Envoyer ce message" className="btn"/>
+                        </div>
+
                     </form>
                 </div>
             </Modal>

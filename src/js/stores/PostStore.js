@@ -4,19 +4,7 @@ import request from 'superagent';
 import eventBuilder from './_eventBuilder';
 import UserStore from './UserStore';
 
-let walls = [
-    /*
-     {
-     wallId: XXX,
-     days: [
-     {
-     date: XXX,
-     posts: [DATA_FROM SERVER]
-     }
-     ]
-     }
-     */
-];
+let walls = [];
 
 let posts = [];
 

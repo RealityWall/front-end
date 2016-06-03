@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RouterMixin, navigate } from 'react-mini-router';
+import {RouterMixin, navigate} from 'react-mini-router';
 
 // Actions
 import UserActionCreator from './actions/UserActionCreator';
@@ -53,18 +53,24 @@ var MainApp = React.createClass({
         '/posts': 'posts'
     },
 
-    home() { return (<Home />); },
-    walls() { return (<Walls user={this.state.user}/>); },
+    home() {
+        return (<Home />);
+    },
+    walls() {
+        return (<Walls user={this.state.user}/>);
+    },
     wallById(wallId) {
         let wallIdSplit = wallId.split('&');
         if (wallIdSplit.length === 1) {
-            return (<WallById wallId={ wallId } />);
+            return (<WallById wallId={ wallId }/>);
         } else {
-            return (<WallById wallId={ wallIdSplit[0] } />);
+            return (<WallById wallId={ wallIdSplit[0] }/>);
         }
 
     },
-    verifyUser(token) {return <VerifyUser token={token}/>},
+    verifyUser(token) {
+        return <VerifyUser token={token}/>
+    },
 
     resetPassword(token) {
         if (this.state.user.id) navigate('/');
@@ -76,17 +82,19 @@ var MainApp = React.createClass({
     },
     settings() {
         // protect with user login
-        if (this.state.user.id) return (<Settings user={this.state.user} />);
+        if (this.state.user.id) return (<Settings user={this.state.user}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
     listPostsByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<WallPostsById wallId={wallId}/>);
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (
+            <WallPostsById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
     uploadImageByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (<WallUploadById wallId={wallId}/>);
+        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (
+            <WallUploadById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 

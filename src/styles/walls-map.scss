@@ -17,6 +17,7 @@
         a[href="http://leafletjs.com"] {
             display:none;
         }
+
     }
 
     #message-button {
@@ -185,7 +186,6 @@
 }
 
 .postModal{
-    width: 500px;
     text-align: center;
 
     .title{
@@ -204,7 +204,7 @@
         margin: 15px 15px 0 15px;
         resize: none;
         width: calc(100% - 30px);
-        height: 300px;
+        height: 150px;
     }
 
     .btn{
@@ -239,6 +239,21 @@
         right: -20px;
         top: -20px;
         border: 4px $light-blue-over solid;
+    }
+
+    .bottom-container {
+        text-align: left;
+        padding-left: 15px;
+        height: 47px;
+        line-height: 31px;
+
+        input {
+            float:right;
+        }
+        input[disabled] {
+            background: grey !important;
+            cursor: initial;
+        }
     }
 }
 

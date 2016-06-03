@@ -58,7 +58,7 @@ export default React.createClass({
     },
 
     _openGallery(index) {
-        this.refs.photoswipe.open(index);  
+        this.refs.photoswipe.open(index);
     },
 
     render() {
@@ -79,8 +79,13 @@ export default React.createClass({
     renderWall() {
         return (
             <div>
+                <div className="wall-header">
+                    <div className="max-width">
+                        {this.state.wall.address}
+                    </div>
+                </div>
                 {/* TODO : Header (Map + Modal ?) */}
-                <div className="pictures-container">
+                <div className="pictures-container max-width">
                     {
                         this.state.wall.Pictures.map((picture, index) => {
                             return (

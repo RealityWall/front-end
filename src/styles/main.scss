@@ -64,14 +64,16 @@ a, input, textarea, button, select, table, td, tr, th, tbody, thead {
 }
 
 #app-body {
-    max-width: $max-width;
-    margin:auto;
-    padding-right: 15px;
-    padding-left: 15px;
     height: calc(100% - 50px);
     overflow:auto;
     position:relative;
     width: 100%;
+}
+.max-width {
+    max-width: $max-width;
+    margin:auto;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 input[type="email"], input[type="text"], input[type="password"], textarea {

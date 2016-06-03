@@ -1,4 +1,19 @@
+@import "./constants";
+
 .wall-gallery {
+
+    .wall-header {
+        min-height: 80px;
+        font-size: 24px;
+        color: white;
+        padding-top:26px;
+        padding-bottom:26px;
+        background: $light-blue;
+        > div {
+            padding-left: 23px;
+            padding-right: 23px;
+        }
+    }
 
     .pictures-container {
 

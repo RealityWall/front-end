@@ -4,7 +4,7 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div> THIS IS Home <a href="/walls">go walls</a></div>
+            <div className="max-width"> THIS IS Home <a href="/walls">go walls</a></div>
         );
     }
 

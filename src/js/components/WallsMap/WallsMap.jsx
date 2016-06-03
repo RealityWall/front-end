@@ -1,23 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 let map = null;
 let markers = [];
 
 let wallIcon = L.icon({
     iconUrl: 'img/marker.png',
-
-    iconSize:     [41, 54.5], // size of the icon
-    iconAnchor:   [20.5, 53], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -54.5] // point from which the popup should open relative to the iconAnchor
+    iconSize: [41, 54.5], // size of the icon
+    iconAnchor: [20.5, 53], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -54.5] // point from which the popup should open relative to the iconAnchor
 });
 
 let wallSelectedIcon = L.icon({
     iconUrl: 'img/marker-choosing.png',
-
-    iconSize:     [100, 100], // size of the icon
-    iconAnchor:   [50, 76], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize: [100, 100], // size of the icon
+    iconAnchor: [50, 76], // point of the icon which will correspond to marker's location
+    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
 module.exports = React.createClass({
@@ -58,8 +55,10 @@ module.exports = React.createClass({
         let wallsToAdd = [];
 
         // delete those who are absent and list all that we must keep
-        markers.forEach( (marker) => {
-            let index = nextProps.walls.findIndex((wall) => { return wall.id == marker.wall.id; });
+        markers.forEach((marker) => {
+            let index = nextProps.walls.findIndex((wall) => {
+                return wall.id == marker.wall.id;
+            });
             if (index < 0) {
                 // the wall has to be deleted
                 map.removeLayer(marker);
@@ -70,7 +69,9 @@ module.exports = React.createClass({
         });
 
         nextProps.walls.forEach((wall) => {
-            let index = wallsToKeep.findIndex((wallToKeep) => { return wallToKeep.id == wall.id; });
+            let index = wallsToKeep.findIndex((wallToKeep) => {
+                return wallToKeep.id == wall.id;
+            });
             if (index < 0) {
                 // the wall has to be added
                 wallsToAdd.push(wall);

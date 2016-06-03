@@ -41,7 +41,7 @@ export default React.createClass({
 
     render() {
         return (
-            <div className="messages">
+            <div className="messages max-width">
                 <div className="messages-container">
                     {
                         this.state.posts.map((post) => {

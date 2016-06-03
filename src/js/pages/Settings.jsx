@@ -8,7 +8,7 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div id="settings">
+            <div id="settings" className="max-width">
                 {/*<div className="page-title"><i className="fa fa-gear"/> Settings</div>
                 <div className="beautiful-image">
                 </div>*/}

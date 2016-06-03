@@ -40,32 +40,34 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div className="uploadImagePage">
-                <span><i className="fa fa-picture-o"></i> Choisissez l'image à mettre en ligne</span>
-                <form onSubmit={this._uploadWallPicture}>
-                    <DateInput ref="dateInput"/>
-                    <PicturePicker ref="picturePicker"/>
+            <div className="max-width">
+                <div className="uploadImagePage">
+                    <span><i className="fa fa-picture-o"></i> Choisissez l'image à mettre en ligne</span>
+                    <form onSubmit={this._uploadWallPicture}>
+                        <DateInput ref="dateInput"/>
+                        <PicturePicker ref="picturePicker"/>
 
-                    {
-                        this.state.error ?
-                        <div className="error">
-                            {this.state.error}
-                        </div> : null
-                    }
+                        {
+                            this.state.error ?
+                                <div className="error">
+                                    {this.state.error}
+                                </div> : null
+                        }
 
-                    {
-                        this.state.success ?
-                            <div className="success" style={{color: 'green'}}>
-                                Photo Uploadé avec succès !
-                            </div> : null
-                    }
+                        {
+                            this.state.success ?
+                                <div className="success" style={{color: 'green'}}>
+                                    Photo Uploadé avec succès !
+                                </div> : null
+                        }
 
 
-                    <input type="submit"
-                           className="btn"
-                           disabled={this.state.loading ? true : false}
-                           value={this.state.loading ? 'Chargement...' : 'Valider'}/>
-                </form>
+                        <input type="submit"
+                               className="btn"
+                               disabled={this.state.loading ? true : false}
+                               value={this.state.loading ? 'Chargement...' : 'Valider'}/>
+                    </form>
+                </div>
             </div>
         );
     }
