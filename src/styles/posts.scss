@@ -1,0 +1,39 @@
+@import "./constants";
+
+.messages {
+    .messages-header {
+        min-height: 80px;
+        font-size: 24px;
+        color: white;
+        padding-top:26px;
+        padding-bottom:26px;
+        background: $light-blue;
+        > div {
+            padding-left: 23px;
+            padding-right: 23px;
+        }
+        .indicator {
+            font-size: 12px;
+            position: relative;
+            top: 21px;
+            margin-left: -110px;
+        }
+        .refresh-button {
+            float: right;
+            height: 32px;
+            width: 32px;
+            border-radius: 100000px;
+            border: none;
+            cursor: pointer;
+            background: white;
+            color: $light-blue;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            .fa-refresh {
+                transition: transform .3s;
+            }
+        }
+        .refresh-button:active .fa-refresh {
+            transform: rotate(180deg);
+        }
+    }
+}

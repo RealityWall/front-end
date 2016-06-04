@@ -68,4 +68,62 @@
 
     }
 
+    #message-button {
+        z-index: 2;
+        position: fixed;
+        bottom:15px;
+        right: 15px;
+        height:50px;
+        width: 50px;
+        line-height: 60px;
+        background-color: $action-color;
+        color: white;
+        text-align:center;
+        border-radius: 100000px;
+        cursor:pointer;
+        box-shadow: 0px 2px 4px grey;
+    }
+    #message-button.disabled {
+        cursor: not-allowed;
+        background: grey;
+    }
+    #message-button.not-user {
+        display:none;
+    }
+    #message-speech-bubble.connect {
+        line-height:inherit;
+        padding-top:7px;
+    }
+    #message-speech-bubble {
+        z-index:2;
+        position: fixed;
+        width: 195px;
+        color: $white;
+        height: 50px;
+        padding: 0px;
+        bottom:15px;
+        right:70px;
+        font-size:15px;
+        text-transform:uppercase;
+        line-height:50px;
+        text-align:center;
+        background: $dark-blue;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    #message-speech-bubble:after {
+        z-index:2;
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-color: transparent $dark-blue;
+        display: block;
+        width: 0;
+        right: -5px;
+        top: 20px;
+    }
+
 }

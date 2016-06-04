@@ -22,7 +22,7 @@ export default React.createClass({
             } alt={ this.props.post.User.firstname + " " + this.props.post.User.lastname } height="50"/>
                 <div className="content">
                     <div>
-                        <div className="name">{ this.props.post.User.lastname } { this.props.post.User.firstname }</div>
+                        <div className="name">{ this.props.post.User.firstname } { this.props.post.User.lastname }</div>
                         <div className="time"><TimeAgo time={this.props.post.createdAt}/></div>
                         {
                             this.props.currentUser.roles && this.props.currentUser.roles.indexOf('admin') != -1 ?

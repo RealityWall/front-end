@@ -8,14 +8,17 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div id="settings" className="max-width">
-                {/*<div className="page-title"><i className="fa fa-gear"/> Settings</div>
-                <div className="beautiful-image">
-                </div>*/}
-                <PictureSettings user={this.props.user}/>
-                <NameSettings user={this.props.user}/>
-                { this.props.user.facebookId ? null : <PasswordSettings /> }
-
+            <div id="settings" >
+                <div className="settings-header">
+                    <div className="max-width">
+                        Paramètres
+                    </div>
+                </div>
+                <div className="max-width">
+                    <PictureSettings user={this.props.user}/>
+                    <NameSettings user={this.props.user}/>
+                    { this.props.user.facebookId ? null : <PasswordSettings /> }
+                </div>
             </div>
         );
     }
