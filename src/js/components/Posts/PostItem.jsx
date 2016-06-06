@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from '../WallsPost/TimeAgo.jsx';
 import ActionCreator from '../../actions/PostActionCreator';
+import Constants from '../../Constants';
 
 export default React.createClass({
 
@@ -25,7 +26,7 @@ export default React.createClass({
                         <div className="name">{ this.props.post.User.firstname } { this.props.post.User.lastname }</div>
                         <div className="time"><TimeAgo time={this.props.post.createdAt}/></div>
                         {
-                            this.props.currentUser.roles && this.props.currentUser.roles.indexOf('admin') != -1 ?
+                            this.props.currentUser.roles && this.props.currentUser.roles.indexOf('admin') !== -1 ?
                                 <div className="close"><i className="fa fa-times" onClick={this._hidePost}></i></div>
                                 : null
                         }

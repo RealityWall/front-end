@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from './TimeAgo.jsx';
 import ActionCreator from '../../actions/PostActionCreator';
+import Constants from '../../Constants';
 
 export default React.createClass({
 

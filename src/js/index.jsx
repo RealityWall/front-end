@@ -81,19 +81,18 @@ var MainApp = React.createClass({
         }
     },
     settings() {
-        // protect with user login
         if (this.state.user.id) return (<Settings user={this.state.user}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
     listPostsByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (
+        if (this.state.user.id && this.state.user.roles && (this.state.user.roles.indexOf('admin') >= 0 || this.state.user.roles.indexOf('messenger') >= 0)) return (
             <WallPostsById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },
 
     uploadImageByWallId(wallId) {
-        if (this.state.user.id && this.state.user.roles && this.state.user.roles.indexOf('admin') >= 0) return (
+        if (this.state.user.id && this.state.user.roles && (this.state.user.roles.indexOf('admin') >= 0 || this.state.user.roles.indexOf('messenger') >= 0)) return (
             <WallUploadById wallId={wallId}/>);
         else if (!this.state.isLoggingIn) navigate('/');
     },

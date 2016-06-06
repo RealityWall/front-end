@@ -90,7 +90,7 @@ module.exports = React.createClass({
                 <div id="message-button"
                      className={(
                      self.props.user.id ?
-                     (self.props.user.roles.indexOf('user') >= 0 ?
+                     (self.props.user.roles.indexOf('user') >= 0 || self.props.user.roles.indexOf('organization') >= 0 ?
                         (self.props.user.lastPost && self.props.user.lastPost.id ? 'disabled' : 'animated tada')
                         : 'not-user')
                      : 'disabled')}
@@ -127,13 +127,13 @@ module.exports = React.createClass({
                         Vous avez déjà posté aujourd'hui !
                     </div>
                 );
-            } else if (this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
+            } else if (this.state.isChoosingAWall && (this.props.user.roles.indexOf('user') >= 0 || this.props.user.roles.indexOf('organization') >= 0) ) {
                 return (
                     <div id="message-speech-bubble">
                         Choisissez Votre Mur
                     </div>
                 );
-            } else if (!this.state.isChoosingAWall && this.props.user.roles.indexOf('user') >= 0) {
+            } else if (!this.state.isChoosingAWall && (this.props.user.roles.indexOf('user') >= 0 || this.props.user.roles.indexOf('organization') >= 0)) {
                 return (
                     <div id="message-speech-bubble" className="connect">
                         Cliquez ici pour poster un message

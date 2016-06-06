@@ -8,7 +8,7 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div id="settings" >
+            <div id="settings">
                 <div className="settings-header">
                     <div className="max-width">
                         Paramètres
@@ -16,7 +16,11 @@ module.exports = React.createClass({
                 </div>
                 <div className="max-width">
                     <PictureSettings user={this.props.user}/>
-                    <NameSettings user={this.props.user}/>
+                    {
+                        this.props.user.id && this.props.user.roles && this.props.user.roles.indexOf('organization') === -1 ?
+                            <NameSettings user={this.props.user}/>
+                            : null
+                    }
                     { this.props.user.facebookId ? null : <PasswordSettings /> }
                 </div>
             </div>

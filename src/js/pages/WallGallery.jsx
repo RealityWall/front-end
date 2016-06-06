@@ -7,6 +7,8 @@ import PictureItem from '../components/WallGallery/PictureItem.jsx';
 import PhotoSwipe from '../components/WallGallery/PhotoSwipe.jsx';
 import UserStore from '../stores/UserStore';
 import AddPostModal from '../components/WallsMap/AddPostModal.jsx';
+import {navigate} from 'react-mini-router';
+import AnimatedLoading from '../components/Loading/AnimatedLoading.jsx';
 
 let lastWallId = null;
 
@@ -107,19 +109,30 @@ export default React.createClass({
                     }
                 </div>
                 {/* TODO : Display message when 0 Picture */}
-                <PhotoSwipe pictures={this.state.wall.Pictures} ref="photoswipe" />
+                <PhotoSwipe pictures={this.state.wall.Pictures} ref="photoswipe"/>
 
                 <div id="message-button"
                      className={(
                      this.state.user.id ?
-                     (this.state.user.roles.indexOf('user') >= 0 ?
+                     (this.state.user.roles.indexOf('user') >= 0 || this.state.user.roles.indexOf('organization') >= 0 ?
                         (this.state.user.lastPost && this.state.user.lastPost.id ? 'disabled' : 'animated tada')
                         : 'not-user')
                      : 'disabled')}
                      onClick={this.state.user.id && (!this.state.user.lastPost || !this.state.user.lastPost.id) ? this._toggleChoosing : () =>{}}
-                    >
+                >
                     <i className="fa fa-pencil fa-2x"/>
                 </div>
+
+                {
+                    this.state.user.id && (this.state.user.roles.indexOf('messenger') >= 0 || this.state.user.roles.indexOf('admin') >= 0) ?
+                        <div id="upload-button"
+                             onClick={() => {navigate('/walls/' + this.props.wallId + '/upload');}}
+                        >
+                            <i className="fa fa-camera fa-2x"/>
+                        </div>
+                        : null
+                }
+
 
                 { this.renderTooltip() }
 
@@ -141,16 +154,16 @@ export default React.createClass({
                         Vous avez déjà posté aujourd'hui !
                     </div>
                 );
-            } else if (this.state.isChoosingAWall && this.state.user.roles.indexOf('user') >= 0) {
-                return (
-                    <div id="message-speech-bubble">
-                        Choisissez Votre Mur
-                    </div>
-                );
-            } else if (!this.state.isChoosingAWall && this.state.user.roles.indexOf('user') >= 0) {
+            } else if (this.state.user.roles.indexOf('user') >= 0 || this.state.user.roles.indexOf('organization') >= 0) {
                 return (
                     <div id="message-speech-bubble" className="connect">
                         Cliquez ici pour poster un message sur ce mur
+                    </div>
+                );
+            } else if (this.state.user.roles.indexOf('admin') >= 0 || this.state.user.roles.indexOf('messenger') >= 0) {
+                return (
+                    <div id="message-speech-bubble" className="connect">
+                        Mettre une photo en ligne
                     </div>
                 );
             }
@@ -169,7 +182,11 @@ export default React.createClass({
     },
 
     renderLoading() {
-        return (<div>Loading...</div>);
+        return (
+            <div id="general-loading">
+                <AnimatedLoading />
+            </div>
+        );
     }
 
 });

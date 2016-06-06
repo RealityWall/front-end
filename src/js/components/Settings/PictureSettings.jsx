@@ -112,7 +112,7 @@ module.exports = React.createClass({
 
                 <Modal
                     isOpen={this.state.isCropModalOpened}
-                    onRequestClose={() => {this.setState({isCropModalOpened: false})}}
+                    onRequestClose={() => {}}
                     style={Constants.MODAL_STYLE}
                 >
                     <div className="crop-picture-box">
