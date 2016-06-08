@@ -31,7 +31,8 @@ export default {
         GET_POSTS_BY_WALL_ID: null,
         HIDE_POST: null,
         DOWNLOAD_POSTS: null,
-        GET_POSTS: null
+        GET_POSTS: null,
+        DOWNLOAD_ALL_POSTS: null
     }),
 
     MODAL_STYLE: {

@@ -40,6 +40,12 @@ export default Flux.createActions({
             actionType: Constants.ActionTypes.DOWNLOAD_POSTS,
             wallId
         };
+    },
+
+    downloadAllPosts() {
+        return {
+            actionType: Constants.ActionTypes.DOWNLOAD_ALL_POSTS
+        };
     }
 
 });

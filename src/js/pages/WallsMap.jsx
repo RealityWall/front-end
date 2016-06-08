@@ -1,6 +1,7 @@
 import React from 'react';
 import WallStore from '../stores/WallStore';
 import WallActionCreator from '../actions/WallActionCreator';
+import PostActionCreator from '../actions/PostActionCreator';
 import { navigate } from 'react-mini-router';
 
 // Components
@@ -73,6 +74,10 @@ module.exports = React.createClass({
         this.setState({wallIdToChooseAction: null});
     },
 
+    _downloadAll() {
+        PostActionCreator.downloadAllPosts();
+    },
+
     render() {
         let self = this;
         return (
@@ -99,6 +104,13 @@ module.exports = React.createClass({
                 </div>
 
                 { this.renderTooltip() }
+
+                <div id="download-button"
+                     style={{display: self.props.user.id && self.props.user.roles.indexOf('admin') >= 0 ? 'block' : 'none'}}
+                     onClick={self.props.user.id && self.props.user.roles.indexOf('admin') >= 0 ? self._downloadAll : () =>{} }
+                >
+                    <i className="fa fa-download fa-2x" />
+                </div>
 
                 <AddPostModal
                     isOpen={self.state.selectedWallId !== null}
@@ -137,6 +149,12 @@ module.exports = React.createClass({
                 return (
                     <div id="message-speech-bubble" className="connect">
                         Cliquez ici pour poster un message
+                    </div>
+                );
+            } else if (this.props.user.roles.indexOf('admin') >= 0) {
+                return (
+                    <div id="message-speech-bubble" className="connect">
+                        Télécharger tous les messages à afficher
                     </div>
                 );
             }
