@@ -2,7 +2,7 @@ import React from 'react';
 import WallStore from '../stores/WallStore';
 import WallActionCreator from '../actions/WallActionCreator';
 import PostActionCreator from '../actions/PostActionCreator';
-import { navigate } from 'react-mini-router';
+import {navigate} from 'react-mini-router';
 
 // Components
 import WallsMap from '../components/WallsMap/WallsMap.jsx';
@@ -106,10 +106,11 @@ module.exports = React.createClass({
                 { this.renderTooltip() }
 
                 <div id="download-button"
-                     style={{display: self.props.user.id && self.props.user.roles.indexOf('admin') >= 0 ? 'block' : 'none'}}
-                     onClick={self.props.user.id && self.props.user.roles.indexOf('admin') >= 0 ? self._downloadAll : () =>{} }
+                     style={{
+                        display: self.props.user.id && (self.props.user.roles.indexOf('admin') >= 0 || self.props.user.roles.indexOf('messenger') >= 0) ? 'block' : 'none'}}
+                     onClick={self.props.user.id && (self.props.user.roles.indexOf('admin') >= 0 || self.props.user.roles.indexOf('messenger') >= 0) ? self._downloadAll : () =>{} }
                 >
-                    <i className="fa fa-download fa-2x" />
+                    <i className="fa fa-download fa-2x"/>
                 </div>
 
                 <AddPostModal
@@ -139,7 +140,7 @@ module.exports = React.createClass({
                         Vous avez déjà posté aujourd'hui !
                     </div>
                 );
-            } else if (this.state.isChoosingAWall && (this.props.user.roles.indexOf('user') >= 0 || this.props.user.roles.indexOf('organization') >= 0) ) {
+            } else if (this.state.isChoosingAWall && (this.props.user.roles.indexOf('user') >= 0 || this.props.user.roles.indexOf('organization') >= 0)) {
                 return (
                     <div id="message-speech-bubble">
                         Choisissez Votre Mur
@@ -151,7 +152,7 @@ module.exports = React.createClass({
                         Cliquez ici pour poster un message
                     </div>
                 );
-            } else if (this.props.user.roles.indexOf('admin') >= 0) {
+            } else if (this.props.user.roles.indexOf('admin') >= 0 || this.props.user.roles.indexOf('messenger') >= 0) {
                 return (
                     <div id="message-speech-bubble" className="connect">
                         Télécharger tous les messages à afficher
