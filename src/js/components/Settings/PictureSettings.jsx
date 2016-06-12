@@ -3,6 +3,7 @@ import UserActionCreator from '../../actions/UserActionCreator';
 import Constants from '../../Constants';
 import Modal from 'react-modal';
 import EventListenerMixin from '../../mixins/EventListenerMixin';
+import AnimatedLoading from '../Loading/AnimatedLoading.jsx';
 
 let cropper = null;
 
@@ -12,14 +13,15 @@ module.exports = React.createClass({
         return {
             file: null,
             fileUrl: null,
-            isCropModalOpened: false
+            isCropModalOpened: false,
+            loading: false
         };
     },
 
     mixins: [EventListenerMixin(Constants.ActionTypes.UPDATE_PICTURE)],
     onEvent(e) {
         if (e.status == 'success') {
-            this.setState({success: true, error: null});
+            this.setState({success: true, error: null, loading: false});
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
@@ -32,7 +34,7 @@ module.exports = React.createClass({
                 case 500:
                     break; // problem
             }
-            this.setState({success: false, error: errorMessage});
+            this.setState({success: false, error: errorMessage, loading: false});
         }
     },
 
@@ -43,7 +45,7 @@ module.exports = React.createClass({
         for (let i = 0; i < blobBin.length; i++) array.push(blobBin.charCodeAt(i));
         let file = new Blob([new Uint8Array(array)], {type: 'image/png'});
         UserActionCreator.updatePicture(file);
-        this.setState({isCropModalOpened: false});
+        this.setState({isCropModalOpened: false, loading: true});
     },
 
     _handleFile(e) {
@@ -126,6 +128,14 @@ module.exports = React.createClass({
                         <button className="btn" onClick={this._handleSubmit}>Valider ma photo</button>
                     </div>
                 </Modal>
+
+                {
+                    this.state.loading ?
+                        <div id="general-loading">
+                            <AnimatedLoading />
+                        </div>
+                        : null
+                }
 
             </div>
 

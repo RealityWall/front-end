@@ -6,7 +6,9 @@ import fr from 'moment/locale/fr';
 import Constants from '../Constants';
 
 // Components
+import AnimatedLoading from '../components/Loading/AnimatedLoading.jsx';
 import PostItem from '../components/WallsPost/PostItem.jsx';
+import EventListener from '../mixins/EventListenerMixin';
 
 function _getCurrentDate() {
     let momentDate = moment();
@@ -20,7 +22,10 @@ function _getCurrentDate() {
 
 module.exports = React.createClass({
 
-    mixins: [PostStore.mixin],
+    mixins: [PostStore.mixin, EventListener(Constants.ActionTypes.DOWNLOAD_POSTS)],
+    onEvent() {
+        this.setState({loading: false});
+    },
     storeDidChange() {
         this.setState({posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, this.state.currentDate)})
     },
@@ -29,7 +34,8 @@ module.exports = React.createClass({
         let currentDate = _getCurrentDate();
         return {
             currentDate: currentDate,
-            posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, currentDate)
+            posts: PostStore.getPostsByWallIdAndDate(this.props.wallId, currentDate),
+            loading: false
         };
     },
 
@@ -56,6 +62,11 @@ module.exports = React.createClass({
             && this.state.currentDate.date() == currentDate.date();
     },
 
+    _downloadPosts() {
+        this.setState({loading: true});
+        ActionCreator.downloadPosts(this.props.wallId)
+    },
+
     render() {
         let mustDisableNext = this.disableNext();
         return (
@@ -71,7 +82,7 @@ module.exports = React.createClass({
                 </div>
                 <br/>
                 <div style={{height: '50px', lineHeight: '50px'}}>
-                    <a className="btn transparent" onClick={() => ActionCreator.downloadPosts(this.props.wallId)}><i className="fa fa-upload"/>download</a>
+                    <a className="btn transparent" onClick={this._downloadPosts}><i className="fa fa-upload"/>download</a>
                 </div>
                 <div className="post-list">
                     {
@@ -83,6 +94,14 @@ module.exports = React.createClass({
                             })
                     }
                 </div>
+
+                {
+                    this.state.loading ?
+                        <div id="general-loading">
+                            <AnimatedLoading />
+                        </div>
+                        : null
+                }
             </div>
         );
     }

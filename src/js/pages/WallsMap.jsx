@@ -10,10 +10,15 @@ import AddPostModal from '../components/WallsMap/AddPostModal.jsx';
 import ChooseActionModal from '../components/WallsMap/ChooseActionModal.jsx';
 import Tooltip from '../components/WallsMap/Tooltip.jsx';
 import AnimatedLoading from '../components/Loading/AnimatedLoading.jsx';
+import EventListener from '../mixins/EventListenerMixin';
+import Constants from '../Constants'
 
 module.exports = React.createClass({
 
-    mixins: [WallStore.mixin],
+    mixins: [WallStore.mixin, EventListener(Constants.ActionTypes.DOWNLOAD_ALL_POSTS)],
+    onEvent() {
+        this.setState({loading: false});
+    },
 
     getInitialState() {
         return {
@@ -75,6 +80,7 @@ module.exports = React.createClass({
     },
 
     _downloadAll() {
+        this.setState({loading: true});
         PostActionCreator.downloadAllPosts();
     },
 

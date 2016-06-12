@@ -184,11 +184,16 @@ const PostStore = Flux.createStore({
                 .end((err, res) => {
                     if (err || !res.ok) {
                         console.log('error');
-                        //document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_POSTS, {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_POSTS, {
+                            err,
+                            res,
+                            status: 'error'
+                        }));
                         return;
                     }
-                    //removePostFromWall(payload.wallId, payload.postId);
-                    //PostStore.emitChange();
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_POSTS, {
+                        status: 'success'
+                    }));
                     let downloadUrl = Constants.SERVER_BASE_URL + '/walls/' + payload.wallId + '/posts/download/' + res.body;
                     var a = document.createElement("a");
                     // safari doesn't support this yet
@@ -212,11 +217,16 @@ const PostStore = Flux.createStore({
                 .end((err, res) => {
                     if (err || !res.ok) {
                         console.log('error');
-                        //document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_POSTS, {err, res, status: 'error'}));
+                        document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_ALL_POSTS, {
+                            err,
+                            res,
+                            status: 'error'
+                        }));
                         return;
                     }
-                    //removePostFromWall(payload.wallId, payload.postId);
-                    //PostStore.emitChange();
+                    document.dispatchEvent(eventBuilder(Constants.ActionTypes.DOWNLOAD_ALL_POSTS, {
+                        status: 'success'
+                    }));
                     let downloadUrl = Constants.SERVER_BASE_URL + '/posts/download/' + res.body;
                     var a = document.createElement("a");
                     // safari doesn't support this yet
