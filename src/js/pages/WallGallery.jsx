@@ -178,7 +178,15 @@ export default React.createClass({
     },
 
     renderError() {
-        return (<div style={{color: 'red'}}> ERROR </div>);
+        return (
+            <div className="not-found">
+                <img src="img/404.png" style={{width: '100%', display: 'block', maxWidth: '600px', margin: 'auto'}}/>
+                <div style={{maxWidth: '600px', margin: 'auto', textAlign: 'center'}}>
+                    <div style={{fontSize:'24px'}}><span style={{fontWeight:'bold'}}>Oops !</span> Il semblerait que le mur que vous cherchez n'existe pas !</div>
+                    <div style={{marginTop: '16px'}}><button className="btn" onClick={ () => navigate("/walls")}>Revenir à la carte</button></div>
+                </div>
+            </div>
+        );
     },
 
     renderLoading() {

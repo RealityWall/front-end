@@ -24,7 +24,7 @@ module.exports = React.createClass({
                     self.setState({error: true, success: false, loading: false});
                     return;
                 }
-                setTimeout(() => navigate('/?loginModalOpened=true'), 1000);
+                setTimeout(() => navigate('/?loginModalOpened=true'), 2000);
                 self.setState({success: true, error: false, loading: false})
             });
     },

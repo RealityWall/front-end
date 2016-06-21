@@ -1,24 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {RouterMixin, navigate} from 'react-mini-router';
+import React from "react";
+import ReactDOM from "react-dom";
+import {RouterMixin, navigate} from "react-mini-router";
+import UserActionCreator from "./actions/UserActionCreator";
+import UserStore from "./stores/UserStore";
+import AppContainer from "./components/App/App.jsx";
+import Home from "./pages/Home.jsx";
+import Walls from "./pages/WallsMap.jsx";
+import WallById from "./pages/WallGallery.jsx";
+import WallUploadById from "./pages/WallUpload.jsx";
+import WallPostsById from "./pages/WallPosts.jsx";
+import VerifyUser from "./pages/VerifyUser.jsx";
+import Settings from "./pages/Settings.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import Posts from "./pages/Posts.jsx";
 
 // Actions
-import UserActionCreator from './actions/UserActionCreator';
 
 // Stores
-import UserStore from './stores/UserStore';
 
 // Components
-import AppContainer from './components/App/App.jsx';
-import Home from './pages/Home.jsx';
-import Walls from './pages/WallsMap.jsx';
-import WallById from './pages/WallGallery.jsx';
-import WallUploadById from './pages/WallUpload.jsx';
-import WallPostsById from './pages/WallPosts.jsx';
-import VerifyUser from './pages/VerifyUser.jsx';
-import Settings from './pages/Settings.jsx';
-import ResetPassword from './pages/ResetPassword.jsx';
-import Posts from './pages/Posts.jsx';
 
 var MainApp = React.createClass({
 
@@ -111,7 +111,15 @@ var MainApp = React.createClass({
     },
 
     notFound(path) {
-        return <div className="not-found">Page Not Found: {path}</div>;
+        return (
+            <div className="not-found">
+                <img src="img/404.png" style={{width: '100%', display: 'block', maxWidth: '600px', margin: 'auto'}}/>
+                <div style={{maxWidth: '600px', margin: 'auto', textAlign: 'center'}}>
+                    <div style={{fontSize:'24px'}}><span style={{fontWeight:'bold'}}>Oops !</span> Il semblerait que la page que vous cherchez n'existe pas !</div>
+                    <div style={{marginTop: '16px'}}><button className="btn" onClick={ () => navigate("/")}>Aller à l'accueil</button></div>
+                </div>
+            </div>
+        );
     }
 
 });
