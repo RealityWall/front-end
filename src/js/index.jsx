@@ -14,12 +14,6 @@ import Settings from "./pages/Settings.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Posts from "./pages/Posts.jsx";
 
-// Actions
-
-// Stores
-
-// Components
-
 var MainApp = React.createClass({
 
     mixins: [RouterMixin, UserStore.mixin],
