@@ -24,35 +24,27 @@ export default {
         DELETE_PICTURE: null,
 
         // App
-        GET_WALLS: null,
-        GET_WALL_BY_ID: null,
-        UPLOAD_WALL_PICTURE: null,
-        ADD_POST: null,
-        GET_POSTS_BY_WALL_ID: null,
-        HIDE_POST: null,
-        DOWNLOAD_POSTS: null,
-        GET_POSTS: null,
-        DOWNLOAD_ALL_POSTS: null
+        ADD_POST: null
     }),
 
     MODAL_STYLE: {
-        content : {
-            top                   : '50%',
-            left                  : '50%',
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(-50%, -50%)',
-            padding               : '0px',
-            borderRadius          : '2px',
-            minWidth              : '300px',
-            border                : 'none',
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '0px',
+            borderRadius: '2px',
+            minWidth: '300px',
+            border: 'none',
             overflow: 'visible',
             width: 'calc(100% - 20px)',
             maxWidth: '350px'
         },
         overlay: {
-            backgroundColor   : 'rgba(0, 0, 0, 0.45)'
+            backgroundColor: 'rgba(0, 0, 0, 0.45)'
         }
     }
 
