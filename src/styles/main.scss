@@ -1,16 +1,9 @@
 @import "./constants";
-@import "./animation";
 @import "./header";
 @import "./auth-modal";
-@import "./walls-map";
-@import "./signin";
-@import "./walls-post";
 @import "./settings";
-@import "./walls-upload";
-@import "./wall-gallery";
-@import "./post-item.scss";
-@import "./posts.scss";
 @import "./post-page.scss";
+@import "./home.scss";
 
 html, body, #app-container, #react-root {
     margin: 0;
@@ -159,12 +152,5 @@ input[type="email"], input[type="text"], input[type="password"], textarea {
 
 .ReactModal__Overlay {
     z-index:3;
-}
-
-.walls #general-loading {
-    background: rgba(0, 0, 0, 0.7);
-    .text {
-        color: white;
-    }
 }
 

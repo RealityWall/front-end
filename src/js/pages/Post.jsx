@@ -40,7 +40,7 @@ export default React.createClass({
 
     _addPost(e) {
         e.preventDefault();
-        this.refs.content.value && ActionCreator.addPost(this.props.wallId, this.refs.content.value);
+        this.refs.content.value && ActionCreator.addPost(this.refs.content.value);
     },
 
     _messageChange(e) {
