@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Constants from '../../Constants';
 
 import LogInForm from './LogInForm/LogInForm.jsx';
-import SignInForm from './SignInForm.jsx';
+import SignInForm from './SignInForm/SignInForm.jsx';
 import ForgottenPasswordForm from './ForgottenPasswordForm.jsx';
 
 const tabs = [
