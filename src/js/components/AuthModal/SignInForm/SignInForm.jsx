@@ -60,6 +60,7 @@ var SignInForm = React.createClass({
                 </form>
                 <div className="divider"></div>
                 <FacebookForm onLogin={ self.props.onLogin }/>
+                <div style={{paddingBottom: '16px'}}>En vous inscrivant sur notre site, vous acceptez nos <a href="#!/mentions-legales" target="_blank">Conditions</a></div>
             </div>
         );
     }
