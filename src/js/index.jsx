@@ -9,6 +9,7 @@ import VerifyUser from "./pages/VerifyUser.jsx";
 import Settings from "./pages/Settings.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Post from "./pages/Post.jsx";
+import MentionsLegales from './pages/MentionsLegales.jsx';
 
 var MainApp = React.createClass({
 
@@ -36,7 +37,8 @@ var MainApp = React.createClass({
         '/verify/:token': 'verifyUser',
         '/settings': 'settings',
         '/reset-password/:token': 'resetPassword',
-        '/post': 'post'
+        '/post': 'post',
+        '/mentions-legales': 'mentionsLegales'
     },
 
     home() {
@@ -56,6 +58,10 @@ var MainApp = React.createClass({
     settings() {
         if (this.state.user.id) return (<Settings user={this.state.user}/>);
         else if (!this.state.isLoggingIn) navigate('/');
+    },
+
+    mentionsLegales() {
+        return (<MentionsLegales />);
     },
 
     post() {
