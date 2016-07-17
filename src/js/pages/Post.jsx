@@ -61,7 +61,7 @@ export default React.createClass({
                         {
                             this.state.user.id && this.state.user.lastPost && !this.state.user.lastPost.hasBeenDisplayed ?
                                 <div style={{marginTop: '16px', color: 'green'}}>
-                                    <i className="fa fa-check"/> Vous avez déjà posté, merci d'attendre le prochain affichage pour poster un message
+                                    <i className="fa fa-check"/> Vous avez déjà posté, merci d'attendre demain pour poster un message
                                     !
                                 </div> :
                                 <form onSubmit={ this._addPost } className="post-form">
