@@ -84,6 +84,10 @@ module.exports = React.createClass({
                             <a href="https://twitter.com/unmurdanslereel" target="_blank"><i className="fa fa-twitter-square"></i></a>
                         </div>
                     </div>
+
+                </div>
+                <div className="footer">
+                    <a href="/mentions-legales">Mentions légales</a>
                 </div>
             </div>
         );

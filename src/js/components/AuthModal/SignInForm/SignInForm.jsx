@@ -1,7 +1,8 @@
-import React from 'react';
-import UserActionCreator from '../../actions/UserActionCreator';
-import Constants from '../../Constants';
-import EventListenerMixin from '../../mixins/EventListenerMixin';
+import React from "react";
+import UserActionCreator from "../../../actions/UserActionCreator";
+import Constants from "../../../Constants";
+import EventListenerMixin from "../../../mixins/EventListenerMixin";
+import FacebookForm from './FacebookForm.jsx';
 
 let _emailRegistered = null;
 
@@ -25,7 +26,8 @@ var SignInForm = React.createClass({
                 case 409:
                     errorMessage = 'Oops ! Cette addresse mail est déjà utilisée.';
                     break; // bad email or bad password
-                case 500: break; // problem
+                case 500:
+                    break; // problem
             }
             this.setState({success: false, error: errorMessage});
         }
@@ -45,17 +47,21 @@ var SignInForm = React.createClass({
     render() {
         let self = this;
         return (
-            <form onSubmit={ self._handleSignIn }>
-                <input type="text" placeholder="Nom" ref="lastname" required/>
-                <input type="text" placeholder="Prenom" ref="firstname" required/>
-                <input type="email" placeholder="Adresse mail" ref="email" required/>
-                <input type="password" placeholder="Mot de passe" ref="password" required/>
-                <span className="success">{self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
-                <span className="error">{self.state.error}</span>
-                <input type="submit" className="btn" value="s'inscrire"/>
-
-
-            </form>
+            <div className="login-forms-wrapper">
+                <form onSubmit={ self._handleSignIn }>
+                    <input type="text" placeholder="Nom" ref="lastname" required/>
+                    <input type="text" placeholder="Prenom" ref="firstname" required/>
+                    <input type="email" placeholder="Adresse mail" ref="email" required/>
+                    <input type="password" placeholder="Mot de passe" ref="password" required/>
+                    <span
+                        className="success">{self.state.success ? ('Un mail de confirmation a été envoyé à ' + _emailRegistered) : null}</span>
+                    <span className="error">{self.state.error}</span>
+                    <input type="submit" className="btn" value="s'inscrire"/>
+                </form>
+                <div className="divider"></div>
+                <FacebookForm onLogin={ self.props.onLogin }/>
+                <div style={{paddingBottom: '16px'}}>En vous inscrivant sur notre site, vous acceptez nos <a href="#!/mentions-legales" target="_blank">Conditions</a></div>
+            </div>
         );
     }
 

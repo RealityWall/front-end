@@ -2,8 +2,8 @@ import keyMirror from 'keymirror';
 
 export default {
     // event name triggered from store, listened to by views
-    SERVER_BASE_URL: 'http://localhost:3000/api',
-    SERVER_IMAGES_URL: 'http://localhost:3000/images',
+    SERVER_BASE_URL: 'https://api.unmurdanslereel.fr/api',
+    SERVER_IMAGES_URL: 'https://api.unmurdanslereel.fr/images',
 
     // Each time you add an action, add it here... They should be past-tense
     ActionTypes: keyMirror({
