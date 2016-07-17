@@ -20,7 +20,7 @@ const CountDown = React.createClass({
 
     calculate() {
         var now = new Date();
-        var endDate = new Date(2016, 7, 1, 0, 0, 0, 0);
+        var endDate = new Date(2016, 6, 31, 0, 0, 0, 0);
         var diff = endDate.getTime() - now.getTime();
         const days = parseInt(diff / DAY);
         diff = diff % DAY;
