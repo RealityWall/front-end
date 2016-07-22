@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -19,9 +20,9 @@ const CountDown = React.createClass({
     },
 
     calculate() {
-        var now = new Date();
-        var endDate = new Date(2016, 6, 31, 0, 0, 0, 0);
-        var diff = endDate.getTime() - now.getTime();
+        const now = new Date();
+        const endDate = new Date(2016, 6, 31, 0, 0, 0, 0);
+        let diff = endDate.getTime() - now.getTime();
         const days = parseInt(diff / DAY);
         diff = diff % DAY;
         const hours = parseInt(diff / HOUR);
@@ -68,20 +69,37 @@ const CountDown = React.createClass({
 module.exports = React.createClass({
 
     render() {
+        const now = moment(new Date());
+        const endDate = moment(new Date(2016, 6, 31, 0, 0, 0, 0));
+        const displayCountDown = now.isBefore(endDate);
         return (
             <div className="home">
                 <div className="opacity">
                     <div className="something-to-be-centered">
-                        <div className="title">Date du prochain affichage</div>
-                        <CountDown />
+                        <div className="title">Date du {displayCountDown ? 'prochain' : 'dernier'} affichage</div>
+                        {
+                            displayCountDown ?
+                                <CountDown /> :
+                                <div style={{
+                                    color: 'white', textAlign: 'center', fontSize: '24px',
+                                    fontStyle: 'italic',
+                                    fontWeight: 300,
+                                    height: '50px'
+                                }}>
+                                    31 Juillet 2016
+                                </div>
+                        }
+
                         <div style={{textAlign: 'center', marginTop: '32px'}}>
                             <a href="/post" className="btn" style={{padding: '16px 32px', fontSize: '18px'}}>
                                 <i className="fa fa-pencil"></i> écrire un message
                             </a>
                         </div>
                         <div className="social">
-                            <a href="https://www.facebook.com/unmurdanslereel/" target="_blank"><i className="fa fa-facebook-square"></i></a>
-                            <a href="https://twitter.com/unmurdanslereel" target="_blank"><i className="fa fa-twitter-square"></i></a>
+                            <a href="https://www.facebook.com/unmurdanslereel/" target="_blank"><i
+                                className="fa fa-facebook-square"></i></a>
+                            <a href="https://twitter.com/unmurdanslereel" target="_blank"><i
+                                className="fa fa-twitter-square"></i></a>
                         </div>
                     </div>
 
