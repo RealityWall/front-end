@@ -7,9 +7,8 @@ export default React.createClass({
             <div className="mentions-legales">
                 <h1>Mentions legales</h1>
                 L’association UN MUR DANS LE RÉEL a pour but de promouvoir la liberté d’expression par tous les moyens
-                légaux, notamment en utilisant les panneaux d’expression libres.
+                légaux, notamment en utilisant les panneaux d’expression libres.<br/>
                 Le siège social est fixé au 22 Chemin du coin de la Moure, 31500, Toulouse. <br/>
-
                 Directeur de la publication: Mr MEDINA DELMOTTE Julien<br/>
                 Développeur : Mr DELMOTTE Jean-Yves<br/>
                 Webmaster : Mr SARAIS Anthony<br/>
@@ -21,7 +20,7 @@ export default React.createClass({
 
                 <h3>Protection des données personnelles</h3>
                 Conformément à la loi du 6 janvier 1978, modifiée le 7 août 2004, et du 21 juin 2004, (consultable à
-                l'adresse www.cnil.fr):
+                l'adresse <a href="http://www.cnil.fr" target="_blank">www.cnil.fr</a>):<br/>
                 UN MUR DANS LE RÉEL s'engage à respecter le caractère confidentiel des informations personnelles
                 éventuellement fournies par les utilisateurs de son site. Conformément à cette même loi, vous disposez
                 d'un droit d'accès, de rectification et de radiation de vos données personnelles que vous pouvez exercer
@@ -50,23 +49,23 @@ export default React.createClass({
                 <h3>Charte Libre expression</h3>
 
                 Réagir sur le site web implique de respecter quelques règles de conduite. Ces règles s’appliquent aux
-                commentaires postés suite à un article, un événement, une vidéo, un lien, …
+                commentaires postés suite à un article, un événement, une vidéo, un lien, …<br/>
                 Le site web est un espace d’échange d’idées et d’opinions qui s’inscrit dans un esprit d’ouverture et de
                 respect mutuel.
 
-                Seront considérés illicites :
-                -les messages à caractère raciste, xénophobe, révisionniste, négationniste ;
-                -les messages haineux, diffamatoires, agressifs ou choquants qui attaquent ou dévalorisent un groupe en
+                Seront considérés illicites :<br/>
+                - les messages à caractère raciste, xénophobe, révisionniste, négationniste ;<br/>
+                - les messages haineux, diffamatoires, agressifs ou choquants qui attaquent ou dévalorisent un groupe en
                 raison de la race, l’origine ethnique, la religion, le handicap, le sexe, l’âge ou
-                l’orientation/identité sexuelle ;
-                -les incitations à la haine raciale, les appels à la violence ou au meurtre ;
-                -les messages à caractères pornographiques, pédophiles ou obscènes ;
-                -les insultes personnelles entre participants ;
-                -les messages portant atteinte à la vie privée d’autres participants ou de tiers ou la divulgation
-                d’informations personnelles d’autres membres ;
-                -les messages publicitaires et commerciaux, les communiqués d’organisations politiques, syndicales ;
-                -les messages visant à discréditer les autres commentaires et publications dans un but non constructif ;
-                -les messages hors-sujet ou incompréhensibles
+                l’orientation/identité sexuelle ;<br/>
+                - les incitations à la haine raciale, les appels à la violence ou au meurtre ;<br/>
+                - les messages à caractères pornographiques, pédophiles ou obscènes ;<br/>
+                - les insultes personnelles entre participants ;<br/>
+                - les messages portant atteinte à la vie privée d’autres participants ou de tiers ou la divulgation
+                d’informations personnelles d’autres membres ;<br/>
+                - les messages publicitaires et commerciaux, les communiqués d’organisations politiques, syndicales ;<br/>
+                - les messages visant à discréditer les autres commentaires et publications dans un but non constructif ;<br/>
+                - les messages hors-sujet ou incompréhensibles<br/>
 
                 "En cas de publication de propos diffamatoires, le président n'est responsable des commentaires des
                 internautes que s'il a eu connaissance de leur contenu avant leur mise en ligne, ou s'il n'a pas agi
