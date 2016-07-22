@@ -131,7 +131,7 @@ module.exports = React.createClass({
 
                 {
                     this.state.loading ?
-                        <div id="general-loading">
+                        <div id="general-loading" style={{position:'absolute'}}>
                             <AnimatedLoading />
                         </div>
                         : null
