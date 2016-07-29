@@ -3,8 +3,9 @@ import EventListenerMixin from '../mixins/EventListenerMixin';
 import Constants from '../Constants';
 import UserStore from '../stores/UserStore';
 import PostStore from '../stores/PostStore';
+import moment from 'moment';
 import ActionCreator from '../actions/PostActionCreator';
-
+window.moment = moment;
 export default React.createClass({
 
     mixins: [EventListenerMixin(Constants.ActionTypes.ADD_POST), UserStore.mixin],
@@ -13,8 +14,8 @@ export default React.createClass({
     },
     onEvent(e) {
         if (e.status == 'success') {
-            this.setState({success: true, error: null, message: ''});
             this.refs.content.value = '';
+            this.setState({success: true, error: null, message: ''});
         } else {
             let errorMessage = 'Oops ! Erreur du serveur interne.';
             switch (e.res.status) {
@@ -40,6 +41,7 @@ export default React.createClass({
 
     _addPost(e) {
         e.preventDefault();
+        console.log('lol');
         this.refs.content.value && ActionCreator.addPost(this.refs.content.value);
     },
 
@@ -48,7 +50,12 @@ export default React.createClass({
         this.setState({message: this.refs.content.value});
     },
 
+    _canUserPost() {
+        return this.state.user.id && (!this.state.user.lastPost || (this.state.user.lastPost && moment(this.state.user.lastPost.createdAt).date() !== moment().date()));
+    },
+
     render() {
+        console.log()
         return (
             <div className="post-page">
                 <div className={this.state.user.id ? '' : 'blur'}>
@@ -59,19 +66,15 @@ export default React.createClass({
                     </div>
                     <div className="max-width">
                         {
-                            this.state.user.id && this.state.user.lastPost && !this.state.user.lastPost.hasBeenDisplayed ?
-                                <div style={{marginTop: '16px', color: 'green'}}>
-                                    <i className="fa fa-check"/> Vous avez déjà posté, merci d'attendre demain pour poster un message
-                                    !
-                                </div> :
+                            this._canUserPost() ?
                                 <form onSubmit={ this._addPost } className="post-form">
                             <textarea required
                                       ref="content"
                                       disabled={this.state.user.id && this.state.user.lastPost && !this.state.user.lastPost.hasBeenDisplayed}
                                       placeholder="Ton message"
                                       onChange={this._messageChange}/><br/>
-                            <span
-                                className="success">{this.state.success ? ('Bravo ! Votre message sera affiché lors du prochain affichage !') : null}</span>
+                                    <span
+                                        className="success">{this.state.success ? ('Bravo ! Votre message sera affiché lors du prochain affichage !') : null}</span>
                                     <span className="error">{this.state.error}</span>
                                     <div className="bottom-container">
                                         <div className="char-counter">
@@ -80,9 +83,14 @@ export default React.createClass({
                                         <div>
                                             <input type="submit" value="Envoyer ce message" className="btn"/>
                                         </div>
-
                                     </div>
-                                </form>
+                                </form> :
+                                <div style={{marginTop: '16px', color: 'green'}}>
+                                    <i className="fa fa-check"/> Vous avez déjà posté, merci d'attendre demain pour
+                                    poster un message
+                                    !
+                                </div>
+
                         }
 
                     </div>
