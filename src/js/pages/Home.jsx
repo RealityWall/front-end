@@ -95,6 +95,7 @@ module.exports = React.createClass({
                                 <i className="fa fa-pencil"></i> écrire un message
                             </a>
                         </div>
+                        <div style={{color: 'white', fontSize: '18px', maxWidth: "532px", textAlign: 'center', margin: 'auto', padding: '0 16px', marginTop: '48px'}}>On affiche un peu tous les jours, si vous voulez nous rejoindre, faites nous signe sur notre page facebook !</div>
                         <div className="social">
                             <a href="https://www.facebook.com/unmurdanslereel/" target="_blank"><i
                                 className="fa fa-facebook-square"></i></a>
